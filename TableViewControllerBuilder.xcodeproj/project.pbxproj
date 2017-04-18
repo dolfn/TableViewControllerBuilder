@@ -19,7 +19,7 @@
 		A132E64A1EA0D8EF0016D9F1 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62F1EA0D8EF0016D9F1 /* TableViewModel.swift */; };
 		A132E64B1EA0D8EF0016D9F1 /* TableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6301EA0D8EF0016D9F1 /* TableViewRegisterable.swift */; };
 		A132E64C1EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */; };
-		A132E64D1EA0D8EF0016D9F1 /* AnyComponentsTableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6331EA0D8EF0016D9F1 /* AnyComponentsTableViewControllerBuilder.swift */; };
+		A132E64D1EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */; };
 		A132E64E1EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */; };
 		A132E64F1EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */; };
 		A132E6501EA0D8EF0016D9F1 /* AnySectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6361EA0D8EF0016D9F1 /* AnySectionDisplayData.swift */; };
@@ -62,7 +62,7 @@
 		A132E62F1EA0D8EF0016D9F1 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
 		A132E6301EA0D8EF0016D9F1 /* TableViewRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRegisterable.swift; sourceTree = "<group>"; };
 		A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellTableViewDataSource.swift; sourceTree = "<group>"; };
-		A132E6331EA0D8EF0016D9F1 /* AnyComponentsTableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyComponentsTableViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilder.swift; sourceTree = "<group>"; };
 		A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeadersAndCellsTableViewController.swift; sourceTree = "<group>"; };
 		A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderTableViewDelegate.swift; sourceTree = "<group>"; };
 		A132E6361EA0D8EF0016D9F1 /* AnySectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySectionDisplayData.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		A132E6311EA0D8EF0016D9F1 /* Concrete */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6331EA0D8EF0016D9F1 /* AnyComponentsTableViewControllerBuilder.swift */,
+				A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */,
 				A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */,
 				A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */,
 				A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */,
@@ -335,7 +335,7 @@
 				A132E6491EA0D8EF0016D9F1 /* SectionDisplayData.swift in Sources */,
 				A132E6461EA0D8EF0016D9F1 /* HeaderConfigurator.swift in Sources */,
 				A132E64F1EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift in Sources */,
-				A132E64D1EA0D8EF0016D9F1 /* AnyComponentsTableViewControllerBuilder.swift in Sources */,
+				A132E64D1EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift in Sources */,
 				A132E6541EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift in Sources */,
 				A132E64E1EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift in Sources */,
 				A132E6571EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift in Sources */,
