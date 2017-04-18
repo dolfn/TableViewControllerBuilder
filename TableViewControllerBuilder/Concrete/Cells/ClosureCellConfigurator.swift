@@ -21,7 +21,14 @@ public struct ClosureCellConfigurator<CellDisplayDataType, CellViewType: UITable
     }
     
     func register(in tableView: UITableView) {
-        tableView.register(CellViewType.self, forCellReuseIdentifier: reuseIdentifier)
+        self.registerBasedOnConvention(anyClass: CellViewType.self) {
+            switch $0 {
+            case .Class(let classRegister):
+                tableView.register(classRegister, forCellReuseIdentifier: reuseIdentifier)
+            case .Nib(let nibToRegister):
+                tableView.register(nibToRegister, forCellReuseIdentifier: reuseIdentifier)
+            }
+        }
     }
     
     private func dequeReusableCell(tableView: UITableView,
