@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol HeaderConfiguratorFactory {
+public protocol HeaderConfiguratorFactory {
     associatedtype HeaderDisplayDataType
     func configurator(with displayDataType: HeaderDisplayDataType) -> AnyHeaderViewConfigurator<HeaderDisplayDataType>?
 }

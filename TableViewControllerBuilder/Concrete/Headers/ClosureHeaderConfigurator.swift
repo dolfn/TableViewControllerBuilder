@@ -9,16 +9,26 @@
 import UIKit
 
 public struct ClosureHeaderConfigurator<HeaderDisplayDataType, HeaderViewType: UITableViewHeaderFooterView>: HeaderConfigurator {
-    typealias HeaderConfigurator = (HeaderDisplayDataType, HeaderViewType) -> ()
+    
+    public typealias HeaderConfigurator = (HeaderDisplayDataType, HeaderViewType) -> ()
+    
     let reuseIdentifier: String
     private let headerConfigurator: HeaderConfigurator
-    init(reuseIdentifier: String = "\(HeaderViewType.self)", headerConfigurator: @escaping HeaderConfigurator) {
+    
+    public init(reuseIdentifier: String = "\(HeaderViewType.self)", headerConfigurator: @escaping HeaderConfigurator) {
         self.reuseIdentifier = reuseIdentifier
         self.headerConfigurator = headerConfigurator
     }
     
     func register(in tableView: UITableView) {
-        tableView.register(HeaderViewType.self, forHeaderFooterViewReuseIdentifier: reuseIdentifier)
+        self.registerBasedOnConvention(anyClass: HeaderViewType.self) { (registerableClassType: RegisterableClassType) in
+            switch registerableClassType {
+            case .Nib(let nib):
+                tableView.register(nib, forHeaderFooterViewReuseIdentifier: reuseIdentifier)
+            case .Class(let classToRegister):
+                tableView.register(classToRegister, forHeaderFooterViewReuseIdentifier: reuseIdentifier)
+            }
+        }
     }
     
     func configuredHeader(in tableView: UITableView, at index: Int, with headerDisplayData: HeaderDisplayDataType) -> HeaderViewType? {

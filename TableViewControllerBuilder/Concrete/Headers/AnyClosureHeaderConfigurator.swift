@@ -37,7 +37,7 @@ public struct AnyHeaderViewConfigurator<HeaderDisplayDataType>: HeaderConfigurat
         return configure(tableView, index, headerDisplayData)
     }
     
-    func with<T>(headerDisplayDataType: HeaderDisplayDataType) -> AnyHeaderViewConfigurator<T> {
+    public func with<T>(headerDisplayDataType: HeaderDisplayDataType) -> AnyHeaderViewConfigurator<T> {
         let erasedTypeObject = AnyHeaderViewConfigurator<T>(reuseIdentifier: reuseIdentifier, register: register) { (tableView: UITableView, index: Int, _) -> UITableViewHeaderFooterView? in
             return self.configure(tableView, index, headerDisplayDataType)
         }
