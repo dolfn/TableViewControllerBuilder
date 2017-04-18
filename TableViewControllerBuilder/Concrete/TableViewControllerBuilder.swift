@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, CellDisplayDataType> {
+public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, CellDisplayDataType: HeightFlexible> {
     
     private var viewModel: AnyTableViewModel<HeaderDisplayDataType, CellDisplayDataType>
     private var headerConfiguratorSelector: HeaderViewConfiguratorSelector<HeaderDisplayDataType>?
@@ -41,7 +41,7 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
             tableViewController.tableViewDataSource = tableViewDataSource
             
             if let headerConfiguratorSelector = headerConfiguratorSelector {
-                let tableViewDelegate = CustomHeightsTableViewCellDelegate(headerViewsDisplayData: justTheHeadersInSections, headerViewConfigurator: headerConfiguratorSelector)
+                let tableViewDelegate = CustomHeightsTableViewCellDelegate(rowHeightProviders: justTheRowsInSections, headerViewsDisplayData: justTheHeadersInSections, headerViewConfigurator: headerConfiguratorSelector)
                 tableViewController.tableViewDelegate = tableViewDelegate
             }
             
