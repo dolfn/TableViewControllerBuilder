@@ -13,6 +13,24 @@ public protocol TableViewModel {
     associatedtype CellDisplayDataType
     
     typealias SectionDisplayDataType = AnySectionDisplayData<HeaderDisplayDataType, CellDisplayDataType>
-    
+    var shouldBeScrollable: Bool { get }
     var sectionsDisplayData: [SectionDisplayDataType] { get }
+}
+
+extension TableViewModel {
+    var justCellData: [[CellDisplayDataType]] {
+        let justTheRowsInSections = self.sectionsDisplayData.map { (sectionDisplayData) -> [CellDisplayDataType] in
+            return sectionDisplayData.sectionRowsData
+        }
+        
+        return justTheRowsInSections
+    }
+    
+    var justHeaderData: [HeaderDisplayDataType] {
+        let justTheHeadersInSections = self.sectionsDisplayData.map { (sectionDisplayData) -> HeaderDisplayDataType in
+            return sectionDisplayData.headerDisplayData
+        }
+        
+        return justTheHeadersInSections
+    }
 }

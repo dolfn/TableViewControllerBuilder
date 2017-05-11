@@ -8,19 +8,27 @@
 
 import Foundation
 
-struct AnyTableViewModel<H, R>: TableViewModel {
-    typealias HeaderDisplayDataType = H
-    typealias RowDisplayDataType = R
+public class AnyTableViewModel<H, R>: TableViewModel {
     
-    var sectionsDisplayData: [AnySectionDisplayData<H, R>] {
+    public typealias HeaderDisplayDataType = H
+    public typealias RowDisplayDataType = R
+    
+    public var shouldBeScrollable: Bool {
+        get {
+            return _shouldBeScrollable
+        }
+    }
+    public var sectionsDisplayData: [AnySectionDisplayData<H, R>] {
         get {
             return _sectionsDisplayData
         }
     }
     
     let _sectionsDisplayData: [AnySectionDisplayData<H, R>]
+    let _shouldBeScrollable: Bool
     
     init<TableViewModelType: TableViewModel>(tableViewModel: TableViewModelType) where TableViewModelType.HeaderDisplayDataType == H, TableViewModelType.CellDisplayDataType == R {
         _sectionsDisplayData = tableViewModel.sectionsDisplayData
+        _shouldBeScrollable = tableViewModel.shouldBeScrollable
     }
 }

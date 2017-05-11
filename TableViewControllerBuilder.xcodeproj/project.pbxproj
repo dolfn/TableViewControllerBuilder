@@ -10,30 +10,40 @@
 		A132E6161EA0D89D0016D9F1 /* TableViewControllerBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A132E60C1EA0D89D0016D9F1 /* TableViewControllerBuilder.framework */; };
 		A132E61B1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */; };
 		A132E61D1EA0D89D0016D9F1 /* TableViewControllerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A132E6441EA0D8EF0016D9F1 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6281EA0D8EF0016D9F1 /* CellConfigurator.swift */; };
-		A132E6451EA0D8EF0016D9F1 /* CellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6291EA0D8EF0016D9F1 /* CellConfiguratorFactory.swift */; };
-		A132E6461EA0D8EF0016D9F1 /* HeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62B1EA0D8EF0016D9F1 /* HeaderConfigurator.swift */; };
-		A132E6471EA0D8EF0016D9F1 /* HeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62C1EA0D8EF0016D9F1 /* HeaderConfiguratorFactory.swift */; };
-		A132E6481EA0D8EF0016D9F1 /* HeightFlexible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62D1EA0D8EF0016D9F1 /* HeightFlexible.swift */; };
-		A132E6491EA0D8EF0016D9F1 /* SectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62E1EA0D8EF0016D9F1 /* SectionDisplayData.swift */; };
-		A132E64A1EA0D8EF0016D9F1 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E62F1EA0D8EF0016D9F1 /* TableViewModel.swift */; };
-		A132E64B1EA0D8EF0016D9F1 /* TableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6301EA0D8EF0016D9F1 /* TableViewRegisterable.swift */; };
-		A132E64C1EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */; };
-		A132E64D1EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */; };
-		A132E64E1EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */; };
-		A132E64F1EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */; };
-		A132E6501EA0D8EF0016D9F1 /* AnySectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6361EA0D8EF0016D9F1 /* AnySectionDisplayData.swift */; };
-		A132E6511EA0D8EF0016D9F1 /* AnyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6371EA0D8EF0016D9F1 /* AnyTableViewModel.swift */; };
-		A132E6521EA0D8EF0016D9F1 /* AnyCellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6391EA0D8EF0016D9F1 /* AnyCellConfiguratorFactory.swift */; };
-		A132E6531EA0D8EF0016D9F1 /* AnyClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E63A1EA0D8EF0016D9F1 /* AnyClosureCellConfigurator.swift */; };
-		A132E6541EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E63B1EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift */; };
-		A132E6551EA0D8EF0016D9F1 /* ClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E63C1EA0D8EF0016D9F1 /* ClosureCellConfigurator.swift */; };
-		A132E6561EA0D8EF0016D9F1 /* ClosureCellConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E63D1EA0D8EF0016D9F1 /* ClosureCellConfiguratorExtensions.swift */; };
-		A132E6571EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E63F1EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift */; };
-		A132E6581EA0D8EF0016D9F1 /* AnyHeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6401EA0D8EF0016D9F1 /* AnyHeaderConfiguratorFactory.swift */; };
-		A132E6591EA0D8EF0016D9F1 /* ClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6411EA0D8EF0016D9F1 /* ClosureHeaderConfigurator.swift */; };
-		A132E65A1EA0D8EF0016D9F1 /* ClosureHeaderConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6421EA0D8EF0016D9F1 /* ClosureHeaderConfiguratorExtensions.swift */; };
-		A132E65B1EA0D8EF0016D9F1 /* HeaderViewConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E6431EA0D8EF0016D9F1 /* HeaderViewConfiguratorSelector.swift */; };
+		A142B77D1EC4B0C800704A03 /* CellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */; };
+		A142B77E1EC4B0C800704A03 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7581EC4B0C800704A03 /* CellConfigurator.swift */; };
+		A142B77F1EC4B0C800704A03 /* CellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */; };
+		A142B7801EC4B0C800704A03 /* CellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */; };
+		A142B7811EC4B0C800704A03 /* HeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */; };
+		A142B7821EC4B0C800704A03 /* HeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */; };
+		A142B7831EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */; };
+		A142B7841EC4B0C800704A03 /* HeightFlexible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */; };
+		A142B7851EC4B0C800704A03 /* SectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */; };
+		A142B7861EC4B0C800704A03 /* TableViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */; };
+		A142B7871EC4B0C800704A03 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7621EC4B0C800704A03 /* TableViewModel.swift */; };
+		A142B7881EC4B0C800704A03 /* TableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */; };
+		A142B7891EC4B0C800704A03 /* TableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */; };
+		A142B78A1EC4B0C800704A03 /* AnyCellTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */; };
+		A142B78B1EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */; };
+		A142B78C1EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */; };
+		A142B78D1EC4B0C800704A03 /* AnySectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */; };
+		A142B78E1EC4B0C800704A03 /* AnyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */; };
+		A142B78F1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */; };
+		A142B7901EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */; };
+		A142B7911EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */; };
+		A142B7921EC4B0C800704A03 /* AnyCellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */; };
+		A142B7931EC4B0C800704A03 /* AnyClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */; };
+		A142B7941EC4B0C800704A03 /* CellConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */; };
+		A142B7951EC4B0C800704A03 /* ClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */; };
+		A142B7961EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */; };
+		A142B7971EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */; };
+		A142B7981EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */; };
+		A142B7991EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */; };
+		A142B79A1EC4B0C800704A03 /* ClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */; };
+		A142B79B1EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */; };
+		A142B79C1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */; };
+		A142B79D1EC4B0C800704A03 /* TableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */; };
+		A142B79E1EC4B0C800704A03 /* TableViewOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,30 +63,40 @@
 		A132E6151EA0D89D0016D9F1 /* TableViewControllerBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewControllerBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilderTests.swift; sourceTree = "<group>"; };
 		A132E61C1EA0D89D0016D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A132E6281EA0D8EF0016D9F1 /* CellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
-		A132E6291EA0D8EF0016D9F1 /* CellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A132E62B1EA0D8EF0016D9F1 /* HeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfigurator.swift; sourceTree = "<group>"; };
-		A132E62C1EA0D8EF0016D9F1 /* HeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A132E62D1EA0D8EF0016D9F1 /* HeightFlexible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightFlexible.swift; sourceTree = "<group>"; };
-		A132E62E1EA0D8EF0016D9F1 /* SectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionDisplayData.swift; sourceTree = "<group>"; };
-		A132E62F1EA0D8EF0016D9F1 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
-		A132E6301EA0D8EF0016D9F1 /* TableViewRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRegisterable.swift; sourceTree = "<group>"; };
-		A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellTableViewDataSource.swift; sourceTree = "<group>"; };
-		A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilder.swift; sourceTree = "<group>"; };
-		A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeadersAndCellsTableViewController.swift; sourceTree = "<group>"; };
-		A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderTableViewDelegate.swift; sourceTree = "<group>"; };
-		A132E6361EA0D8EF0016D9F1 /* AnySectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySectionDisplayData.swift; sourceTree = "<group>"; };
-		A132E6371EA0D8EF0016D9F1 /* AnyTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModel.swift; sourceTree = "<group>"; };
-		A132E6391EA0D8EF0016D9F1 /* AnyCellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A132E63A1EA0D8EF0016D9F1 /* AnyClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureCellConfigurator.swift; sourceTree = "<group>"; };
-		A132E63B1EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelector.swift; sourceTree = "<group>"; };
-		A132E63C1EA0D8EF0016D9F1 /* ClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfigurator.swift; sourceTree = "<group>"; };
-		A132E63D1EA0D8EF0016D9F1 /* ClosureCellConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorExtensions.swift; sourceTree = "<group>"; };
-		A132E63F1EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
-		A132E6401EA0D8EF0016D9F1 /* AnyHeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A132E6411EA0D8EF0016D9F1 /* ClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
-		A132E6421EA0D8EF0016D9F1 /* ClosureHeaderConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensions.swift; sourceTree = "<group>"; };
-		A132E6431EA0D8EF0016D9F1 /* HeaderViewConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelector.swift; sourceTree = "<group>"; };
+		A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A142B7581EC4B0C800704A03 /* CellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellEventsDelegate.swift; sourceTree = "<group>"; };
+		A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfigurator.swift; sourceTree = "<group>"; };
+		A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightFlexible.swift; sourceTree = "<group>"; };
+		A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionDisplayData.swift; sourceTree = "<group>"; };
+		A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEventHandler.swift; sourceTree = "<group>"; };
+		A142B7621EC4B0C800704A03 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModelDelegate.swift; sourceTree = "<group>"; };
+		A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRegisterable.swift; sourceTree = "<group>"; };
+		A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellTableViewDataSource.swift; sourceTree = "<group>"; };
+		A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderCellTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeadersAndCellsTableViewController.swift; sourceTree = "<group>"; };
+		A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySectionDisplayData.swift; sourceTree = "<group>"; };
+		A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModel.swift; sourceTree = "<group>"; };
+		A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModelDelegate.swift; sourceTree = "<group>"; };
+		A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellEventsDelegate.swift; sourceTree = "<group>"; };
+		A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureCellConfigurator.swift; sourceTree = "<group>"; };
+		A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelector.swift; sourceTree = "<group>"; };
+		A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfigurator.swift; sourceTree = "<group>"; };
+		A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorExtensions.swift; sourceTree = "<group>"; };
+		A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
+		A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
+		A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensions.swift; sourceTree = "<group>"; };
+		A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelector.swift; sourceTree = "<group>"; };
+		A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewOperationsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +139,8 @@
 		A132E60E1EA0D89D0016D9F1 /* TableViewControllerBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6261EA0D8EF0016D9F1 /* Abstraction */,
-				A132E6311EA0D8EF0016D9F1 /* Concrete */,
+				A142B7551EC4B0C800704A03 /* Abstraction */,
+				A142B7651EC4B0C800704A03 /* Concrete */,
 				A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */,
 				A132E6101EA0D89D0016D9F1 /* Info.plist */,
 			);
@@ -136,72 +156,82 @@
 			path = TableViewControllerBuilderTests;
 			sourceTree = "<group>";
 		};
-		A132E6261EA0D8EF0016D9F1 /* Abstraction */ = {
+		A142B7551EC4B0C800704A03 /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6271EA0D8EF0016D9F1 /* Cells */,
-				A132E62A1EA0D8EF0016D9F1 /* Headers */,
-				A132E62D1EA0D8EF0016D9F1 /* HeightFlexible.swift */,
-				A132E62E1EA0D8EF0016D9F1 /* SectionDisplayData.swift */,
-				A132E62F1EA0D8EF0016D9F1 /* TableViewModel.swift */,
-				A132E6301EA0D8EF0016D9F1 /* TableViewRegisterable.swift */,
+				A142B7571EC4B0C800704A03 /* Cells */,
+				A142B75B1EC4B0C800704A03 /* Headers */,
+				A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */,
+				A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */,
+				A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */,
+				A142B7621EC4B0C800704A03 /* TableViewModel.swift */,
+				A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */,
+				A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */,
+				A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */,
 			);
 			path = Abstraction;
 			sourceTree = "<group>";
 		};
-		A132E6271EA0D8EF0016D9F1 /* Cells */ = {
+		A142B7571EC4B0C800704A03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6281EA0D8EF0016D9F1 /* CellConfigurator.swift */,
-				A132E6291EA0D8EF0016D9F1 /* CellConfiguratorFactory.swift */,
+				A142B7581EC4B0C800704A03 /* CellConfigurator.swift */,
+				A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */,
+				A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A132E62A1EA0D8EF0016D9F1 /* Headers */ = {
+		A142B75B1EC4B0C800704A03 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				A132E62B1EA0D8EF0016D9F1 /* HeaderConfigurator.swift */,
-				A132E62C1EA0D8EF0016D9F1 /* HeaderConfiguratorFactory.swift */,
+				A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */,
+				A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */,
+				A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
 		};
-		A132E6311EA0D8EF0016D9F1 /* Concrete */ = {
+		A142B7651EC4B0C800704A03 /* Concrete */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6331EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift */,
-				A132E6321EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift */,
-				A132E6341EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift */,
-				A132E6351EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift */,
-				A132E6361EA0D8EF0016D9F1 /* AnySectionDisplayData.swift */,
-				A132E6371EA0D8EF0016D9F1 /* AnyTableViewModel.swift */,
-				A132E6381EA0D8EF0016D9F1 /* Cells */,
-				A132E63E1EA0D8EF0016D9F1 /* Headers */,
+				A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */,
+				A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */,
+				A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */,
+				A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */,
+				A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */,
+				A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */,
+				A142B76C1EC4B0C800704A03 /* Cells */,
+				A142B7741EC4B0C800704A03 /* Headers */,
+				A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */,
+				A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */,
 			);
 			path = Concrete;
 			sourceTree = "<group>";
 		};
-		A132E6381EA0D8EF0016D9F1 /* Cells */ = {
+		A142B76C1EC4B0C800704A03 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A132E6391EA0D8EF0016D9F1 /* AnyCellConfiguratorFactory.swift */,
-				A132E63A1EA0D8EF0016D9F1 /* AnyClosureCellConfigurator.swift */,
-				A132E63B1EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift */,
-				A132E63C1EA0D8EF0016D9F1 /* ClosureCellConfigurator.swift */,
-				A132E63D1EA0D8EF0016D9F1 /* ClosureCellConfiguratorExtensions.swift */,
+				A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */,
+				A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */,
+				A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */,
+				A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */,
+				A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */,
+				A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */,
+				A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A132E63E1EA0D8EF0016D9F1 /* Headers */ = {
+		A142B7741EC4B0C800704A03 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				A132E63F1EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift */,
-				A132E6401EA0D8EF0016D9F1 /* AnyHeaderConfiguratorFactory.swift */,
-				A132E6431EA0D8EF0016D9F1 /* HeaderViewConfiguratorSelector.swift */,
-				A132E6411EA0D8EF0016D9F1 /* ClosureHeaderConfigurator.swift */,
-				A132E6421EA0D8EF0016D9F1 /* ClosureHeaderConfiguratorExtensions.swift */,
+				A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */,
+				A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */,
+				A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */,
+				A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */,
+				A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */,
+				A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -316,30 +346,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A132E6551EA0D8EF0016D9F1 /* ClosureCellConfigurator.swift in Sources */,
-				A132E6591EA0D8EF0016D9F1 /* ClosureHeaderConfigurator.swift in Sources */,
-				A132E65A1EA0D8EF0016D9F1 /* ClosureHeaderConfiguratorExtensions.swift in Sources */,
-				A132E6441EA0D8EF0016D9F1 /* CellConfigurator.swift in Sources */,
-				A132E64A1EA0D8EF0016D9F1 /* TableViewModel.swift in Sources */,
-				A132E6561EA0D8EF0016D9F1 /* ClosureCellConfiguratorExtensions.swift in Sources */,
-				A132E64B1EA0D8EF0016D9F1 /* TableViewRegisterable.swift in Sources */,
-				A132E65B1EA0D8EF0016D9F1 /* HeaderViewConfiguratorSelector.swift in Sources */,
-				A132E6481EA0D8EF0016D9F1 /* HeightFlexible.swift in Sources */,
-				A132E6501EA0D8EF0016D9F1 /* AnySectionDisplayData.swift in Sources */,
-				A132E6521EA0D8EF0016D9F1 /* AnyCellConfiguratorFactory.swift in Sources */,
-				A132E6531EA0D8EF0016D9F1 /* AnyClosureCellConfigurator.swift in Sources */,
-				A132E6581EA0D8EF0016D9F1 /* AnyHeaderConfiguratorFactory.swift in Sources */,
-				A132E6451EA0D8EF0016D9F1 /* CellConfiguratorFactory.swift in Sources */,
-				A132E6511EA0D8EF0016D9F1 /* AnyTableViewModel.swift in Sources */,
-				A132E6471EA0D8EF0016D9F1 /* HeaderConfiguratorFactory.swift in Sources */,
-				A132E6491EA0D8EF0016D9F1 /* SectionDisplayData.swift in Sources */,
-				A132E6461EA0D8EF0016D9F1 /* HeaderConfigurator.swift in Sources */,
-				A132E64F1EA0D8EF0016D9F1 /* AnyHeaderTableViewDelegate.swift in Sources */,
-				A132E64D1EA0D8EF0016D9F1 /* TableViewControllerBuilder.swift in Sources */,
-				A132E6541EA0D8EF0016D9F1 /* CellConfiguratorSelector.swift in Sources */,
-				A132E64E1EA0D8EF0016D9F1 /* AnyHeadersAndCellsTableViewController.swift in Sources */,
-				A132E6571EA0D8EF0016D9F1 /* AnyClosureHeaderConfigurator.swift in Sources */,
-				A132E64C1EA0D8EF0016D9F1 /* AnyCellTableViewDataSource.swift in Sources */,
+				A142B7921EC4B0C800704A03 /* AnyCellEventsDelegate.swift in Sources */,
+				A142B7901EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift in Sources */,
+				A142B7811EC4B0C800704A03 /* HeaderConfigurator.swift in Sources */,
+				A142B7971EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift in Sources */,
+				A142B77F1EC4B0C800704A03 /* CellConfiguratorFactory.swift in Sources */,
+				A142B7891EC4B0C800704A03 /* TableViewRegisterable.swift in Sources */,
+				A142B7871EC4B0C800704A03 /* TableViewModel.swift in Sources */,
+				A142B79C1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift in Sources */,
+				A142B79B1EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift in Sources */,
+				A142B78E1EC4B0C800704A03 /* AnyTableViewModel.swift in Sources */,
+				A142B7951EC4B0C800704A03 /* ClosureCellConfigurator.swift in Sources */,
+				A142B7981EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift in Sources */,
+				A142B7821EC4B0C800704A03 /* HeaderConfiguratorFactory.swift in Sources */,
+				A142B7841EC4B0C800704A03 /* HeightFlexible.swift in Sources */,
+				A142B7851EC4B0C800704A03 /* SectionDisplayData.swift in Sources */,
+				A142B78C1EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift in Sources */,
+				A142B7881EC4B0C800704A03 /* TableViewModelDelegate.swift in Sources */,
+				A142B78A1EC4B0C800704A03 /* AnyCellTableViewDataSource.swift in Sources */,
+				A142B7941EC4B0C800704A03 /* CellConfiguratorSelector.swift in Sources */,
+				A142B77E1EC4B0C800704A03 /* CellConfigurator.swift in Sources */,
+				A142B79E1EC4B0C800704A03 /* TableViewOperationsManager.swift in Sources */,
+				A142B79D1EC4B0C800704A03 /* TableViewControllerBuilder.swift in Sources */,
+				A142B7961EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift in Sources */,
+				A142B78B1EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */,
+				A142B7991EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift in Sources */,
+				A142B77D1EC4B0C800704A03 /* CellDisplayDataUpdatable.swift in Sources */,
+				A142B78D1EC4B0C800704A03 /* AnySectionDisplayData.swift in Sources */,
+				A142B7911EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift in Sources */,
+				A142B7831EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift in Sources */,
+				A142B79A1EC4B0C800704A03 /* ClosureHeaderConfigurator.swift in Sources */,
+				A142B7801EC4B0C800704A03 /* CellEventsDelegate.swift in Sources */,
+				A142B7861EC4B0C800704A03 /* TableViewEventHandler.swift in Sources */,
+				A142B7931EC4B0C800704A03 /* AnyClosureCellConfigurator.swift in Sources */,
+				A142B78F1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,14 +10,19 @@ import UIKit
 
 class AnyTypeOfCellTableViewDataSource<
     RowDisplayDataType,
-CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
+CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
     
-    private let sectionsData: [[RowDisplayDataType]]
+    typealias CellDisplayDataToUpdateWith = RowDisplayDataType
+    
+    private var sectionsData = [[RowDisplayDataType]]()
     private let cellConfigurator: CellConfiguratorType
     
-    init(sectionsData: [[RowDisplayDataType]], rowsConfigurator: CellConfiguratorType) {
-        self.sectionsData = sectionsData
+    init(rowsConfigurator: CellConfiguratorType) {
         self.cellConfigurator = rowsConfigurator
+    }
+    
+    func updateData(cellsDisplayData: [[RowDisplayDataType]]) {
+        self.sectionsData = cellsDisplayData
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

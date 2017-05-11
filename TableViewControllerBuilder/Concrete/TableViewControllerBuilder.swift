@@ -14,6 +14,12 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     private var headerConfiguratorSelector: HeaderViewConfiguratorSelector<HeaderDisplayDataType>?
     private var cellConfiguratorSelector: CellConfiguratorSelector<CellDisplayDataType>
     
+    private weak var usingTableViewController:AnyHeadersAndCellsTableViewController?
+    private var tableViewOperationsManager: TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>?
+    private var anyTypeOfCellTableViewDataSource: AnyTypeOfCellTableViewDataSource<CellDisplayDataType, CellConfiguratorSelector<CellDisplayDataType>>?
+    private var anyHeaderCellTableViewCellDelegate: AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType, CellDisplayDataType, HeaderViewConfiguratorSelector<HeaderDisplayDataType>>?
+    private var eventsHandler: AnyCellEventsDelegate<CellDisplayDataType>?
+    
     public init<TableViewModelType: TableViewModel, RowConfiguratorFactoryType:CellConfiguratorFactory>(viewModel: TableViewModelType, cellConfiguratorFactory: RowConfiguratorFactoryType) where TableViewModelType.HeaderDisplayDataType == HeaderDisplayDataType, TableViewModelType.CellDisplayDataType == CellDisplayDataType, RowConfiguratorFactoryType.CellDisplayData == CellDisplayDataType {
         
         self.viewModel = AnyTableViewModel(tableViewModel: viewModel)
@@ -23,29 +29,90 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     
     public func addHeaders<HeaderConfiguratorFactoryType: HeaderConfiguratorFactory>(with headerConfiguratorFactory: HeaderConfiguratorFactoryType) where HeaderConfiguratorFactoryType.HeaderDisplayDataType == HeaderDisplayDataType {
         self.headerConfiguratorSelector = HeaderViewConfiguratorSelector(configuratorFactory: headerConfiguratorFactory)
+        addHeadersInViewControllerIfNecessary()
     }
     
     public var tableViewController: UIViewController {
         get {
-            let justTheRowsInSections = self.viewModel.sectionsDisplayData.map { (sectionDisplayData) -> [CellDisplayDataType] in
-                return sectionDisplayData.sectionRowsData
-            }
-            
-            let justTheHeadersInSections = viewModel.sectionsDisplayData.map { (sectionDisplayData) -> HeaderDisplayDataType in
-                return sectionDisplayData.headerDisplayData
-            }
-            
-            let tableViewDataSource = AnyTypeOfCellTableViewDataSource(sectionsData: justTheRowsInSections, rowsConfigurator: cellConfiguratorSelector)
-            
             let tableViewController = AnyHeadersAndCellsTableViewController()
+            usingTableViewController = tableViewController
+            
+            tableViewController.tableView.isScrollEnabled = viewModel.shouldBeScrollable
+            
+            let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
+            tableViewDataSource.updateData(cellsDisplayData: self.viewModel.justCellData)
+            self.anyTypeOfCellTableViewDataSource = tableViewDataSource
+            
+            if let tableViewOperationsManager = tableViewOperationsManager {
+                addRowDataUpdatables(for: tableViewOperationsManager, updatable: tableViewDataSource)
+            }
+
             tableViewController.tableViewDataSource = tableViewDataSource
             
-            if let headerConfiguratorSelector = headerConfiguratorSelector {
-                let tableViewDelegate = CustomHeightsTableViewCellDelegate(rowHeightProviders: justTheRowsInSections, headerViewsDisplayData: justTheHeadersInSections, headerViewConfigurator: headerConfiguratorSelector)
-                tableViewController.tableViewDelegate = tableViewDelegate
-            }
+            addHeadersInViewControllerIfNecessary()
             
             return tableViewController
         }
+    }
+    
+    public var tableViewDelegate: AnyTableViewModelDelegate<HeaderDisplayDataType, CellDisplayDataType>? {
+        get {
+            if let tableView = usingTableViewController?.tableView {
+                let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView)
+                self.tableViewOperationsManager = tableViewOperationsManager
+                if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
+                    addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
+                }
+                if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
+                    addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+                }
+                if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
+                    addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+                }
+                let erasedTableViewDelegate = AnyTableViewModelDelegate(delegate: tableViewOperationsManager)
+                return erasedTableViewDelegate
+            }
+            
+            return nil
+        }
+    }
+    
+    public func addEventsHandler<EventsHandlerType: CellEventsDelegate>(handler: EventsHandlerType) where EventsHandlerType.CellDisplayDataType == CellDisplayDataType {
+        let erasedEventsHandler = AnyCellEventsDelegate(delegate: handler)
+        self.eventsHandler = erasedEventsHandler
+        anyHeaderCellTableViewCellDelegate?.actionsDelegate = erasedEventsHandler
+    }
+    
+    private func addHeadersInViewControllerIfNecessary() {
+        let headerData = self.viewModel.justHeaderData
+        let anyHeaderCellTableViewCellDelegate = AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType, CellDisplayDataType, HeaderViewConfiguratorSelector<HeaderDisplayDataType>>(rowHeightProviders: self.viewModel.justCellData, headerViewsDisplayData: headerData)
+        anyHeaderCellTableViewCellDelegate.actionsDelegate = self.eventsHandler
+        self.anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate
+        usingTableViewController?.tableViewDelegate = anyHeaderCellTableViewCellDelegate
+        
+        if let headerConfiguratorSelector = headerConfiguratorSelector {
+            anyHeaderCellTableViewCellDelegate.addHeaderConfigurator(headerViewConfigurator: headerConfiguratorSelector)
+        }
+        
+        if let tableViewOperationsManager = tableViewOperationsManager {
+            addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+            addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+        }
+    }
+    
+    
+    private func addRowDataUpdatables<CU: CellDisplayDataUpdatable>(for tableViewOperationsManager: TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>, updatable: CU) where CU.CellDisplayDataToUpdateWith == CellDisplayDataType {
+        let rowDataUpdatable = AnyCellDisplayDataUpdatable(updatable: updatable)
+        tableViewOperationsManager.rowDataUpdatable = rowDataUpdatable
+    }
+    
+    private func addRowHeightsUpdatables<CU: CellDisplayDataUpdatable>(for tableViewOperationsManager: TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>, updatable: CU) where CU.CellDisplayDataToUpdateWith == CellDisplayDataType {
+        let rowHeightsUpdatable = AnyCellDisplayDataUpdatable(updatable: updatable)
+        tableViewOperationsManager.rowHeightsDataUpdatable = rowHeightsUpdatable
+    }
+    
+    private func addHeaderDataUpdatables<HU: HeaderDisplayDataUpdatable>(for tableViewOperationsManager: TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>, updatable: HU) where HU.HeaderDisplayDataToUpdateWith == HeaderDisplayDataType {
+        let headerDataUpdatable = AnyHeaderDisplayDataUpdatable(updatable: updatable)
+        tableViewOperationsManager.headerDataUpdatable = headerDataUpdatable
     }
 }

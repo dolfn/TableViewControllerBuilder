@@ -33,6 +33,7 @@ public class AnyHeadersAndCellsTableViewController: UITableViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.separatorStyle = .none
         tableView.dataSource = tableViewDataSource
         tableView.delegate = tableViewDelegate
     }
