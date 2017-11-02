@@ -13,12 +13,14 @@ public protocol TableViewModelDelegate {
     associatedtype CellDisplayDataType
     
     typealias AnyTableViewModelType = AnyTableViewModel<HeaderDisplayDataType, CellDisplayDataType>
-    
+
     func didLoadInitialData(in tableViewModel: AnyTableViewModelType)
-    func didAdd(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
+    func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
     func didAddSections(at indexes: [Int], in tableViewModel: AnyTableViewModelType)
     func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
     func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModelType)
     func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
+    func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
     func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModelType)
+    func didUpdateHeights(in tableViewModel: AnyTableViewModelType)
 }

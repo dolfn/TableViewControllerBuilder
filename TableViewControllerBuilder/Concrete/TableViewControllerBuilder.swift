@@ -38,7 +38,7 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
             usingTableViewController = tableViewController
             
             tableViewController.tableView.isScrollEnabled = viewModel.shouldBeScrollable
-            
+    
             let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
             tableViewDataSource.updateData(cellsDisplayData: self.viewModel.justCellData)
             self.anyTypeOfCellTableViewDataSource = tableViewDataSource
@@ -57,12 +57,14 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     
     public var tableViewDelegate: AnyTableViewModelDelegate<HeaderDisplayDataType, CellDisplayDataType>? {
         get {
-            if let tableView = usingTableViewController?.tableView {
-                let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView)
+                
+            if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource,
+                let usingTableViewController = usingTableViewController {
+                let tableView = usingTableViewController.tableView
+                let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView, cellReconfigurator: anyTypeOfCellTableViewDataSource)
                 self.tableViewOperationsManager = tableViewOperationsManager
-                if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
-                    addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-                }
+                addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
+                
                 if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
                     addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
                 }

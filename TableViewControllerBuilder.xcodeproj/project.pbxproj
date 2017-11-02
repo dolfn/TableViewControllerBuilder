@@ -10,40 +10,41 @@
 		A132E6161EA0D89D0016D9F1 /* TableViewControllerBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A132E60C1EA0D89D0016D9F1 /* TableViewControllerBuilder.framework */; };
 		A132E61B1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */; };
 		A132E61D1EA0D89D0016D9F1 /* TableViewControllerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A142B77D1EC4B0C800704A03 /* CellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */; };
-		A142B77E1EC4B0C800704A03 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7581EC4B0C800704A03 /* CellConfigurator.swift */; };
-		A142B77F1EC4B0C800704A03 /* CellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */; };
-		A142B7801EC4B0C800704A03 /* CellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */; };
-		A142B7811EC4B0C800704A03 /* HeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */; };
-		A142B7821EC4B0C800704A03 /* HeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */; };
-		A142B7831EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */; };
-		A142B7841EC4B0C800704A03 /* HeightFlexible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */; };
-		A142B7851EC4B0C800704A03 /* SectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */; };
-		A142B7861EC4B0C800704A03 /* TableViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */; };
-		A142B7871EC4B0C800704A03 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7621EC4B0C800704A03 /* TableViewModel.swift */; };
-		A142B7881EC4B0C800704A03 /* TableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */; };
-		A142B7891EC4B0C800704A03 /* TableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */; };
-		A142B78A1EC4B0C800704A03 /* AnyCellTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */; };
-		A142B78B1EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */; };
-		A142B78C1EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */; };
-		A142B78D1EC4B0C800704A03 /* AnySectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */; };
-		A142B78E1EC4B0C800704A03 /* AnyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */; };
-		A142B78F1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */; };
-		A142B7901EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */; };
-		A142B7911EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */; };
-		A142B7921EC4B0C800704A03 /* AnyCellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */; };
-		A142B7931EC4B0C800704A03 /* AnyClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */; };
-		A142B7941EC4B0C800704A03 /* CellConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */; };
-		A142B7951EC4B0C800704A03 /* ClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */; };
-		A142B7961EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */; };
-		A142B7971EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */; };
-		A142B7981EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */; };
-		A142B7991EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */; };
-		A142B79A1EC4B0C800704A03 /* ClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */; };
-		A142B79B1EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */; };
-		A142B79C1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */; };
-		A142B79D1EC4B0C800704A03 /* TableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */; };
-		A142B79E1EC4B0C800704A03 /* TableViewOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */; };
+		A1FBADC91FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA11FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift */; };
+		A1FBADCA1FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA21FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift */; };
+		A1FBADCB1FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA31FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift */; };
+		A1FBADCC1FAB68FE0044EE16 /* AnySectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA41FAB68FE0044EE16 /* AnySectionDisplayData.swift */; };
+		A1FBADCD1FAB68FE0044EE16 /* AnyTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA51FAB68FE0044EE16 /* AnyTableViewModel.swift */; };
+		A1FBADCE1FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA61FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift */; };
+		A1FBADCF1FAB68FE0044EE16 /* AnyCellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA81FAB68FE0044EE16 /* AnyCellConfiguratorFactory.swift */; };
+		A1FBADD01FAB68FE0044EE16 /* AnyCellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADA91FAB68FE0044EE16 /* AnyCellDisplayDataUpdatable.swift */; };
+		A1FBADD11FAB68FE0044EE16 /* AnyCellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADAA1FAB68FE0044EE16 /* AnyCellEventsDelegate.swift */; };
+		A1FBADD21FAB68FE0044EE16 /* AnyClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADAB1FAB68FE0044EE16 /* AnyClosureCellConfigurator.swift */; };
+		A1FBADD31FAB68FE0044EE16 /* CellConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADAC1FAB68FE0044EE16 /* CellConfiguratorSelector.swift */; };
+		A1FBADD41FAB68FE0044EE16 /* ClosureCellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADAD1FAB68FE0044EE16 /* ClosureCellConfigurator.swift */; };
+		A1FBADD51FAB68FE0044EE16 /* ClosureCellConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADAE1FAB68FE0044EE16 /* ClosureCellConfiguratorExtensions.swift */; };
+		A1FBADD61FAB68FE0044EE16 /* AnyClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB01FAB68FE0044EE16 /* AnyClosureHeaderConfigurator.swift */; };
+		A1FBADD71FAB68FE0044EE16 /* AnyHeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB11FAB68FE0044EE16 /* AnyHeaderConfiguratorFactory.swift */; };
+		A1FBADD81FAB68FE0044EE16 /* AnyHeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB21FAB68FE0044EE16 /* AnyHeaderDisplayDataUpdatable.swift */; };
+		A1FBADD91FAB68FE0044EE16 /* ClosureHeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB31FAB68FE0044EE16 /* ClosureHeaderConfigurator.swift */; };
+		A1FBADDA1FAB68FE0044EE16 /* ClosureHeaderConfiguratorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB41FAB68FE0044EE16 /* ClosureHeaderConfiguratorExtensions.swift */; };
+		A1FBADDB1FAB68FE0044EE16 /* HeaderViewConfiguratorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB51FAB68FE0044EE16 /* HeaderViewConfiguratorSelector.swift */; };
+		A1FBADDC1FAB68FE0044EE16 /* TableViewControllerBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB61FAB68FE0044EE16 /* TableViewControllerBuilder.swift */; };
+		A1FBADDD1FAB68FE0044EE16 /* TableViewOperationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB71FAB68FE0044EE16 /* TableViewOperationsManager.swift */; };
+		A1FBADDE1FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADB91FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift */; };
+		A1FBADDF1FAB68FE0044EE16 /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADBB1FAB68FE0044EE16 /* CellConfigurator.swift */; };
+		A1FBADE01FAB68FE0044EE16 /* CellConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADBC1FAB68FE0044EE16 /* CellConfiguratorFactory.swift */; };
+		A1FBADE11FAB68FE0044EE16 /* CellEventsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADBD1FAB68FE0044EE16 /* CellEventsDelegate.swift */; };
+		A1FBADE21FAB68FE0044EE16 /* TableViewCellReconfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADBE1FAB68FE0044EE16 /* TableViewCellReconfigurator.swift */; };
+		A1FBADE31FAB68FE0044EE16 /* HeaderConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC01FAB68FE0044EE16 /* HeaderConfigurator.swift */; };
+		A1FBADE41FAB68FE0044EE16 /* HeaderConfiguratorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC11FAB68FE0044EE16 /* HeaderConfiguratorFactory.swift */; };
+		A1FBADE51FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC21FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift */; };
+		A1FBADE61FAB68FE0044EE16 /* HeightFlexible.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC31FAB68FE0044EE16 /* HeightFlexible.swift */; };
+		A1FBADE71FAB68FE0044EE16 /* SectionDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC41FAB68FE0044EE16 /* SectionDisplayData.swift */; };
+		A1FBADE81FAB68FE0044EE16 /* TableViewEventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC51FAB68FE0044EE16 /* TableViewEventHandler.swift */; };
+		A1FBADE91FAB68FE0044EE16 /* TableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC61FAB68FE0044EE16 /* TableViewModel.swift */; };
+		A1FBADEA1FAB68FE0044EE16 /* TableViewModelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC71FAB68FE0044EE16 /* TableViewModelDelegate.swift */; };
+		A1FBADEB1FAB68FE0044EE16 /* TableViewRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FBADC81FAB68FE0044EE16 /* TableViewRegisterable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,40 +64,41 @@
 		A132E6151EA0D89D0016D9F1 /* TableViewControllerBuilderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableViewControllerBuilderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilderTests.swift; sourceTree = "<group>"; };
 		A132E61C1EA0D89D0016D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
-		A142B7581EC4B0C800704A03 /* CellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
-		A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellEventsDelegate.swift; sourceTree = "<group>"; };
-		A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfigurator.swift; sourceTree = "<group>"; };
-		A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
-		A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightFlexible.swift; sourceTree = "<group>"; };
-		A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionDisplayData.swift; sourceTree = "<group>"; };
-		A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEventHandler.swift; sourceTree = "<group>"; };
-		A142B7621EC4B0C800704A03 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
-		A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModelDelegate.swift; sourceTree = "<group>"; };
-		A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRegisterable.swift; sourceTree = "<group>"; };
-		A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellTableViewDataSource.swift; sourceTree = "<group>"; };
-		A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderCellTableViewCellDelegate.swift; sourceTree = "<group>"; };
-		A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeadersAndCellsTableViewController.swift; sourceTree = "<group>"; };
-		A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySectionDisplayData.swift; sourceTree = "<group>"; };
-		A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModel.swift; sourceTree = "<group>"; };
-		A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModelDelegate.swift; sourceTree = "<group>"; };
-		A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
-		A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellEventsDelegate.swift; sourceTree = "<group>"; };
-		A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureCellConfigurator.swift; sourceTree = "<group>"; };
-		A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelector.swift; sourceTree = "<group>"; };
-		A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfigurator.swift; sourceTree = "<group>"; };
-		A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorExtensions.swift; sourceTree = "<group>"; };
-		A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
-		A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
-		A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
-		A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
-		A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensions.swift; sourceTree = "<group>"; };
-		A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelector.swift; sourceTree = "<group>"; };
-		A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilder.swift; sourceTree = "<group>"; };
-		A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewOperationsManager.swift; sourceTree = "<group>"; };
+		A1FBADA11FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellTableViewDataSource.swift; sourceTree = "<group>"; };
+		A1FBADA21FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderCellTableViewCellDelegate.swift; sourceTree = "<group>"; };
+		A1FBADA31FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeadersAndCellsTableViewController.swift; sourceTree = "<group>"; };
+		A1FBADA41FAB68FE0044EE16 /* AnySectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySectionDisplayData.swift; sourceTree = "<group>"; };
+		A1FBADA51FAB68FE0044EE16 /* AnyTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModel.swift; sourceTree = "<group>"; };
+		A1FBADA61FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTableViewModelDelegate.swift; sourceTree = "<group>"; };
+		A1FBADA81FAB68FE0044EE16 /* AnyCellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A1FBADA91FAB68FE0044EE16 /* AnyCellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A1FBADAA1FAB68FE0044EE16 /* AnyCellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyCellEventsDelegate.swift; sourceTree = "<group>"; };
+		A1FBADAB1FAB68FE0044EE16 /* AnyClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureCellConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADAC1FAB68FE0044EE16 /* CellConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelector.swift; sourceTree = "<group>"; };
+		A1FBADAD1FAB68FE0044EE16 /* ClosureCellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADAE1FAB68FE0044EE16 /* ClosureCellConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorExtensions.swift; sourceTree = "<group>"; };
+		A1FBADB01FAB68FE0044EE16 /* AnyClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADB11FAB68FE0044EE16 /* AnyHeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A1FBADB21FAB68FE0044EE16 /* AnyHeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyHeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A1FBADB31FAB68FE0044EE16 /* ClosureHeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADB41FAB68FE0044EE16 /* ClosureHeaderConfiguratorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensions.swift; sourceTree = "<group>"; };
+		A1FBADB51FAB68FE0044EE16 /* HeaderViewConfiguratorSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelector.swift; sourceTree = "<group>"; };
+		A1FBADB61FAB68FE0044EE16 /* TableViewControllerBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerBuilder.swift; sourceTree = "<group>"; };
+		A1FBADB71FAB68FE0044EE16 /* TableViewOperationsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewOperationsManager.swift; sourceTree = "<group>"; };
+		A1FBADB91FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A1FBADBB1FAB68FE0044EE16 /* CellConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADBC1FAB68FE0044EE16 /* CellConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A1FBADBD1FAB68FE0044EE16 /* CellEventsDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellEventsDelegate.swift; sourceTree = "<group>"; };
+		A1FBADBE1FAB68FE0044EE16 /* TableViewCellReconfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellReconfigurator.swift; sourceTree = "<group>"; };
+		A1FBADC01FAB68FE0044EE16 /* HeaderConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfigurator.swift; sourceTree = "<group>"; };
+		A1FBADC11FAB68FE0044EE16 /* HeaderConfiguratorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderConfiguratorFactory.swift; sourceTree = "<group>"; };
+		A1FBADC21FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderDisplayDataUpdatable.swift; sourceTree = "<group>"; };
+		A1FBADC31FAB68FE0044EE16 /* HeightFlexible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightFlexible.swift; sourceTree = "<group>"; };
+		A1FBADC41FAB68FE0044EE16 /* SectionDisplayData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SectionDisplayData.swift; sourceTree = "<group>"; };
+		A1FBADC51FAB68FE0044EE16 /* TableViewEventHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewEventHandler.swift; sourceTree = "<group>"; };
+		A1FBADC61FAB68FE0044EE16 /* TableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModel.swift; sourceTree = "<group>"; };
+		A1FBADC71FAB68FE0044EE16 /* TableViewModelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewModelDelegate.swift; sourceTree = "<group>"; };
+		A1FBADC81FAB68FE0044EE16 /* TableViewRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewRegisterable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +141,8 @@
 		A132E60E1EA0D89D0016D9F1 /* TableViewControllerBuilder */ = {
 			isa = PBXGroup;
 			children = (
-				A142B7551EC4B0C800704A03 /* Abstraction */,
-				A142B7651EC4B0C800704A03 /* Concrete */,
+				A1FBADB81FAB68FE0044EE16 /* Abstraction */,
+				A1FBADA01FAB68FE0044EE16 /* Concrete */,
 				A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */,
 				A132E6101EA0D89D0016D9F1 /* Info.plist */,
 			);
@@ -156,82 +158,83 @@
 			path = TableViewControllerBuilderTests;
 			sourceTree = "<group>";
 		};
-		A142B7551EC4B0C800704A03 /* Abstraction */ = {
+		A1FBADA01FAB68FE0044EE16 /* Concrete */ = {
 			isa = PBXGroup;
 			children = (
-				A142B7571EC4B0C800704A03 /* Cells */,
-				A142B75B1EC4B0C800704A03 /* Headers */,
-				A142B75F1EC4B0C800704A03 /* HeightFlexible.swift */,
-				A142B7601EC4B0C800704A03 /* SectionDisplayData.swift */,
-				A142B7611EC4B0C800704A03 /* TableViewEventHandler.swift */,
-				A142B7621EC4B0C800704A03 /* TableViewModel.swift */,
-				A142B7631EC4B0C800704A03 /* TableViewModelDelegate.swift */,
-				A142B7641EC4B0C800704A03 /* TableViewRegisterable.swift */,
-				A142B7561EC4B0C800704A03 /* CellDisplayDataUpdatable.swift */,
-			);
-			path = Abstraction;
-			sourceTree = "<group>";
-		};
-		A142B7571EC4B0C800704A03 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				A142B7581EC4B0C800704A03 /* CellConfigurator.swift */,
-				A142B7591EC4B0C800704A03 /* CellConfiguratorFactory.swift */,
-				A142B75A1EC4B0C800704A03 /* CellEventsDelegate.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		A142B75B1EC4B0C800704A03 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				A142B75C1EC4B0C800704A03 /* HeaderConfigurator.swift */,
-				A142B75D1EC4B0C800704A03 /* HeaderConfiguratorFactory.swift */,
-				A142B75E1EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift */,
-			);
-			path = Headers;
-			sourceTree = "<group>";
-		};
-		A142B7651EC4B0C800704A03 /* Concrete */ = {
-			isa = PBXGroup;
-			children = (
-				A142B7661EC4B0C800704A03 /* AnyCellTableViewDataSource.swift */,
-				A142B7671EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift */,
-				A142B7681EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift */,
-				A142B7691EC4B0C800704A03 /* AnySectionDisplayData.swift */,
-				A142B76A1EC4B0C800704A03 /* AnyTableViewModel.swift */,
-				A142B76B1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift */,
-				A142B76C1EC4B0C800704A03 /* Cells */,
-				A142B7741EC4B0C800704A03 /* Headers */,
-				A142B77B1EC4B0C800704A03 /* TableViewControllerBuilder.swift */,
-				A142B77C1EC4B0C800704A03 /* TableViewOperationsManager.swift */,
+				A1FBADA11FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift */,
+				A1FBADA21FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift */,
+				A1FBADA31FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift */,
+				A1FBADA41FAB68FE0044EE16 /* AnySectionDisplayData.swift */,
+				A1FBADA51FAB68FE0044EE16 /* AnyTableViewModel.swift */,
+				A1FBADA61FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift */,
+				A1FBADA71FAB68FE0044EE16 /* Cells */,
+				A1FBADAF1FAB68FE0044EE16 /* Headers */,
+				A1FBADB61FAB68FE0044EE16 /* TableViewControllerBuilder.swift */,
+				A1FBADB71FAB68FE0044EE16 /* TableViewOperationsManager.swift */,
 			);
 			path = Concrete;
 			sourceTree = "<group>";
 		};
-		A142B76C1EC4B0C800704A03 /* Cells */ = {
+		A1FBADA71FAB68FE0044EE16 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				A142B76D1EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift */,
-				A142B76E1EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift */,
-				A142B76F1EC4B0C800704A03 /* AnyCellEventsDelegate.swift */,
-				A142B7701EC4B0C800704A03 /* AnyClosureCellConfigurator.swift */,
-				A142B7711EC4B0C800704A03 /* CellConfiguratorSelector.swift */,
-				A142B7721EC4B0C800704A03 /* ClosureCellConfigurator.swift */,
-				A142B7731EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift */,
+				A1FBADA81FAB68FE0044EE16 /* AnyCellConfiguratorFactory.swift */,
+				A1FBADA91FAB68FE0044EE16 /* AnyCellDisplayDataUpdatable.swift */,
+				A1FBADAA1FAB68FE0044EE16 /* AnyCellEventsDelegate.swift */,
+				A1FBADAB1FAB68FE0044EE16 /* AnyClosureCellConfigurator.swift */,
+				A1FBADAC1FAB68FE0044EE16 /* CellConfiguratorSelector.swift */,
+				A1FBADAD1FAB68FE0044EE16 /* ClosureCellConfigurator.swift */,
+				A1FBADAE1FAB68FE0044EE16 /* ClosureCellConfiguratorExtensions.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		A142B7741EC4B0C800704A03 /* Headers */ = {
+		A1FBADAF1FAB68FE0044EE16 /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				A142B7751EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift */,
-				A142B7761EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift */,
-				A142B7771EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift */,
-				A142B7781EC4B0C800704A03 /* ClosureHeaderConfigurator.swift */,
-				A142B7791EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift */,
-				A142B77A1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift */,
+				A1FBADB01FAB68FE0044EE16 /* AnyClosureHeaderConfigurator.swift */,
+				A1FBADB11FAB68FE0044EE16 /* AnyHeaderConfiguratorFactory.swift */,
+				A1FBADB21FAB68FE0044EE16 /* AnyHeaderDisplayDataUpdatable.swift */,
+				A1FBADB31FAB68FE0044EE16 /* ClosureHeaderConfigurator.swift */,
+				A1FBADB41FAB68FE0044EE16 /* ClosureHeaderConfiguratorExtensions.swift */,
+				A1FBADB51FAB68FE0044EE16 /* HeaderViewConfiguratorSelector.swift */,
+			);
+			path = Headers;
+			sourceTree = "<group>";
+		};
+		A1FBADB81FAB68FE0044EE16 /* Abstraction */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBADB91FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift */,
+				A1FBADBA1FAB68FE0044EE16 /* Cells */,
+				A1FBADBF1FAB68FE0044EE16 /* Headers */,
+				A1FBADC31FAB68FE0044EE16 /* HeightFlexible.swift */,
+				A1FBADC41FAB68FE0044EE16 /* SectionDisplayData.swift */,
+				A1FBADC51FAB68FE0044EE16 /* TableViewEventHandler.swift */,
+				A1FBADC61FAB68FE0044EE16 /* TableViewModel.swift */,
+				A1FBADC71FAB68FE0044EE16 /* TableViewModelDelegate.swift */,
+				A1FBADC81FAB68FE0044EE16 /* TableViewRegisterable.swift */,
+			);
+			path = Abstraction;
+			sourceTree = "<group>";
+		};
+		A1FBADBA1FAB68FE0044EE16 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBADBB1FAB68FE0044EE16 /* CellConfigurator.swift */,
+				A1FBADBC1FAB68FE0044EE16 /* CellConfiguratorFactory.swift */,
+				A1FBADBD1FAB68FE0044EE16 /* CellEventsDelegate.swift */,
+				A1FBADBE1FAB68FE0044EE16 /* TableViewCellReconfigurator.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A1FBADBF1FAB68FE0044EE16 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBADC01FAB68FE0044EE16 /* HeaderConfigurator.swift */,
+				A1FBADC11FAB68FE0044EE16 /* HeaderConfiguratorFactory.swift */,
+				A1FBADC21FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -346,40 +349,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A142B7921EC4B0C800704A03 /* AnyCellEventsDelegate.swift in Sources */,
-				A142B7901EC4B0C800704A03 /* AnyCellConfiguratorFactory.swift in Sources */,
-				A142B7811EC4B0C800704A03 /* HeaderConfigurator.swift in Sources */,
-				A142B7971EC4B0C800704A03 /* AnyClosureHeaderConfigurator.swift in Sources */,
-				A142B77F1EC4B0C800704A03 /* CellConfiguratorFactory.swift in Sources */,
-				A142B7891EC4B0C800704A03 /* TableViewRegisterable.swift in Sources */,
-				A142B7871EC4B0C800704A03 /* TableViewModel.swift in Sources */,
-				A142B79C1EC4B0C800704A03 /* HeaderViewConfiguratorSelector.swift in Sources */,
-				A142B79B1EC4B0C800704A03 /* ClosureHeaderConfiguratorExtensions.swift in Sources */,
-				A142B78E1EC4B0C800704A03 /* AnyTableViewModel.swift in Sources */,
-				A142B7951EC4B0C800704A03 /* ClosureCellConfigurator.swift in Sources */,
-				A142B7981EC4B0C800704A03 /* AnyHeaderConfiguratorFactory.swift in Sources */,
-				A142B7821EC4B0C800704A03 /* HeaderConfiguratorFactory.swift in Sources */,
-				A142B7841EC4B0C800704A03 /* HeightFlexible.swift in Sources */,
-				A142B7851EC4B0C800704A03 /* SectionDisplayData.swift in Sources */,
-				A142B78C1EC4B0C800704A03 /* AnyHeadersAndCellsTableViewController.swift in Sources */,
-				A142B7881EC4B0C800704A03 /* TableViewModelDelegate.swift in Sources */,
-				A142B78A1EC4B0C800704A03 /* AnyCellTableViewDataSource.swift in Sources */,
-				A142B7941EC4B0C800704A03 /* CellConfiguratorSelector.swift in Sources */,
-				A142B77E1EC4B0C800704A03 /* CellConfigurator.swift in Sources */,
-				A142B79E1EC4B0C800704A03 /* TableViewOperationsManager.swift in Sources */,
-				A142B79D1EC4B0C800704A03 /* TableViewControllerBuilder.swift in Sources */,
-				A142B7961EC4B0C800704A03 /* ClosureCellConfiguratorExtensions.swift in Sources */,
-				A142B78B1EC4B0C800704A03 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */,
-				A142B7991EC4B0C800704A03 /* AnyHeaderDisplayDataUpdatable.swift in Sources */,
-				A142B77D1EC4B0C800704A03 /* CellDisplayDataUpdatable.swift in Sources */,
-				A142B78D1EC4B0C800704A03 /* AnySectionDisplayData.swift in Sources */,
-				A142B7911EC4B0C800704A03 /* AnyCellDisplayDataUpdatable.swift in Sources */,
-				A142B7831EC4B0C800704A03 /* HeaderDisplayDataUpdatable.swift in Sources */,
-				A142B79A1EC4B0C800704A03 /* ClosureHeaderConfigurator.swift in Sources */,
-				A142B7801EC4B0C800704A03 /* CellEventsDelegate.swift in Sources */,
-				A142B7861EC4B0C800704A03 /* TableViewEventHandler.swift in Sources */,
-				A142B7931EC4B0C800704A03 /* AnyClosureCellConfigurator.swift in Sources */,
-				A142B78F1EC4B0C800704A03 /* AnyTableViewModelDelegate.swift in Sources */,
+				A1FBADD41FAB68FE0044EE16 /* ClosureCellConfigurator.swift in Sources */,
+				A1FBADDD1FAB68FE0044EE16 /* TableViewOperationsManager.swift in Sources */,
+				A1FBADCA1FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift in Sources */,
+				A1FBADE01FAB68FE0044EE16 /* CellConfiguratorFactory.swift in Sources */,
+				A1FBADD11FAB68FE0044EE16 /* AnyCellEventsDelegate.swift in Sources */,
+				A1FBADD51FAB68FE0044EE16 /* ClosureCellConfiguratorExtensions.swift in Sources */,
+				A1FBADE71FAB68FE0044EE16 /* SectionDisplayData.swift in Sources */,
+				A1FBADDE1FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift in Sources */,
+				A1FBADE11FAB68FE0044EE16 /* CellEventsDelegate.swift in Sources */,
+				A1FBADE51FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift in Sources */,
+				A1FBADE31FAB68FE0044EE16 /* HeaderConfigurator.swift in Sources */,
+				A1FBADD21FAB68FE0044EE16 /* AnyClosureCellConfigurator.swift in Sources */,
+				A1FBADE61FAB68FE0044EE16 /* HeightFlexible.swift in Sources */,
+				A1FBADCE1FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift in Sources */,
+				A1FBADD71FAB68FE0044EE16 /* AnyHeaderConfiguratorFactory.swift in Sources */,
+				A1FBADD01FAB68FE0044EE16 /* AnyCellDisplayDataUpdatable.swift in Sources */,
+				A1FBADDF1FAB68FE0044EE16 /* CellConfigurator.swift in Sources */,
+				A1FBADE21FAB68FE0044EE16 /* TableViewCellReconfigurator.swift in Sources */,
+				A1FBADCB1FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift in Sources */,
+				A1FBADD81FAB68FE0044EE16 /* AnyHeaderDisplayDataUpdatable.swift in Sources */,
+				A1FBADEA1FAB68FE0044EE16 /* TableViewModelDelegate.swift in Sources */,
+				A1FBADDC1FAB68FE0044EE16 /* TableViewControllerBuilder.swift in Sources */,
+				A1FBADE41FAB68FE0044EE16 /* HeaderConfiguratorFactory.swift in Sources */,
+				A1FBADC91FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift in Sources */,
+				A1FBADCF1FAB68FE0044EE16 /* AnyCellConfiguratorFactory.swift in Sources */,
+				A1FBADE91FAB68FE0044EE16 /* TableViewModel.swift in Sources */,
+				A1FBADDB1FAB68FE0044EE16 /* HeaderViewConfiguratorSelector.swift in Sources */,
+				A1FBADE81FAB68FE0044EE16 /* TableViewEventHandler.swift in Sources */,
+				A1FBADD91FAB68FE0044EE16 /* ClosureHeaderConfigurator.swift in Sources */,
+				A1FBADDA1FAB68FE0044EE16 /* ClosureHeaderConfiguratorExtensions.swift in Sources */,
+				A1FBADCD1FAB68FE0044EE16 /* AnyTableViewModel.swift in Sources */,
+				A1FBADEB1FAB68FE0044EE16 /* TableViewRegisterable.swift in Sources */,
+				A1FBADD31FAB68FE0044EE16 /* CellConfiguratorSelector.swift in Sources */,
+				A1FBADD61FAB68FE0044EE16 /* AnyClosureHeaderConfigurator.swift in Sources */,
+				A1FBADCC1FAB68FE0044EE16 /* AnySectionDisplayData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,13 +14,15 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     typealias CellDisplayDataType = R
     
     weak var tableView: UITableView?
+    weak var cellReconfigurator: CellReconfigurator?
     
     var rowDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var rowHeightsDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var headerDataUpdatable: AnyHeaderDisplayDataUpdatable<H>?
     
-    init(tableView: UITableView) {
+    init(tableView: UITableView, cellReconfigurator: CellReconfigurator) {
         self.tableView = tableView
+        self.cellReconfigurator = cellReconfigurator
     }
     
     private func updateData(from tableViewModel: AnyTableViewModel<H, R>) {
@@ -36,11 +38,6 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         self.tableView?.reloadData()
     }
     
-    func didAdd(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
-        updateData(from: tableViewModel)
-        self.tableView?.insertRows(at: indexPaths, with: .automatic)
-    }
-    
     func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>) {
         updateData(from: tableViewModel)
         let section = IndexSet(integer: index)
@@ -49,10 +46,20 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     
     func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
         updateData(from: tableViewModel)
-        self.tableView?.deleteRows(at: indexPaths, with: .automatic)
+        tableView?.deleteRows(at: indexPaths, with: .automatic)
     }
     
     func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
+        updateData(from: tableViewModel)
+        guard let tableView = tableView else {
+            return
+        }
+        indexPaths.forEach {[weak self] in
+            self?.cellReconfigurator?.reconfigureCell(in: tableView, at: $0)
+        }
+    }
+    
+    func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
         updateData(from: tableViewModel)
         self.tableView?.reloadRows(at: indexPaths, with: .automatic)
     }
@@ -70,4 +77,16 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         indexes.forEach(indexSet.add)
         self.tableView?.deleteSections(indexSet as IndexSet, with: .automatic)
     }
+    
+    func didUpdateHeights(in tableViewModel: AnyTableViewModelType) {
+        updateData(from: tableViewModel)
+        tableView?.beginUpdates()
+        tableView?.endUpdates()
+    }
+    
+    func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
+        updateData(from: tableViewModel)
+        self.tableView?.insertRows(at: indexPaths, with: .automatic)
+    }
+
 }

@@ -42,4 +42,11 @@ public struct ClosureCellConfigurator<CellDisplayDataType, CellViewType: UITable
         configure(cell, cellDisplayData)
         return cell
     }
+    
+    func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellViewType else {
+            return
+        }
+        configure(cell, cellDisplayData)
+    }
 }

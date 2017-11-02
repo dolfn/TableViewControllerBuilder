@@ -31,4 +31,9 @@ class CellConfiguratorSelector<CellDisplayDataType>: CellConfigurator {
         
         return configurator.configuredCell(in: tableView, at: indexPath, with: cellDisplayData)
     }
+    
+    func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType) {
+        let configurator = configuratorFactory.cellConfigurator(with: cellDisplayData)
+        configurator.reconfigureCell(in: tableView, at: indexPath, with: cellDisplayData)
+    }
 }

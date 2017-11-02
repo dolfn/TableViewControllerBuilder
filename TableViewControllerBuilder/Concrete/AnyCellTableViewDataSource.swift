@@ -10,7 +10,7 @@ import UIKit
 
 class AnyTypeOfCellTableViewDataSource<
     RowDisplayDataType,
-CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
+CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable, CellReconfigurator where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
     
     typealias CellDisplayDataToUpdateWith = RowDisplayDataType
     
@@ -34,10 +34,20 @@ CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDi
         return numberOfRows
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    private func displayData(forItemAt indexPath: IndexPath) -> RowDisplayDataType {
         let sectionDisplayData = sectionsData[indexPath.section]
         let cellData = sectionDisplayData[indexPath.row]
+        return cellData
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellData = displayData(forItemAt: indexPath)
         let cell = cellConfigurator.configuredCell(in: tableView, at: indexPath, with: cellData)
         return cell
+    }
+    
+    func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath) {
+        let cellData = displayData(forItemAt: indexPath)
+        cellConfigurator.reconfigureCell(in: tableView, at: indexPath, with: cellData)
     }
 }

@@ -13,21 +13,26 @@ public struct AnyClosureCellConfigurator<CellDisplayDataType>: CellConfigurator 
     
     typealias RegisterClosureType = (UITableView) -> ()
     typealias ConfigureClosureType = (UITableView, IndexPath, CellDisplayDataType) -> UITableViewCell
+    typealias ReconfigureClosureType = (UITableView, IndexPath, CellDisplayDataType) -> Void
     
     private let _register: RegisterClosureType
     private let _configure: ConfigureClosureType
+    private let _reconfigure: ReconfigureClosureType
     
     init<CellViewType>(base: ClosureCellConfigurator<CellDisplayDataType, CellViewType>) {
         _register = base.register
         _configure = base.configuredCell
+        _reconfigure = base.reconfigureCell
         reuseIdentifier = base.reuseIdentifier
     }
     
     private init(register: @escaping RegisterClosureType,
                  reuseIdentifier: String,
-                 configure: @escaping ConfigureClosureType) {
+                 configure: @escaping ConfigureClosureType,
+                 reconfigure: @escaping ReconfigureClosureType) {
         _register = register
         _configure = configure
+        _reconfigure = reconfigure
         self.reuseIdentifier = reuseIdentifier
     }
     
@@ -39,11 +44,17 @@ public struct AnyClosureCellConfigurator<CellDisplayDataType>: CellConfigurator 
         return _configure(tableView, indexPath, cellDisplayData)
     }
     
+    func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType) {
+        _reconfigure(tableView, indexPath, cellDisplayData)
+    }
+    
     public func with<U>(cellDisplayData: CellDisplayDataType) -> AnyClosureCellConfigurator<U> {
         return AnyClosureCellConfigurator<U>(register: _register,
                                              reuseIdentifier: reuseIdentifier,
                                              configure: { (tableView:UITableView, indexPath:IndexPath, _) -> UITableViewCell in
                                                 self._configure(tableView, indexPath, cellDisplayData)
+        }, reconfigure: { (tableView:UITableView, indexPath:IndexPath, _) -> Void in
+            self._reconfigure(tableView, indexPath, cellDisplayData)
         })
     }
 }

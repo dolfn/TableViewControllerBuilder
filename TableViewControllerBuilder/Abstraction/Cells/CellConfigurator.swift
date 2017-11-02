@@ -13,4 +13,5 @@ protocol CellConfigurator: TableViewRegisterable {
     associatedtype CellViewType: UITableViewCell
     
     func configuredCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType) -> CellViewType
+    func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType)
 }
