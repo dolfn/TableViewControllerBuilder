@@ -34,6 +34,19 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(sut.tableViewDelegate)
     }
 
+    
+    func test_IsHavingATableView() {
+        XCTAssertNotNil(firstView(), "First view in Table View Controller should not be nil")
+    }
+    
+    func test_FirstViewControllerIsTableView() {
+        XCTAssertTrue(firstView() is UITableView)
+    }
+    
+    private func firstView() -> UIView? {
+        return sut.tableViewController.view.subviews.first
+    }
+    
 }
 
 extension TableViewControllerBuilderTests {
