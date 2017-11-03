@@ -14,3 +14,11 @@ public protocol SectionDisplayData {
     var headerDisplayData: HeaderDisplayDataType { get }
     var sectionRowsData: [CellDisplayDataType] { get }
 }
+
+extension SectionDisplayData {
+    var erased: AnySectionDisplayData<HeaderDisplayDataType, CellDisplayDataType> {
+        get {
+            return AnySectionDisplayData(sectionDisplayData: self)
+        }
+    }
+}

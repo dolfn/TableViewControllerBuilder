@@ -33,4 +33,10 @@ extension TableViewModel {
         
         return justTheHeadersInSections
     }
+    
+    var erased: AnyTableViewModel<HeaderDisplayDataType, CellDisplayDataType> {
+        get {
+            return AnyTableViewModel<HeaderDisplayDataType, CellDisplayDataType>(tableViewModel: self)
+        }
+    }
 }

@@ -76,10 +76,22 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
     }
     
+    func test_TableView_HasTwoSections() {
+        let tableView = firstView() as! UITableView
+        addHeadersToTableView()
+        let newHeader = FakeHeaderDisplayData()
+        let section = TableViewModelStub.SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: [])
+        viewModel.sectionsDisplayData.append(section.erased)
+        let delegate = sut.tableViewDelegate
+        delegate?.didInsertSections(at: [1], in: viewModel.erased)
+        XCTAssertEqual(tableView.numberOfSections, 2)
+    }
+    
     func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         sut.addHeaders(with: headerConfiguratorFactory)
     }
+    
 }
 
 extension TableViewControllerBuilderTests {
@@ -110,8 +122,7 @@ extension TableViewControllerBuilderTests {
         init() {
             let headerDisplayData = FakeHeaderDisplayData()
             let section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [])
-            let erasedSection = AnySectionDisplayData(sectionDisplayData: section)
-            sectionsDisplayData = [erasedSection]
+            sectionsDisplayData = [section.erased]
         }
     }
     

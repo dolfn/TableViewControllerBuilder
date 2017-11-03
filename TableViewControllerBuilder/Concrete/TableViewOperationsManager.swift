@@ -64,7 +64,7 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         self.tableView?.reloadRows(at: indexPaths, with: .automatic)
     }
     
-    func didAddSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
+    func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
         updateData(from: tableViewModel)
         let indexSet = NSMutableIndexSet()
         indexes.forEach(indexSet.add)
