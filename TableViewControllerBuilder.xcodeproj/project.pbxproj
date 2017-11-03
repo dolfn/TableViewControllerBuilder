@@ -161,12 +161,7 @@
 		A1FBADA01FAB68FE0044EE16 /* Concrete */ = {
 			isa = PBXGroup;
 			children = (
-				A1FBADA11FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift */,
-				A1FBADA21FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift */,
-				A1FBADA31FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift */,
-				A1FBADA41FAB68FE0044EE16 /* AnySectionDisplayData.swift */,
-				A1FBADA51FAB68FE0044EE16 /* AnyTableViewModel.swift */,
-				A1FBADA61FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift */,
+				A1FC5CC41FACA53600BD6578 /* TypeErasures */,
 				A1FBADA71FAB68FE0044EE16 /* Cells */,
 				A1FBADAF1FAB68FE0044EE16 /* Headers */,
 				A1FBADB61FAB68FE0044EE16 /* TableViewControllerBuilder.swift */,
@@ -205,9 +200,9 @@
 		A1FBADB81FAB68FE0044EE16 /* Abstraction */ = {
 			isa = PBXGroup;
 			children = (
-				A1FBADB91FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift */,
 				A1FBADBA1FAB68FE0044EE16 /* Cells */,
 				A1FBADBF1FAB68FE0044EE16 /* Headers */,
+				A1FBADB91FAB68FE0044EE16 /* CellDisplayDataUpdatable.swift */,
 				A1FBADC31FAB68FE0044EE16 /* HeightFlexible.swift */,
 				A1FBADC41FAB68FE0044EE16 /* SectionDisplayData.swift */,
 				A1FBADC51FAB68FE0044EE16 /* TableViewEventHandler.swift */,
@@ -237,6 +232,19 @@
 				A1FBADC21FAB68FE0044EE16 /* HeaderDisplayDataUpdatable.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		A1FC5CC41FACA53600BD6578 /* TypeErasures */ = {
+			isa = PBXGroup;
+			children = (
+				A1FBADA11FAB68FE0044EE16 /* AnyCellTableViewDataSource.swift */,
+				A1FBADA21FAB68FE0044EE16 /* AnyHeaderCellTableViewCellDelegate.swift */,
+				A1FBADA31FAB68FE0044EE16 /* AnyHeadersAndCellsTableViewController.swift */,
+				A1FBADA41FAB68FE0044EE16 /* AnySectionDisplayData.swift */,
+				A1FBADA51FAB68FE0044EE16 /* AnyTableViewModel.swift */,
+				A1FBADA61FAB68FE0044EE16 /* AnyTableViewModelDelegate.swift */,
+			);
+			path = TypeErasures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
