@@ -54,6 +54,11 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(tableView.dataSource, "table view does not have a data source")
     }
     
+    func test_TableView_HasDelegate() {
+        let tableView = firstView() as! UITableView
+        XCTAssertNotNil(tableView.delegate, "Table view should not have delegate")
+    }
+    
     func test_WhenAddingHeaderConfigurator_ShouldAddHeadersToTableView() {
         let tableView = firstView() as! UITableView
         addHeadersToTableView()
