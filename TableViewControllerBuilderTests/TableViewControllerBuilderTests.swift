@@ -49,10 +49,14 @@ class TableViewControllerBuilderTests: XCTestCase {
         return sut.tableViewController.view.subviews.first
     }
     
+    func test_TableView_HasDataSource() {
+        let tableView = firstView() as! UITableView
+        XCTAssertNotNil(tableView.dataSource, "table view does not have a data source")
+    }
+    
     func test_WhenAddingHeaderConfigurator_ShouldAddHeadersToTableView() {
         let tableView = firstView() as! UITableView
-        let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
-        sut.addHeaders(with: headerConfiguratorFactory)
+        addHeadersToTableView()
         guard let numberOfSections = tableView.dataSource?.numberOfSections?(in: tableView) else {
             XCTFail("table view does not have a data source")
             return
@@ -62,10 +66,14 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     func test_ExistingHeaderViewForFirstSection() {
         let tableView = firstView() as! UITableView
-        let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
-        sut.addHeaders(with: headerConfiguratorFactory)
+        addHeadersToTableView()
         let _ = sut.tableViewDelegate
         XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
+    }
+    
+    func addHeadersToTableView() {
+        let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
+        sut.addHeaders(with: headerConfiguratorFactory)
     }
 }
 
