@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A131B85C1FB05CF20078322B /* TableViewModelDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A131B85B1FB05CF20078322B /* TableViewModelDelegateTests.swift */; };
+		A131B85F1FB062080078322B /* HelperElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = A131B85E1FB062080078322B /* HelperElements.swift */; };
 		A132E6161EA0D89D0016D9F1 /* TableViewControllerBuilder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A132E60C1EA0D89D0016D9F1 /* TableViewControllerBuilder.framework */; };
 		A132E61B1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */; };
 		A132E61D1EA0D89D0016D9F1 /* TableViewControllerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -58,6 +60,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A131B85B1FB05CF20078322B /* TableViewModelDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModelDelegateTests.swift; sourceTree = "<group>"; };
+		A131B85E1FB062080078322B /* HelperElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperElements.swift; sourceTree = "<group>"; };
 		A132E60C1EA0D89D0016D9F1 /* TableViewControllerBuilder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TableViewControllerBuilder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A132E60F1EA0D89D0016D9F1 /* TableViewControllerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewControllerBuilder.h; sourceTree = "<group>"; };
 		A132E6101EA0D89D0016D9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A131B85D1FB061F20078322B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				A131B85E1FB062080078322B /* HelperElements.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A132E6021EA0D89D0016D9F1 = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +164,9 @@
 		A132E6191EA0D89D0016D9F1 /* TableViewControllerBuilderTests */ = {
 			isa = PBXGroup;
 			children = (
+				A131B85D1FB061F20078322B /* Helpers */,
 				A132E61A1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift */,
+				A131B85B1FB05CF20078322B /* TableViewModelDelegateTests.swift */,
 				A132E61C1EA0D89D0016D9F1 /* Info.plist */,
 			);
 			path = TableViewControllerBuilderTests;
@@ -399,7 +413,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A131B85C1FB05CF20078322B /* TableViewModelDelegateTests.swift in Sources */,
 				A132E61B1EA0D89D0016D9F1 /* TableViewControllerBuilderTests.swift in Sources */,
+				A131B85F1FB062080078322B /* HelperElements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
