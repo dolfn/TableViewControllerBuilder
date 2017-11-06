@@ -77,7 +77,7 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
-        sut.addHeaders(with: headerConfiguratorFactory)
+        sut.addHeaders(with: headerConfiguratorFactory, from: viewModel)
     }
     
     func test_AfterCreatedATableViewController_DontCreateAnotherOne() {

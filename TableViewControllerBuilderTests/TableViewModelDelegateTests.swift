@@ -15,6 +15,7 @@ class TableViewModelDelegateTests: XCTestCase {
     var viewModel: TableViewModelStub!
     var sut: AnyTableViewModelDelegate<FakeHeaderDisplayData, FakeCellDisplayData>!
     var vc: UIViewController!
+    var tableView: UITableView!
     
     override func setUp() {
         super.setUp()
@@ -23,6 +24,7 @@ class TableViewModelDelegateTests: XCTestCase {
         tableViewBuilder = TableViewControllerBuilder(viewModel: viewModel, cellConfiguratorFactory: cellConfiguratorFactory)
         vc = tableViewBuilder.buildTableViewController()
         sut = tableViewBuilder.buildTableViewModelDelegate()
+        tableView = vc.view.subviews.first as! UITableView
     }
     
     override func tearDown() {
@@ -48,10 +50,37 @@ class TableViewModelDelegateTests: XCTestCase {
         assertNumberOfSectionsInTableView(sectionsToAdd: [newSection, newSection, newSection, newSection])
     }
     
+    func test_WhenInsertingNewSectionWithHeader_HeadersHaveTheSpecifiedHeight() {
+        let newSection = getNewSection(headerHeight: 5)
+        viewModel.sectionsDisplayData.append(newSection)
+        addHeadersToTableView()
+        sut.didInsertSections(at: [1], in: viewModel.erased)
+        guard let heightOfTheHeader = tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 1) else {
+            XCTFail("Should be able to return height of the header");
+            return
+        }
+        XCTAssertEqual(heightOfTheHeader, 5)
+    }
+    
+    func test_AddingHeadersAfterInsertingNewSection_ShouldDisplayTheCorrectNumberOfSections() {
+        let newSection = getNewSection(headerHeight: 5)
+        viewModel.sectionsDisplayData.append(newSection)
+        sut.didInsertSections(at: [1], in: viewModel.erased)
+        addHeadersToTableView()
+        XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 1))
+    }
+    
+    func test_WhenAddingModifyingASection_ItShouldHaveTheSameNumberOfSections() {
+        let existingSection = viewModel.sectionsDisplayData[0]
+        
+        let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
+        sut.didUpdateSection(at: 0, in: viewModel.erased)
+        let numberOfSectionsAfterUpdate = tableView.dataSource?.numberOfSections?(in: tableView)
+        XCTAssertEqual(initialNumberOfSections, numberOfSectionsAfterUpdate)
+    }
+    
     func assertNumberOfSectionsInTableView(sectionsToAdd: [SectionDataAlias], testFailAt lineNumber: UInt = #line) {
         let expectedNumberOfSections = sectionsToAdd.count + 1
-        
-        let tableView = vc.view.subviews.first as! UITableView
         viewModel.sectionsDisplayData.append(contentsOf: sectionsToAdd)
         
         var startingIndex: Int = 0
@@ -65,9 +94,16 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(tableView.numberOfSections, expectedNumberOfSections, assertMessage, line: lineNumber)
     }
     
-    func getNewSection() -> SectionDataAlias {
+    func getNewSection(headerHeight: Int = 0) -> SectionDataAlias {
         let newHeader = FakeHeaderDisplayData()
-        let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: [])
+        newHeader.height = headerHeight
+        let row = FakeCellDisplayData()
+        let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: [row])
         return section.erased
+    }
+    
+    func addHeadersToTableView() {
+        let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
+        tableViewBuilder.addHeaders(with: headerConfiguratorFactory, from: viewModel)
     }
 }

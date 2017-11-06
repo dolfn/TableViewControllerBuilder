@@ -73,8 +73,9 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         return nil
     }
     
-    public func addHeaders<HeaderConfiguratorFactoryType: HeaderConfiguratorFactory>(with headerConfiguratorFactory: HeaderConfiguratorFactoryType) where HeaderConfiguratorFactoryType.HeaderDisplayDataType == HeaderDisplayDataType {
+    public func addHeaders<HeaderConfiguratorFactoryType: HeaderConfiguratorFactory, VM: TableViewModel>(with headerConfiguratorFactory: HeaderConfiguratorFactoryType, from viewModel: VM) where HeaderConfiguratorFactoryType.HeaderDisplayDataType == HeaderDisplayDataType, VM.HeaderDisplayDataType == HeaderDisplayDataType, VM.CellDisplayDataType == CellDisplayDataType {
         headerConfiguratorSelector = HeaderViewConfiguratorSelector(configuratorFactory: headerConfiguratorFactory)
+        self.viewModel = viewModel.erased
         addHeadersInViewControllerIfNecessary()
     }
     

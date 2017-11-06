@@ -37,7 +37,7 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let headerViewConfigurator = headerViewConfigurator {
+        if let headerViewConfigurator = headerViewConfigurator, section < headerViewsDisplayData.count {
             let headerViewDisplayData = headerViewsDisplayData[section]
             let headerView = headerViewConfigurator.configuredHeader(in: tableView, at: section, with: headerViewDisplayData)
             return headerView
@@ -46,7 +46,7 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let _ = headerViewConfigurator {
+        if let _ = headerViewConfigurator, section < headerViewsDisplayData.count {
             let height = headerViewsDisplayData[section].height
             return CGFloat(height)
         }
