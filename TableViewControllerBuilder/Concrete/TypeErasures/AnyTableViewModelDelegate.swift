@@ -13,8 +13,8 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
     public typealias HeaderDisplayDataType = H
     public typealias CellDisplayDataType = R
     
-    private var didLoadInitialData: (AnyTableViewModel<H, R>) -> Void
-    private var didUpdate: ([IndexPath], AnyTableViewModel<H, R>) -> Void
+    fileprivate var didLoadInitialData: (AnyTableViewModel<H, R>) -> Void
+    fileprivate var didUpdate: ([IndexPath], AnyTableViewModel<H, R>) -> Void
     private var didReplace: ([IndexPath], AnyTableViewModel<H, R>) -> Void
     private var didRemove: ([IndexPath], AnyTableViewModel<H, R>) -> Void
     private var didInsertSections: ([Int], AnyTableViewModel<H, R>) -> Void

@@ -21,8 +21,8 @@ class TableViewModelDelegateTests: XCTestCase {
         viewModel = TableViewModelStub()
         let cellConfiguratorFactory = CellConfiguratorFactoryMock()
         tableViewBuilder = TableViewControllerBuilder(viewModel: viewModel, cellConfiguratorFactory: cellConfiguratorFactory)
-        vc = tableViewBuilder.tableViewController
-        sut = tableViewBuilder.tableViewDelegate
+        vc = tableViewBuilder.buildTableViewController()
+        sut = tableViewBuilder.buildTableViewModelDelegate()
     }
     
     override func tearDown() {

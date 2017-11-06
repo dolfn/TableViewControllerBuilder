@@ -27,56 +27,55 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         self.cellConfiguratorSelector = cellConfiguratorSelector
     }
     
+    public func buildTableViewController() -> UIViewController {
+        if let alreadyCreatedTableViewController = usingTableViewController {
+            return alreadyCreatedTableViewController
+        }
+        
+        let tableViewController = AnyHeadersAndCellsTableViewController()
+        usingTableViewController = tableViewController
+        
+        tableViewController.tableView.isScrollEnabled = viewModel.shouldBeScrollable
+        
+        let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
+        tableViewDataSource.updateData(cellsDisplayData: viewModel.justCellData)
+        anyTypeOfCellTableViewDataSource = tableViewDataSource
+        
+        if let tableViewOperationsManager = tableViewOperationsManager {
+            addRowDataUpdatables(for: tableViewOperationsManager, updatable: tableViewDataSource)
+        }
+        
+        tableViewController.tableViewDataSource = tableViewDataSource
+        
+        addHeadersInViewControllerIfNecessary()
+        
+        return tableViewController
+    }
+    
+    public func buildTableViewModelDelegate() -> AnyTableViewModelDelegate<HeaderDisplayDataType, CellDisplayDataType>? {
+        if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource,
+            let usingTableViewController = usingTableViewController {
+            let tableView = usingTableViewController.tableView
+            let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView, cellReconfigurator: anyTypeOfCellTableViewDataSource)
+            self.tableViewOperationsManager = tableViewOperationsManager
+            addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
+            
+            if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
+                addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+            }
+            if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
+                addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+            }
+            let erasedTableViewDelegate = AnyTableViewModelDelegate(delegate: tableViewOperationsManager)
+            return erasedTableViewDelegate
+        }
+        
+        return nil
+    }
+    
     public func addHeaders<HeaderConfiguratorFactoryType: HeaderConfiguratorFactory>(with headerConfiguratorFactory: HeaderConfiguratorFactoryType) where HeaderConfiguratorFactoryType.HeaderDisplayDataType == HeaderDisplayDataType {
         headerConfiguratorSelector = HeaderViewConfiguratorSelector(configuratorFactory: headerConfiguratorFactory)
         addHeadersInViewControllerIfNecessary()
-    }
-    
-    public var tableViewController: UIViewController {
-        get {
-            let tableViewController = AnyHeadersAndCellsTableViewController()
-            usingTableViewController = tableViewController
-            
-            tableViewController.tableView.isScrollEnabled = viewModel.shouldBeScrollable
-    
-            let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
-            tableViewDataSource.updateData(cellsDisplayData: viewModel.justCellData)
-            anyTypeOfCellTableViewDataSource = tableViewDataSource
-            
-            if let tableViewOperationsManager = tableViewOperationsManager {
-                addRowDataUpdatables(for: tableViewOperationsManager, updatable: tableViewDataSource)
-            }
-
-            tableViewController.tableViewDataSource = tableViewDataSource
-            
-            addHeadersInViewControllerIfNecessary()
-            
-            return tableViewController
-        }
-    }
-    
-    public var tableViewDelegate: AnyTableViewModelDelegate<HeaderDisplayDataType, CellDisplayDataType>? {
-        get {
-                
-            if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource,
-                let usingTableViewController = usingTableViewController {
-                let tableView = usingTableViewController.tableView
-                let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView, cellReconfigurator: anyTypeOfCellTableViewDataSource)
-                self.tableViewOperationsManager = tableViewOperationsManager
-                addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-                
-                if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
-                    addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
-                }
-                if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
-                    addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
-                }
-                let erasedTableViewDelegate = AnyTableViewModelDelegate(delegate: tableViewOperationsManager)
-                return erasedTableViewDelegate
-            }
-            
-            return nil
-        }
     }
     
     public func addEventsHandler<EventsHandlerType: CellEventsDelegate>(handler: EventsHandlerType) where EventsHandlerType.CellDisplayDataType == CellDisplayDataType {
