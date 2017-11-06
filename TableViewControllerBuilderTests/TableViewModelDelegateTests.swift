@@ -93,6 +93,29 @@ class TableViewModelDelegateTests: XCTestCase {
         })
     }
     
+    func test_LoadingCorrectInitialData() {
+        let expectedRowHeight = 100
+        
+        existingViewModelSection.sectionRowsData[0].height = expectedRowHeight
+        viewModel.sectionsDisplayData[0] = existingViewModelSection
+        sut.didLoadInitialData(in: viewModel.erased)
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        let rowHeightToEvaluate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
+        
+        XCTAssertEqual(CGFloat(expectedRowHeight), rowHeightToEvaluate)
+    }
+    
+    func test_RemovingTheOnlySection() {
+        let expectedNumberOfSections = 0
+        
+        viewModel.sectionsDisplayData.remove(at: 0)
+        sut.didRemoveSections(at: [0], in: viewModel.erased)
+        let updatedNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
+        
+        XCTAssertEqual(expectedNumberOfSections, updatedNumberOfSections)
+    }
+    
     func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = 10
         let updatedHeaderHeight = 5
