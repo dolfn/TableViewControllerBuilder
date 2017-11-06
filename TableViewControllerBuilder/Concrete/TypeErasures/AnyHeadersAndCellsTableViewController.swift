@@ -8,73 +8,75 @@
 
 import UIKit
 
-public class AnyHeadersAndCellsTableViewController: UIViewController {
+internal class AnyHeadersAndCellsTableViewController: UIViewController {
     
-    public var tableViewDataSource: UITableViewDataSource? {
+    internal var tableViewDataSource: UITableViewDataSource? {
         didSet {
             _tableView?.dataSource = tableViewDataSource
             _tableView?.reloadData()
+            temporaryStrongTableView?.dataSource = tableViewDataSource
+            temporaryStrongTableView?.reloadData()
         }
     }
-    public var tableViewDelegate: UITableViewDelegate? {
+    internal var tableViewDelegate: UITableViewDelegate? {
         didSet {
             _tableView?.delegate = tableViewDelegate
             _tableView?.reloadData()
+            temporaryStrongTableView?.delegate = tableViewDelegate
+            temporaryStrongTableView?.reloadData()
+        }
+    }
+    internal var isScrollEnabled: Bool = true {
+        didSet {
+            _tableView?.isScrollEnabled = isScrollEnabled
+            temporaryStrongTableView?.isScrollEnabled = isScrollEnabled
         }
     }
     
-    var tableView: UITableView {
-        if let _tableView = _tableView {
-            return _tableView
-        }
-        else {
-            let tableViewToAdd = UITableView()
-            add(tableView: tableViewToAdd)
-            return tableViewToAdd
-        }
-    }
     private weak var _tableView: UITableView?
     private var temporaryStrongTableView: UITableView?
     
-    public init() {
+    internal init() {
         super.init(nibName: nil, bundle: nil)
+        temporaryStrongTableView = UITableView()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        temporaryStrongTableView = UITableView()
     }
     
-    public override func viewDidLoad() {
+    internal override func viewDidLoad() {
         super.viewDidLoad()
-        if temporaryStrongTableView != nil {
-            _tableView = temporaryStrongTableView
-            temporaryStrongTableView = nil
-        }
-        else {
-            let tableView = UITableView()
-            add(tableView: tableView)
-            temporaryStrongTableView = nil
-            _tableView = tableView
-        }
-        _tableView?.reloadData()
-    }
-    
-    private func add(tableView: UITableView) {
-        temporaryStrongTableView = tableView
-        tableView.separatorStyle = .none
-        tableView.dataSource = tableViewDataSource
-        tableView.delegate = tableViewDelegate
-        tableView.estimatedRowHeight = 100
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.translatesAutoresizingMaskIntoConstraints = false
+        _tableView = temporaryStrongTableView
         
-        view?.addSubview(tableView)
-        let viewsDictionary = ["tableView": tableView]
+        guard let _tableView = _tableView else {
+            return
+        }
+        
+        _tableView.separatorStyle = .none
+        _tableView.dataSource = tableViewDataSource
+        _tableView.delegate = tableViewDelegate
+        _tableView.estimatedRowHeight = 100
+        _tableView.rowHeight = UITableViewAutomaticDimension
+        _tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        view?.addSubview(_tableView)
+        let viewsDictionary = ["tableView": _tableView]
         let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         view?.addConstraints(hConstraints)
         view?.addConstraints(vConstraints)
-        tableView.reloadData()
+        _tableView.reloadData()
+    }
+    
+    internal func getTableView() -> UITableView {
+        if let _tableView = _tableView {
+            return _tableView
+        }
+        else {
+            return temporaryStrongTableView!
+        }
     }
 }
 
