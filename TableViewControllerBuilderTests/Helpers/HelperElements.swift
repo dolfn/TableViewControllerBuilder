@@ -37,7 +37,8 @@ struct TableViewModelStub: TableViewModel {
     
     init() {
         let headerDisplayData = FakeHeaderDisplayData()
-        let section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [])
+        let rowDisplayData = FakeCellDisplayData()
+        let section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [rowDisplayData])
         sectionsDisplayData = [section.erased]
     }
 }

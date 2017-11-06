@@ -72,11 +72,32 @@ class TableViewModelDelegateTests: XCTestCase {
     
     func test_WhenAddingModifyingASection_ItShouldHaveTheSameNumberOfSections() {
         let existingSection = viewModel.sectionsDisplayData[0]
-        
         let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
+        
         sut.didUpdateSection(at: 0, in: viewModel.erased)
+        
         let numberOfSectionsAfterUpdate = tableView.dataSource?.numberOfSections?(in: tableView)
         XCTAssertEqual(initialNumberOfSections, numberOfSectionsAfterUpdate)
+    }
+    
+    func test_WhenAddingModifyingASection_ItShouldReflectTheChanges() {
+        var existingSection = viewModel.sectionsDisplayData[0]
+        let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
+        let updatedRowHeight = 10
+        let updatedHeaderHeight = 5
+        
+        addHeadersToTableView()
+        existingSection.headerDisplayData.height = updatedHeaderHeight
+        existingSection.sectionRowsData[0].height = updatedRowHeight
+        viewModel.sectionsDisplayData[0] = existingSection
+        sut.didUpdateSection(at: 0, in: viewModel.erased)
+        
+        let headerHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        let rowHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
+        
+        XCTAssertEqual(headerHeightAfterUpdate, CGFloat(updatedHeaderHeight))
+        XCTAssertEqual(rowHeightAfterUpdate, CGFloat(updatedRowHeight))
     }
     
     func assertNumberOfSectionsInTableView(sectionsToAdd: [SectionDataAlias], testFailAt lineNumber: UInt = #line) {
