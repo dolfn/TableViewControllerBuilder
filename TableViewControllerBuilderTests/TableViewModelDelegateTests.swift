@@ -81,23 +81,34 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func test_WhenAddingModifyingASection_ItShouldReflectTheChanges() {
+        assertNewHeaderAndRowHeights(in: 0, with: {[weak self] in
+            sut.didUpdateSection(at: 0, in: viewModel.erased)
+        })
+    }
+    
+    func test_UpdatingHeightsInTableView() {
+        assertNewHeaderAndRowHeights(in: 0, with: {[weak self] in
+            self?.sut.didUpdateHeights(in: viewModel.erased)
+        })
+    }
+    
+    func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         var existingSection = viewModel.sectionsDisplayData[0]
-        let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
         let updatedRowHeight = 10
         let updatedHeaderHeight = 5
         
-        addHeadersToTableView()
         existingSection.headerDisplayData.height = updatedHeaderHeight
         existingSection.sectionRowsData[0].height = updatedRowHeight
         viewModel.sectionsDisplayData[0] = existingSection
-        sut.didUpdateSection(at: 0, in: viewModel.erased)
+        delegateCall()
+        addHeadersToTableView()
         
         let headerHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         let rowHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
         
-        XCTAssertEqual(headerHeightAfterUpdate, CGFloat(updatedHeaderHeight))
-        XCTAssertEqual(rowHeightAfterUpdate, CGFloat(updatedRowHeight))
+        XCTAssertEqual(headerHeightAfterUpdate, CGFloat(updatedHeaderHeight), line: lineNumber)
+        XCTAssertEqual(rowHeightAfterUpdate, CGFloat(updatedRowHeight), line: lineNumber)
     }
     
     func assertNumberOfSectionsInTableView(sectionsToAdd: [SectionDataAlias], testFailAt lineNumber: UInt = #line) {
