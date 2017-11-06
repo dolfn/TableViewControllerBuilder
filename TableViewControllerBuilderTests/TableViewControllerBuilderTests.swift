@@ -59,7 +59,7 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(tableView.delegate, "Table view should not have delegate")
     }
     
-    func test_WhenAddingHeaderConfigurator_ShouldAddHeadersToTableView() {
+    func test_WhenAddingHeaderConfigurator_ShouldHaveTheSameNumberOfSections() {
         let tableView = firstView() as! UITableView
         addHeadersToTableView()
         guard let numberOfSections = tableView.dataSource?.numberOfSections?(in: tableView) else {
@@ -72,7 +72,6 @@ class TableViewControllerBuilderTests: XCTestCase {
     func test_ExistingHeaderViewForFirstSection() {
         let tableView = firstView() as! UITableView
         addHeadersToTableView()
-        let _ = sut.buildTableViewModelDelegate()
         XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
     }
     
