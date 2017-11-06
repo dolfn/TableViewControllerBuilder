@@ -12,6 +12,7 @@ import XCTest
 class TableViewModelDelegateTests: XCTestCase {
     
     var tableViewBuilder: TableViewControllerBuilder<FakeHeaderDisplayData, FakeCellDisplayData>!
+    var existingViewModelSection: SectionDataAlias!
     var viewModel: TableViewModelStub!
     var sut: AnyTableViewModelDelegate<FakeHeaderDisplayData, FakeCellDisplayData>!
     var vc: UIViewController!
@@ -20,6 +21,7 @@ class TableViewModelDelegateTests: XCTestCase {
     override func setUp() {
         super.setUp()
         viewModel = TableViewModelStub()
+        existingViewModelSection = viewModel.sectionsDisplayData[0]
         let cellConfiguratorFactory = CellConfiguratorFactoryMock()
         tableViewBuilder = TableViewControllerBuilder(viewModel: viewModel, cellConfiguratorFactory: cellConfiguratorFactory)
         vc = tableViewBuilder.buildTableViewController()
@@ -71,7 +73,6 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func test_WhenAddingModifyingASection_ItShouldHaveTheSameNumberOfSections() {
-        let existingSection = viewModel.sectionsDisplayData[0]
         let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
         
         sut.didUpdateSection(at: 0, in: viewModel.erased)
@@ -82,7 +83,7 @@ class TableViewModelDelegateTests: XCTestCase {
     
     func test_WhenAddingModifyingASection_ItShouldReflectTheChanges() {
         assertNewHeaderAndRowHeights(in: 0, with: {[weak self] in
-            sut.didUpdateSection(at: 0, in: viewModel.erased)
+            self?.sut.didUpdateSection(at: 0, in: viewModel.erased)
         })
     }
     
@@ -93,13 +94,12 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
-        var existingSection = viewModel.sectionsDisplayData[0]
         let updatedRowHeight = 10
         let updatedHeaderHeight = 5
         
-        existingSection.headerDisplayData.height = updatedHeaderHeight
-        existingSection.sectionRowsData[0].height = updatedRowHeight
-        viewModel.sectionsDisplayData[0] = existingSection
+        existingViewModelSection.headerDisplayData.height = updatedHeaderHeight
+        existingViewModelSection.sectionRowsData[0].height = updatedRowHeight
+        viewModel.sectionsDisplayData[0] = existingViewModelSection
         delegateCall()
         addHeadersToTableView()
         
