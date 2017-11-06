@@ -88,6 +88,16 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertEqual(vc, vc2, "The table view builder shouldn't create another view controller, when asked for the table view controller")
     }
     
+    func test_AfterDestroyingOldVC_CreateAnotherOne() {
+        var vc: UIViewController? = sut.buildTableViewController()
+        let address = vc!.description
+        vc = nil
+        vc = sut.buildTableViewController()
+        let address2 = vc!.description
+        
+        XCTAssertNotEqual(address, address2, "The table view builder should create another view controller, when the old one is destroyed")
+    }
+    
     func test_BeforeCreatingATableViewController_CantCreateADelegate() {
         let delegate = sut.buildTableViewModelDelegate()
         
