@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     

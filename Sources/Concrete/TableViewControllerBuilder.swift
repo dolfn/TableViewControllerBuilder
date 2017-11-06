@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, CellDisplayDataType: HeightFlexible> {
     
