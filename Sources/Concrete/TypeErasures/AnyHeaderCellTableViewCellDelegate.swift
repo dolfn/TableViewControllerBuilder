@@ -14,12 +14,12 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
     typealias HeaderDisplayDataToUpdateWith = HeaderDisplayDataType
     
     private var rowHeightProviders: [[CellDisplayData]]
-    private var headerViewsDisplayData: [HeaderDisplayDataType]
+    private var headerViewsDisplayData: [HeaderDisplayDataType?]
     private var headerViewConfigurator: HeaderViewConfiguratorType?
     var actionsDelegate: AnyCellEventsDelegate<CellDisplayData>?
     
     init(rowHeightProviders: [[CellDisplayData]],
-         headerViewsDisplayData: [HeaderDisplayDataType]) {
+         headerViewsDisplayData: [HeaderDisplayDataType?]) {
         self.rowHeightProviders = rowHeightProviders
         self.headerViewsDisplayData = headerViewsDisplayData
     }
@@ -32,13 +32,14 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
         rowHeightProviders = cellsDisplayData
     }
     
-    func update(headerDisplayData: [HeaderDisplayDataType]) {
+    func update(headerDisplayData: [HeaderDisplayDataType?]) {
         headerViewsDisplayData = headerDisplayData
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if let headerViewConfigurator = headerViewConfigurator, section < headerViewsDisplayData.count {
-            let headerViewDisplayData = headerViewsDisplayData[section]
+        if let headerViewConfigurator = headerViewConfigurator,
+            let headerViewDisplayData = headerViewsDisplayData[section],
+            section < headerViewsDisplayData.count {
             let headerView = headerViewConfigurator.configuredHeader(in: tableView, at: section, with: headerViewDisplayData)
             return headerView
         }
@@ -46,8 +47,10 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if let _ = headerViewConfigurator, section < headerViewsDisplayData.count {
-            let height = headerViewsDisplayData[section].height
+        if let _ = headerViewConfigurator,
+            let headerDisplayData = headerViewsDisplayData[section],
+            section < headerViewsDisplayData.count {
+            let height = headerDisplayData.height
             return CGFloat(height)
         }
         return 0.0

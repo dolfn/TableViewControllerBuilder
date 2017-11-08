@@ -10,5 +10,5 @@ import Foundation
 
 protocol HeaderDisplayDataUpdatable {
     associatedtype HeaderDisplayDataToUpdateWith
-    func update(headerDisplayData: [HeaderDisplayDataToUpdateWith])
+    func update(headerDisplayData: [HeaderDisplayDataToUpdateWith?])
 }

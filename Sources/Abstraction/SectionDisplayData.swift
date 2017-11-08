@@ -11,12 +11,12 @@ import Foundation
 public protocol SectionDisplayData {
     associatedtype HeaderDisplayDataType
     associatedtype CellDisplayDataType
-    var headerDisplayData: HeaderDisplayDataType { get }
+    var headerDisplayData: HeaderDisplayDataType? { get }
     var sectionRowsData: [CellDisplayDataType] { get }
 }
 
 extension SectionDisplayData {
-    var erased: AnySectionDisplayData<HeaderDisplayDataType, CellDisplayDataType> {
+    public var erased: AnySectionDisplayData<HeaderDisplayDataType, CellDisplayDataType> {
         get {
             return AnySectionDisplayData(sectionDisplayData: self)
         }

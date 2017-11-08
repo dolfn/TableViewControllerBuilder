@@ -6,8 +6,8 @@
 //  Copyright © 2017 Dolfn. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 public protocol HeightFlexible {
-    var height: Int { get }
+    var height: CGFloat { get }
 }

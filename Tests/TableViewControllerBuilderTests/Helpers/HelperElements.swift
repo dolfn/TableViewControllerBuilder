@@ -14,17 +14,17 @@ import UIKit
 typealias SectionDataAlias = AnySectionDisplayData<FakeHeaderDisplayData, FakeCellDisplayData>
 
 class FakeHeaderDisplayData: HeightFlexible {
-    var height: Int = 0
+    var height: CGFloat = 0
 }
 class FakeCellDisplayData: HeightFlexible {
-    var height: Int = 0
+    var height: CGFloat = 0
 }
 
 struct SectionDisplayDataStub: SectionDisplayData {
     typealias HeaderDisplayDataType = FakeHeaderDisplayData
     typealias CellDisplayDataType = FakeCellDisplayData
     
-    var headerDisplayData: FakeHeaderDisplayData
+    var headerDisplayData: FakeHeaderDisplayData?
     var sectionRowsData: [FakeCellDisplayData]
 }
 

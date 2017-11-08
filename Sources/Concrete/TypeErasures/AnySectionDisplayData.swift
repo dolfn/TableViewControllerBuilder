@@ -13,7 +13,7 @@ public struct AnySectionDisplayData<H, R>: SectionDisplayData {
     public typealias HeaderDisplayDataType = H
     public typealias CellDisplayDataType = R
     
-    public var headerDisplayData: H {
+    public var headerDisplayData: H? {
         get {
             return _headerDisplayData
         }
@@ -25,7 +25,7 @@ public struct AnySectionDisplayData<H, R>: SectionDisplayData {
         }
     }
     
-    private var _headerDisplayData: H
+    private var _headerDisplayData: H?
     private var _sectionRowsData: [R]
     
     public init<SectionDisplayDataType: SectionDisplayData>(sectionDisplayData: SectionDisplayDataType) where SectionDisplayDataType.HeaderDisplayDataType == H, SectionDisplayDataType.CellDisplayDataType == R {

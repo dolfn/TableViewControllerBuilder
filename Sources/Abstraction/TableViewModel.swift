@@ -26,8 +26,8 @@ extension TableViewModel {
         return justTheRowsInSections
     }
     
-    var justHeaderData: [HeaderDisplayDataType] {
-        let justTheHeadersInSections = self.sectionsDisplayData.map { (sectionDisplayData) -> HeaderDisplayDataType in
+    var justHeaderData: [HeaderDisplayDataType?] {
+        let justTheHeadersInSections = self.sectionsDisplayData.map { (sectionDisplayData) -> HeaderDisplayDataType? in
             return sectionDisplayData.headerDisplayData
         }
         

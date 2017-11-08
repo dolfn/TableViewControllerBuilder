@@ -94,7 +94,7 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func test_LoadingCorrectInitialData() {
-        let expectedRowHeight = 100
+        let expectedRowHeight = CGFloat(100)
         
         existingViewModelSection.sectionRowsData[0].height = expectedRowHeight
         viewModel.sectionsDisplayData[0] = existingViewModelSection
@@ -103,7 +103,7 @@ class TableViewModelDelegateTests: XCTestCase {
         let indexPath = IndexPath(row: 0, section: 0)
         let rowHeightToEvaluate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
         
-        XCTAssertEqual(CGFloat(expectedRowHeight), rowHeightToEvaluate)
+        XCTAssertEqual(expectedRowHeight, rowHeightToEvaluate)
     }
     
     func test_RemovingTheOnlySection() {
@@ -117,10 +117,10 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
-        let updatedRowHeight = 10
-        let updatedHeaderHeight = 5
+        let updatedRowHeight = CGFloat(10)
+        let updatedHeaderHeight = CGFloat(5)
         
-        existingViewModelSection.headerDisplayData.height = updatedHeaderHeight
+        existingViewModelSection.headerDisplayData?.height = updatedHeaderHeight
         existingViewModelSection.sectionRowsData[0].height = updatedRowHeight
         viewModel.sectionsDisplayData[0] = existingViewModelSection
         delegateCall()
@@ -149,7 +149,7 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(tableView.numberOfSections, expectedNumberOfSections, assertMessage, line: lineNumber)
     }
     
-    func getNewSection(headerHeight: Int = 0) -> SectionDataAlias {
+    func getNewSection(headerHeight: CGFloat = 0) -> SectionDataAlias {
         let newHeader = FakeHeaderDisplayData()
         newHeader.height = headerHeight
         let row = FakeCellDisplayData()
