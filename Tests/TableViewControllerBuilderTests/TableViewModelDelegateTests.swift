@@ -158,8 +158,24 @@ class TableViewModelDelegateTests: XCTestCase {
         
         let secondSectionRowIndexPath = IndexPath(row: 0, section: 1)
         let thirdSectionRowIndexPath = IndexPath(row: 0, section: 2)
-        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: secondSectionRowIndexPath), 1)
-        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: thirdSectionRowIndexPath), 3)
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: secondSectionRowIndexPath), 1)
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: thirdSectionRowIndexPath), 3)
+    }
+    
+    func test_ToInsertARowAtTheEndOfTheFirstSection() {
+        let expectedRowHeight = CGFloat(1)
+        let indexPathToInsertTo = IndexPath(row: 1, section: 0)
+        
+        let oldRow = existingViewModelSection.sectionRowsData[0]
+        let headerDisplayData = FakeHeaderDisplayData()
+        let rowDisplayData = FakeCellDisplayData()
+        rowDisplayData.height = expectedRowHeight
+        let newSection = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [oldRow, rowDisplayData])
+        
+        viewModel.sectionsDisplayData[0] = newSection.erased
+        sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased)
+        
+        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight)
     }
     
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
