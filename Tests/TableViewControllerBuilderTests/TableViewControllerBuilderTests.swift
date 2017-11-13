@@ -70,7 +70,7 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertEqual(numberOfSections, 1)
     }
     
-    func test_ExistingHeaderViewForFirstSection() {
+    func test_HeaderViewForFirstSectionExists() {
         let tableView = firstView() as! UITableView
         addHeadersToTableView()
         XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
@@ -79,6 +79,25 @@ class TableViewControllerBuilderTests: XCTestCase {
     func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         sut.addHeaders(with: headerConfiguratorFactory, from: viewModel)
+    }
+    
+    func test_HeaderViewExistanceConformsToViewModelHeaderExistance() {
+        let tableView = firstView() as! UITableView
+        
+        var rowDisplayData = FakeCellDisplayData()
+        var section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [rowDisplayData])
+        viewModel.sectionsDisplayData.append(section.erased)
+        
+        let headerDisplayData = FakeHeaderDisplayData()
+        rowDisplayData = FakeCellDisplayData()
+        section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [rowDisplayData])
+        viewModel.sectionsDisplayData.append(section.erased)
+        
+        addHeadersToTableView()
+        
+        XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
+        XCTAssertNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 1))
+        XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 2))
     }
     
     func test_AfterCreatedATableViewController_DontCreateAnotherOne() {
