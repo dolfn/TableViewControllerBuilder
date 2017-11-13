@@ -186,6 +186,19 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
     }
     
+    func test_UpdatingTheRowInANewSection() {
+        let expectedRowHeight = CGFloat(199)
+        
+        let newSection = getNewSection(headerHeight: 10, numberOfRows: 3, rowHeight: 20)
+        insert(newSections: [newSection])
+        
+        let indexPath = IndexPath(row: 1, section: 1)
+        viewModel.sectionsDisplayData[1].sectionRowsData[1].height = expectedRowHeight
+        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
+    }
+    
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
