@@ -34,6 +34,7 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     func test_OnCreate_DelegateExists() {
         let vc = sut.buildTableViewController()
+        fakeUse(vc: vc)
         XCTAssertNotNil(sut.buildTableViewModelDelegate())
     }
     
@@ -106,6 +107,7 @@ class TableViewControllerBuilderTests: XCTestCase {
     func test_AfterCreatingATableViewController_ShouldBeAbleToCreateADelegate() {
         //we have to retain the view controller
         let vc = sut.buildTableViewController()
+        fakeUse(vc: vc)
         let delegate = sut.buildTableViewModelDelegate()
         
         XCTAssertNotNil(delegate, "The table view builder should create a view model delegate, if a table view controller was created")
@@ -113,9 +115,12 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     func test_AfterDistroyingVC_DelegateShouldNotBeCreated() {
         var vc: UIViewController? = sut.buildTableViewController()
+        fakeUse(vc: vc)
         var delegate = sut.buildTableViewModelDelegate()
         vc = nil
         delegate = sut.buildTableViewModelDelegate()
         XCTAssertNil(delegate)
     }
+    
+    func fakeUse(vc: Any?) {}
 }
