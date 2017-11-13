@@ -84,13 +84,11 @@ class TableViewControllerBuilderTests: XCTestCase {
     func test_HeaderViewExistanceConformsToViewModelHeaderExistance() {
         let tableView = firstView() as! UITableView
         
-        var rowDisplayData = FakeCellDisplayData()
-        var section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [rowDisplayData])
+        var section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [])
         viewModel.sectionsDisplayData.append(section.erased)
         
         let headerDisplayData = FakeHeaderDisplayData()
-        rowDisplayData = FakeCellDisplayData()
-        section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [rowDisplayData])
+        section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [])
         viewModel.sectionsDisplayData.append(section.erased)
         
         addHeadersToTableView()

@@ -93,7 +93,7 @@ class TableViewModelDelegateTests: XCTestCase {
         })
     }
     
-    func test_LoadingCorrectInitialData() {
+    func test_LoadingInitialDataWithCorrectRowHeight() {
         let expectedRowHeight = CGFloat(100)
         
         existingViewModelSection.sectionRowsData[0].height = expectedRowHeight
@@ -104,6 +104,24 @@ class TableViewModelDelegateTests: XCTestCase {
         let rowHeightToEvaluate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
         
         XCTAssertEqual(expectedRowHeight, rowHeightToEvaluate)
+    }
+    
+    func test_LoadingInitialDataWithCorrectNumberOfRowsForEachSection() {
+        var section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [])
+        viewModel.sectionsDisplayData.append(section.erased)
+        
+        let cellDisplayData = FakeCellDisplayData()
+        section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [cellDisplayData, cellDisplayData, cellDisplayData])
+        viewModel.sectionsDisplayData.append(section.erased)
+        
+        section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [cellDisplayData])
+        viewModel.sectionsDisplayData.append(section.erased)
+        
+        sut.didLoadInitialData(in: viewModel.erased)
+        
+        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 1), 0)
+        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 2), 3)
+        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 3), 1)
     }
     
     func test_RemovingTheOnlySection() {
