@@ -163,19 +163,17 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func test_ToInsertARowAtTheEndOfTheFirstSection() {
-        let expectedRowHeight = CGFloat(1)
-        let indexPathToInsertTo = IndexPath(row: 1, section: 0)
-        
-        let oldRow = existingViewModelSection.sectionRowsData[0]
-        let headerDisplayData = FakeHeaderDisplayData()
-        let rowDisplayData = FakeCellDisplayData()
-        rowDisplayData.height = expectedRowHeight
-        let newSection = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [oldRow, rowDisplayData])
-        
-        viewModel.sectionsDisplayData[0] = newSection.erased
-        sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased)
-        
-        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight)
+        assertRowInsertion(at: 1, inSectionAt: 0)
+    }
+    
+    func test_ToInsertARowAtTheBeginningOfTheFirstSection() {
+        assertRowInsertion(at: 0, inSectionAt: 0)
+    }
+    
+    func test_ToInsertARowInTheMiddleOfTheSecondSection() {
+        let section = getNewSection(headerHeight: 0, numberOfRows: 2, rowHeight: 10)
+        insert(newSections: [section])
+        assertRowInsertion(at: 1, inSectionAt: 1)
     }
     
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
@@ -198,24 +196,51 @@ class TableViewModelDelegateTests: XCTestCase {
     
     private func assertNumberOfSectionsInTableView(sectionsToAdd: [SectionDataAlias], testFailAt lineNumber: UInt = #line) {
         let expectedNumberOfSections = sectionsToAdd.count + 1
-        viewModel.sectionsDisplayData.append(contentsOf: sectionsToAdd)
         
-        var startingIndex: Int = 0
-        let indexesInserted = sectionsToAdd.map { _ -> Int in
-            startingIndex += 1;
-            return startingIndex
-        }
-        sut.didInsertSections(at: indexesInserted, in: viewModel.erased)
+        insert(newSections: sectionsToAdd)
         
         let assertMessage = "The number of sections is not " + String(expectedNumberOfSections)
         XCTAssertEqual(tableView.numberOfSections, expectedNumberOfSections, assertMessage, line: lineNumber)
     }
     
-    private func getNewSection(headerHeight: CGFloat = 0) -> SectionDataAlias {
+    private func assertRowInsertion(at index: Int, inSectionAt sectionIndex: Int, lineNumber: UInt = #line) {
+        let expectedRowHeight = CGFloat(1)
+        let indexPathToInsertTo = IndexPath(row: index, section: sectionIndex)
+        
+        var oldRows = viewModel.sectionsDisplayData[sectionIndex].sectionRowsData
+        let headerDisplayData = FakeHeaderDisplayData()
+        let rowDisplayData = FakeCellDisplayData()
+        rowDisplayData.height = expectedRowHeight
+        oldRows.insert(rowDisplayData, at: index)
+        let newSection = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: oldRows)
+        
+        viewModel.sectionsDisplayData[sectionIndex] = newSection.erased
+        sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased)
+        
+        let assertMessage = "Didn't insert row correctly"
+        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)
+    }
+    
+    private func insert(newSections: [SectionDataAlias]) {
+        viewModel.sectionsDisplayData.append(contentsOf: newSections)
+        
+        var startingIndex: Int = 0
+        let indexesInserted = newSections.map { _ -> Int in
+            startingIndex += 1;
+            return startingIndex
+        }
+        sut.didInsertSections(at: indexesInserted, in: viewModel.erased)
+    }
+    
+    private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0) -> SectionDataAlias {
         let newHeader = FakeHeaderDisplayData()
         newHeader.height = headerHeight
-        let row = FakeCellDisplayData()
-        let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: [row])
+        var rows = [FakeCellDisplayData]()
+        (0..<numberOfRows).forEach { (_) in
+            let row = FakeCellDisplayData()
+            rows.append(row)
+        }
+        let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: rows)
         return section.erased
     }
     
