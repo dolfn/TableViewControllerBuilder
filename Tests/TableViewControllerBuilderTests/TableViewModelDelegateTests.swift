@@ -176,6 +176,16 @@ class TableViewModelDelegateTests: XCTestCase {
         assertRowInsertion(at: 1, inSectionAt: 1)
     }
     
+    func test_UpdatingTheRowInInitialSection() {
+        let expectedRowHeight = CGFloat(199)
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        viewModel.sectionsDisplayData[0].sectionRowsData[0].height = expectedRowHeight
+        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
+    }
+    
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
@@ -208,11 +218,10 @@ class TableViewModelDelegateTests: XCTestCase {
         let indexPathToInsertTo = IndexPath(row: index, section: sectionIndex)
         
         var oldRows = viewModel.sectionsDisplayData[sectionIndex].sectionRowsData
-        let headerDisplayData = FakeHeaderDisplayData()
         let rowDisplayData = FakeCellDisplayData()
         rowDisplayData.height = expectedRowHeight
         oldRows.insert(rowDisplayData, at: index)
-        let newSection = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: oldRows)
+        let newSection = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: oldRows)
         
         viewModel.sectionsDisplayData[sectionIndex] = newSection.erased
         sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased)
