@@ -100,6 +100,11 @@ class TableViewControllerBuilderTests: XCTestCase {
         var vc: UIViewController? = sut.buildTableViewController()
         let address = vc!.description
         vc = nil
+        let expectationToDealloc = expectation(description: "Should dealloc view controller")
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+            expectationToDealloc.fulfill()
+        }
+        waitForExpectations(timeout: 0.2, handler: nil)
         vc = sut.buildTableViewController()
         let address2 = vc!.description
         
