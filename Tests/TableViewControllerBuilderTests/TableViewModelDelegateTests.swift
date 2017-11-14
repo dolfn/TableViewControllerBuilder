@@ -190,6 +190,14 @@ class TableViewModelDelegateTests: XCTestCase {
         assertRowUpdate(at: indexPath)
     }
     
+    func test_WhenUpdatingAnItem_TheTableViewDoesntReplaceTheCellView() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cellDescription = tableView.cellForRow(at: indexPath)?.description
+        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        let cellDescriptionAfterUpdate = tableView.cellForRow(at: indexPath)?.description
+        XCTAssertEqual(cellDescription, cellDescriptionAfterUpdate)
+    }
+    
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
