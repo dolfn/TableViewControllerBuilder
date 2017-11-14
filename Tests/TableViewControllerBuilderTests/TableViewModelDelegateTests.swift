@@ -179,7 +179,7 @@ class TableViewModelDelegateTests: XCTestCase {
     
     func test_UpdatingTheRowInInitialSection() {
         let indexPath = IndexPath(row: 0, section: 0)
-        assertRowUpdate(at: indexPath)
+        assertRowChange(at: indexPath, operationType: .update)
     }
     
     func test_UpdatingTheRowInANewSection() {
@@ -187,15 +187,36 @@ class TableViewModelDelegateTests: XCTestCase {
         insert(newSections: [newSection])
         
         let indexPath = IndexPath(row: 1, section: 1)
-        assertRowUpdate(at: indexPath)
+        assertRowChange(at: indexPath, operationType: .update)
     }
     
-    func test_WhenUpdatingAnItem_TheTableViewDoesntReplaceTheCellView() {
+    func test_WhenUpdatingAnItem_TableViewDoesntReplaceTheCellView() {
         let indexPath = IndexPath(row: 0, section: 0)
         let cellDescription = tableView.cellForRow(at: indexPath)?.description
         sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
         let cellDescriptionAfterUpdate = tableView.cellForRow(at: indexPath)?.description
         XCTAssertEqual(cellDescription, cellDescriptionAfterUpdate)
+    }
+    
+    func test_WhenReplacingAnItem_TableViewDoesntReplaceTheCellView() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let cellDescription = tableView.cellForRow(at: indexPath)?.description
+        sut.didReplace(itemsAt: [indexPath], in: viewModel.erased)
+        let cellDescriptionAfterUpdate = tableView.cellForRow(at: indexPath)?.description
+        XCTAssertNotEqual(cellDescription, cellDescriptionAfterUpdate)
+    }
+    
+    func test_ReplacingTheRowInInitialSection() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        assertRowChange(at: indexPath, operationType: .replace)
+    }
+    
+    func test_ReplacingTheRowInANewSection() {
+        let newSection = getNewSection(headerHeight: 10, numberOfRows: 4, rowHeight: 20)
+        insert(newSections: [newSection])
+        
+        let indexPath = IndexPath(row: 2, section: 1)
+        assertRowChange(at: indexPath, operationType: .replace)
     }
     
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
@@ -242,7 +263,7 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)
     }
     
-    private func assertRowUpdate(at indexPath: IndexPath, lineNumber: UInt = #line) {
+    private func assertRowChange(at indexPath: IndexPath, operationType: RowOperationType, lineNumber: UInt = #line) {
         tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 400)
         tableView.cellForRow(at: indexPath)
         
@@ -251,7 +272,13 @@ class TableViewModelDelegateTests: XCTestCase {
         let expectedRowHeight = CGFloat(199)
         
         viewModel.sectionsDisplayData[indexPath.section].sectionRowsData[indexPath.row].height = expectedRowHeight
-        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        
+        switch operationType {
+        case .replace:
+            sut.didReplace(itemsAt: [indexPath], in: viewModel.erased)
+        case .update:
+            sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        }
         
         XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
         XCTAssertEqual(cellConfiguratorFactory.numberOfTimesCalledToConfigureRow, expectedConfigurationTimes)
@@ -283,5 +310,11 @@ class TableViewModelDelegateTests: XCTestCase {
     private func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         tableViewBuilder.addHeaders(with: headerConfiguratorFactory, from: viewModel)
+    }
+}
+
+extension TableViewModelDelegateTests {
+    enum RowOperationType {
+        case update, replace
     }
 }
