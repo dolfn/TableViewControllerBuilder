@@ -17,12 +17,13 @@ class TableViewModelDelegateTests: XCTestCase {
     var sut: AnyTableViewModelDelegate<FakeHeaderDisplayData, FakeCellDisplayData>!
     var vc: UIViewController!
     var tableView: UITableView!
+    var cellConfiguratorFactory: CellConfiguratorFactoryMock!
     
     override func setUp() {
         super.setUp()
         viewModel = TableViewModelStub()
         existingViewModelSection = viewModel.sectionsDisplayData[0]
-        let cellConfiguratorFactory = CellConfiguratorFactoryMock()
+        cellConfiguratorFactory = CellConfiguratorFactoryMock()
         tableViewBuilder = TableViewControllerBuilder(viewModel: viewModel, cellConfiguratorFactory: cellConfiguratorFactory)
         vc = tableViewBuilder.buildTableViewController()
         sut = tableViewBuilder.buildTableViewModelDelegate()
@@ -177,26 +178,16 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     func test_UpdatingTheRowInInitialSection() {
-        let expectedRowHeight = CGFloat(199)
         let indexPath = IndexPath(row: 0, section: 0)
-        
-        viewModel.sectionsDisplayData[0].sectionRowsData[0].height = expectedRowHeight
-        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
-        
-        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
+        assertRowUpdate(at: indexPath)
     }
     
     func test_UpdatingTheRowInANewSection() {
-        let expectedRowHeight = CGFloat(199)
-        
         let newSection = getNewSection(headerHeight: 10, numberOfRows: 3, rowHeight: 20)
         insert(newSections: [newSection])
         
         let indexPath = IndexPath(row: 1, section: 1)
-        viewModel.sectionsDisplayData[1].sectionRowsData[1].height = expectedRowHeight
-        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
-        
-        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
+        assertRowUpdate(at: indexPath)
     }
     
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
@@ -241,6 +232,21 @@ class TableViewModelDelegateTests: XCTestCase {
         
         let assertMessage = "Didn't insert row correctly"
         XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)
+    }
+    
+    private func assertRowUpdate(at indexPath: IndexPath, lineNumber: UInt = #line) {
+        tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 400)
+        tableView.cellForRow(at: indexPath)
+        
+        let initialConfigurationTimes = cellConfiguratorFactory.numberOfTimesCalledToConfigureRow
+        let expectedConfigurationTimes = initialConfigurationTimes + 1
+        let expectedRowHeight = CGFloat(199)
+        
+        viewModel.sectionsDisplayData[indexPath.section].sectionRowsData[indexPath.row].height = expectedRowHeight
+        sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
+        
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
+        XCTAssertEqual(cellConfiguratorFactory.numberOfTimesCalledToConfigureRow, expectedConfigurationTimes)
     }
     
     private func insert(newSections: [SectionDataAlias]) {
