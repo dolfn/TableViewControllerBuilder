@@ -219,6 +219,26 @@ class TableViewModelDelegateTests: XCTestCase {
         assertRowChange(at: indexPath, operationType: .replace)
     }
     
+    func test_RemovingTheOnlyCellInTableView() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        let newSection = getNewSection(headerHeight: 0, numberOfRows: 0)
+        viewModel.sectionsDisplayData[0] = newSection.erased
+        sut.didRemove(itemsFrom: [indexPath], in: viewModel.erased)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 0)
+    }
+    
+    func test_RemovingANewlyAddedCellInTableView() {
+        let section = getNewSection(headerHeight: 0, numberOfRows: 5, rowHeight: 10)
+        let anotherSection = getNewSection(headerHeight: 0, numberOfRows: 2, rowHeight: 10)
+        insert(newSections: [section, anotherSection])
+        
+        let indexPath = IndexPath(row: 2, section: 1)
+        let newSection = getNewSection(headerHeight: 0, numberOfRows: 4, rowHeight: 10)
+        viewModel.sectionsDisplayData[1] = newSection.erased
+        sut.didRemove(itemsFrom: [indexPath], in: viewModel.erased)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 4)
+    }
+    
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
@@ -280,8 +300,8 @@ class TableViewModelDelegateTests: XCTestCase {
             sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
         }
         
-        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight)
-        XCTAssertEqual(cellConfiguratorFactory.numberOfTimesCalledToConfigureRow, expectedConfigurationTimes)
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath), expectedRowHeight, line: lineNumber)
+        XCTAssertEqual(cellConfiguratorFactory.numberOfTimesCalledToConfigureRow, expectedConfigurationTimes, line: lineNumber)
     }
     
     private func insert(newSections: [SectionDataAlias]) {
