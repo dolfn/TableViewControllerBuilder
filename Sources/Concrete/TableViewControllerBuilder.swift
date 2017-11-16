@@ -26,6 +26,9 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         self.viewModel = AnyTableViewModel(tableViewModel: viewModel)
         let cellConfiguratorSelector = CellConfiguratorSelector(configuratorFactory: cellConfiguratorFactory)
         self.cellConfiguratorSelector = cellConfiguratorSelector
+        let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
+        tableViewDataSource.updateData(cellsDisplayData: viewModel.justCellData)
+        anyTypeOfCellTableViewDataSource = tableViewDataSource
     }
     
     public func buildTableViewController() -> UIViewController {
@@ -35,18 +38,14 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         
         let tableViewController = AnyHeadersAndCellsTableViewController()
         usingTableViewController = tableViewController
-        
+        tableViewOperationsManager?.tableView = usingTableViewController?.getTableView()
         tableViewController.isScrollEnabled = viewModel.shouldBeScrollable
         
-        let tableViewDataSource = AnyTypeOfCellTableViewDataSource(rowsConfigurator: cellConfiguratorSelector)
-        tableViewDataSource.updateData(cellsDisplayData: viewModel.justCellData)
-        anyTypeOfCellTableViewDataSource = tableViewDataSource
-        
-        if let tableViewOperationsManager = tableViewOperationsManager {
-            addRowDataUpdatables(for: tableViewOperationsManager, updatable: tableViewDataSource)
+        if let tableViewOperationsManager = tableViewOperationsManager, let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
+            addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
         }
         
-        tableViewController.tableViewDataSource = tableViewDataSource
+        tableViewController.tableViewDataSource = anyTypeOfCellTableViewDataSource
         
         addHeadersInViewControllerIfNecessary()
         
@@ -54,10 +53,9 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     }
     
     public func buildTableViewModelDelegate() -> AnyTableViewModelDelegate<HeaderDisplayDataType, CellDisplayDataType>? {
-        if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource,
-            let usingTableViewController = usingTableViewController {
-            let tableView = usingTableViewController.getTableView()
-            let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(tableView: tableView, cellReconfigurator: anyTypeOfCellTableViewDataSource)
+        if let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
+            let tableViewOperationsManager = TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>(cellReconfigurator: anyTypeOfCellTableViewDataSource)
+            tableViewOperationsManager.tableView = usingTableViewController?.getTableView()
             self.tableViewOperationsManager = tableViewOperationsManager
             addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
             

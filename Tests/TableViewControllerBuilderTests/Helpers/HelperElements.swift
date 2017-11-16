@@ -47,8 +47,12 @@ struct TableViewModelStub: TableViewModel {
 class CellConfiguratorFactoryMock: CellConfiguratorFactory {
     typealias CellDisplayData = FakeCellDisplayData
     
+    var numberOfTimesCalledToConfigureRow = 0
+    
     func cellConfigurator(with cellDisplayData: FakeCellDisplayData) -> AnyClosureCellConfigurator<FakeCellDisplayData> {
-        let configurator = ClosureCellConfigurator { (cell: UITableViewCell, data: FakeCellDisplayData) in }
+        let configurator = ClosureCellConfigurator {[weak self] (cell: UITableViewCell, data: FakeCellDisplayData) in
+            self?.numberOfTimesCalledToConfigureRow += 1
+        }
         return AnyClosureCellConfigurator(base:configurator)
     }
 }

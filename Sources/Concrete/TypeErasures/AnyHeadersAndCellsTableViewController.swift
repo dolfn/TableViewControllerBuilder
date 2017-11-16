@@ -61,6 +61,7 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
         _tableView.rowHeight = UITableViewAutomaticDimension
         _tableView.translatesAutoresizingMaskIntoConstraints = false
         
+        view?.translatesAutoresizingMaskIntoConstraints = false
         view?.addSubview(_tableView)
         let viewsDictionary = ["tableView": _tableView]
         let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)

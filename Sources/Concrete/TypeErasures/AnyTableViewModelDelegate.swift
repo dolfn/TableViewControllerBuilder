@@ -15,13 +15,13 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
     
     fileprivate var didLoadInitialData: (AnyTableViewModel<H, R>) -> Void
     fileprivate var didUpdate: ([IndexPath], AnyTableViewModel<H, R>) -> Void
-    private var didReplace: ([IndexPath], AnyTableViewModel<H, R>) -> Void
-    private var didRemove: ([IndexPath], AnyTableViewModel<H, R>) -> Void
-    private var didInsertSections: ([Int], AnyTableViewModel<H, R>) -> Void
-    private var didRemoveSections: ([Int], AnyTableViewModel<H, R>) -> Void
-    private var didUpdateSection: (Int, AnyTableViewModel<H, R>) -> Void
+    private var didReplace: ([IndexPath], AnyTableViewModel<H, R>, Bool) -> Void
+    private var didRemove: ([IndexPath], AnyTableViewModel<H, R>, Bool) -> Void
+    private var didInsertSections: ([Int], AnyTableViewModel<H, R>, Bool) -> Void
+    private var didRemoveSections: ([Int], AnyTableViewModel<H, R>, Bool) -> Void
+    private var didUpdateSection: (Int, AnyTableViewModel<H, R>, Bool) -> Void
     private var didUpdateHeights: (AnyTableViewModel<H, R>) -> Void
-    private var didInsert: ([IndexPath], AnyTableViewModel<H, R>) -> Void
+    private var didInsert: ([IndexPath], AnyTableViewModel<H, R>, Bool) -> Void
     
     init<D: TableViewModelDelegate>(delegate: D) where D.HeaderDisplayDataType == H, D.CellDisplayDataType == R {
         didLoadInitialData = delegate.didLoadInitialData
@@ -43,32 +43,32 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
         didUpdateHeights(tableViewModel)
     }
     
-    public func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
-        didInsert(indexPaths, tableViewModel)
+    public func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didInsert(indexPaths, tableViewModel, animated)
     }
 
-    public func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
-        didReplace(indexPaths, tableViewModel)
+    public func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didReplace(indexPaths, tableViewModel, animated)
     }
     
     public func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
         didUpdate(indexPaths, tableViewModel)
     }
     
-    public func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
-        didRemove(indexPaths, tableViewModel)
+    public func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didRemove(indexPaths, tableViewModel, animated)
     }
     
-    public func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
-        didInsertSections(indexes, tableViewModel)
+    public func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didInsertSections(indexes, tableViewModel, animated)
     }
 
-    public func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>) {
-        didUpdateSection(index, tableViewModel)
+    public func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didUpdateSection(index, tableViewModel, animated)
     }
 
-    public func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
-        didRemoveSections(indexes, tableViewModel)
+    public func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didRemoveSections(indexes, tableViewModel, animated)
     }
     
 }
