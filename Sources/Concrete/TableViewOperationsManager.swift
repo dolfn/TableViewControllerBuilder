@@ -38,10 +38,11 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         self.tableView?.reloadData()
     }
     
-    func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>) {
+    func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         updateData(from: tableViewModel)
         let section = IndexSet(integer: index)
-        tableView?.reloadSections(section, with: .automatic)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        tableView?.reloadSections(section, with: rowAnimation)
     }
     
     func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
@@ -60,9 +61,10 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         }
     }
     
-    func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
+    func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         updateData(from: tableViewModel)
-        self.tableView?.reloadRows(at: indexPaths, with: .automatic)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        self.tableView?.reloadRows(at: indexPaths, with: rowAnimation)
     }
     
     func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {

@@ -76,7 +76,7 @@ class TableViewModelDelegateTests: XCTestCase {
     func test_WhenAddingModifyingASection_ItShouldHaveTheSameNumberOfSections() {
         let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
         
-        sut.didUpdateSection(at: 0, in: viewModel.erased)
+        sut.didUpdateSection(at: 0, in: viewModel.erased, animated: false)
         
         let numberOfSectionsAfterUpdate = tableView.dataSource?.numberOfSections?(in: tableView)
         XCTAssertEqual(initialNumberOfSections, numberOfSectionsAfterUpdate)
@@ -84,7 +84,7 @@ class TableViewModelDelegateTests: XCTestCase {
     
     func test_WhenAddingModifyingASection_ItShouldReflectTheChanges() {
         assertNewHeaderAndRowHeights(in: 0, with: {[weak self] in
-            self?.sut.didUpdateSection(at: 0, in: viewModel.erased)
+            self?.sut.didUpdateSection(at: 0, in: viewModel.erased, animated: false)
         })
     }
     
@@ -201,7 +201,7 @@ class TableViewModelDelegateTests: XCTestCase {
     func test_WhenReplacingAnItem_TableViewDoesntReplaceTheCellView() {
         let indexPath = IndexPath(row: 0, section: 0)
         let cellDescription = tableView.cellForRow(at: indexPath)?.description
-        sut.didReplace(itemsAt: [indexPath], in: viewModel.erased)
+        sut.didReplace(itemsAt: [indexPath], in: viewModel.erased, animated: false)
         let cellDescriptionAfterUpdate = tableView.cellForRow(at: indexPath)?.description
         XCTAssertNotEqual(cellDescription, cellDescriptionAfterUpdate)
     }
@@ -295,7 +295,7 @@ class TableViewModelDelegateTests: XCTestCase {
         
         switch operationType {
         case .replace:
-            sut.didReplace(itemsAt: [indexPath], in: viewModel.erased)
+            sut.didReplace(itemsAt: [indexPath], in: viewModel.erased, animated: false)
         case .update:
             sut.didUpdate(itemsAt: [indexPath], in: viewModel.erased)
         }
