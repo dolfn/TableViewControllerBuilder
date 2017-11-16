@@ -129,7 +129,7 @@ class TableViewModelDelegateTests: XCTestCase {
         let expectedNumberOfSections = 0
         
         viewModel.sectionsDisplayData.remove(at: 0)
-        sut.didRemoveSections(at: [0], in: viewModel.erased)
+        sut.didRemoveSections(at: [0], in: viewModel.erased, animated: false)
         let updatedNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
         
         XCTAssertEqual(expectedNumberOfSections, updatedNumberOfSections)
@@ -155,7 +155,7 @@ class TableViewModelDelegateTests: XCTestCase {
         sut.didLoadInitialData(in: viewModel.erased)
         
         viewModel.sectionsDisplayData.remove(at: 2)
-        sut.didRemoveSections(at: [2], in: viewModel.erased)
+        sut.didRemoveSections(at: [2], in: viewModel.erased, animated: false)
         
         let secondSectionRowIndexPath = IndexPath(row: 0, section: 1)
         let thirdSectionRowIndexPath = IndexPath(row: 0, section: 2)
