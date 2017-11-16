@@ -277,7 +277,7 @@ class TableViewModelDelegateTests: XCTestCase {
         let newSection = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: oldRows)
         
         viewModel.sectionsDisplayData[sectionIndex] = newSection.erased
-        sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased)
+        sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased, animated: false)
         
         let assertMessage = "Didn't insert row correctly"
         XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)

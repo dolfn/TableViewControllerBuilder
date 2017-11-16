@@ -21,7 +21,7 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
     private var didRemoveSections: ([Int], AnyTableViewModel<H, R>) -> Void
     private var didUpdateSection: (Int, AnyTableViewModel<H, R>) -> Void
     private var didUpdateHeights: (AnyTableViewModel<H, R>) -> Void
-    private var didInsert: ([IndexPath], AnyTableViewModel<H, R>) -> Void
+    private var didInsert: ([IndexPath], AnyTableViewModel<H, R>, Bool) -> Void
     
     init<D: TableViewModelDelegate>(delegate: D) where D.HeaderDisplayDataType == H, D.CellDisplayDataType == R {
         didLoadInitialData = delegate.didLoadInitialData
@@ -43,8 +43,8 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
         didUpdateHeights(tableViewModel)
     }
     
-    public func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
-        didInsert(indexPaths, tableViewModel)
+    public func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didInsert(indexPaths, tableViewModel, animated)
     }
 
     public func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {

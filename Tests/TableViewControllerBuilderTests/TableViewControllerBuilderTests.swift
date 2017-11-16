@@ -145,7 +145,7 @@ class TableViewControllerBuilderTests: XCTestCase {
         let newSection = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: oldRows)
         viewModel.sectionsDisplayData[indexPathToInsert.section] = newSection.erased
         
-        delegate?.didInsert(itemsAt: [indexPathToInsert], in: viewModel.erased)
+        delegate?.didInsert(itemsAt: [indexPathToInsert], in: viewModel.erased, animated: false)
         XCTAssertTrue(dataSourceSpy.didTryToConfigureCell)
     }
     

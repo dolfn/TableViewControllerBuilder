@@ -84,9 +84,10 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         tableView?.endUpdates()
     }
     
-    func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
+    func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         updateData(from: tableViewModel)
-        self.tableView?.insertRows(at: indexPaths, with: .automatic)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        self.tableView?.insertRows(at: indexPaths, with: rowAnimation)
     }
 
 }
