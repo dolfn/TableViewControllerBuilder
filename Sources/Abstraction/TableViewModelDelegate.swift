@@ -16,7 +16,7 @@ public protocol TableViewModelDelegate {
 
     func didLoadInitialData(in tableViewModel: AnyTableViewModelType)
     func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType, animated: Bool)
-    func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModelType)
+    func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModelType, animated: Bool)
     func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)
     func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModelType)
     func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType)

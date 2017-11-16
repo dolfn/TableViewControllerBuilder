@@ -57,7 +57,7 @@ class TableViewModelDelegateTests: XCTestCase {
         let newSection = getNewSection(headerHeight: 5)
         viewModel.sectionsDisplayData.append(newSection)
         addHeadersToTableView()
-        sut.didInsertSections(at: [1], in: viewModel.erased)
+        sut.didInsertSections(at: [1], in: viewModel.erased, animated: false)
         guard let heightOfTheHeader = tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 1) else {
             XCTFail("Should be able to return height of the header");
             return
@@ -68,7 +68,7 @@ class TableViewModelDelegateTests: XCTestCase {
     func test_AddingHeadersAfterInsertingNewSection_ShouldDisplayTheCorrectNumberOfSections() {
         let newSection = getNewSection(headerHeight: 5)
         viewModel.sectionsDisplayData.append(newSection)
-        sut.didInsertSections(at: [1], in: viewModel.erased)
+        sut.didInsertSections(at: [1], in: viewModel.erased, animated: false)
         addHeadersToTableView()
         XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 1))
     }
@@ -312,7 +312,7 @@ class TableViewModelDelegateTests: XCTestCase {
             startingIndex += 1;
             return startingIndex
         }
-        sut.didInsertSections(at: indexesInserted, in: viewModel.erased)
+        sut.didInsertSections(at: indexesInserted, in: viewModel.erased, animated: false)
     }
     
     private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0) -> SectionDataAlias {

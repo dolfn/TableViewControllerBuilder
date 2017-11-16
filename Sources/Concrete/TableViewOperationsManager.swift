@@ -64,11 +64,12 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         self.tableView?.reloadRows(at: indexPaths, with: .automatic)
     }
     
-    func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
+    func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         updateData(from: tableViewModel)
         let indexSet = NSMutableIndexSet()
         indexes.forEach(indexSet.add)
-        self.tableView?.insertSections(indexSet as IndexSet, with: .automatic)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        self.tableView?.insertSections(indexSet as IndexSet, with: rowAnimation)
     }
     
     func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {

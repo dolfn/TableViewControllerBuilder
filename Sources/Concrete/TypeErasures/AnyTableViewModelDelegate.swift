@@ -17,7 +17,7 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
     fileprivate var didUpdate: ([IndexPath], AnyTableViewModel<H, R>) -> Void
     private var didReplace: ([IndexPath], AnyTableViewModel<H, R>) -> Void
     private var didRemove: ([IndexPath], AnyTableViewModel<H, R>) -> Void
-    private var didInsertSections: ([Int], AnyTableViewModel<H, R>) -> Void
+    private var didInsertSections: ([Int], AnyTableViewModel<H, R>, Bool) -> Void
     private var didRemoveSections: ([Int], AnyTableViewModel<H, R>) -> Void
     private var didUpdateSection: (Int, AnyTableViewModel<H, R>) -> Void
     private var didUpdateHeights: (AnyTableViewModel<H, R>) -> Void
@@ -59,8 +59,8 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
         didRemove(indexPaths, tableViewModel)
     }
     
-    public func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>) {
-        didInsertSections(indexes, tableViewModel)
+    public func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
+        didInsertSections(indexes, tableViewModel, animated)
     }
 
     public func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>) {
