@@ -44,9 +44,10 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         tableView?.reloadSections(section, with: .automatic)
     }
     
-    func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
+    func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         updateData(from: tableViewModel)
-        tableView?.deleteRows(at: indexPaths, with: .automatic)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        tableView?.deleteRows(at: indexPaths, with: rowAnimation)
     }
     
     func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
