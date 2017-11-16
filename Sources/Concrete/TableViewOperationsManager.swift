@@ -15,14 +15,13 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     typealias CellDisplayDataType = R
     
     weak var tableView: UITableView?
-    weak var cellReconfigurator: CellReconfigurator?
+    private weak var cellReconfigurator: CellReconfigurator?
     
     var rowDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var rowHeightsDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var headerDataUpdatable: AnyHeaderDisplayDataUpdatable<H>?
     
-    init(tableView: UITableView, cellReconfigurator: CellReconfigurator) {
-        self.tableView = tableView
+    init(cellReconfigurator: CellReconfigurator) {
         self.cellReconfigurator = cellReconfigurator
     }
     

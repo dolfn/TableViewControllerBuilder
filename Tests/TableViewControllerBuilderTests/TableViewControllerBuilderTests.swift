@@ -111,10 +111,10 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotEqual(address, address2, "The table view builder should create another view controller, when the old one is destroyed")
     }
     
-    func test_BeforeCreatingATableViewController_CantCreateADelegate() {
+    func test_BeforeCreatingATableViewController_ShouldCreateADelegate() {
         let delegate = sut.buildTableViewModelDelegate()
         
-        XCTAssertNil(delegate, "The table view builder shouldn't create a view model delegate, if a table view controller was not created yet")
+        XCTAssertNotNil(delegate, "The table view builder shouldn't create a view model delegate, if a table view controller was not created yet")
     }
     
     func test_AfterCreatingATableViewController_ShouldBeAbleToCreateADelegate() {
@@ -126,13 +126,36 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(delegate, "The table view builder should create a view model delegate, if a table view controller was created")
     }
     
-    func test_AfterDistroyingVC_DelegateShouldNotBeCreated() {
-        var vc: UIViewController? = sut.buildTableViewController()
-        fakeUse(vc: vc)
-        var delegate = sut.buildTableViewModelDelegate()
-        vc = nil
-        delegate = sut.buildTableViewModelDelegate()
-        XCTAssertNil(delegate)
+    func test_BeforeCreatingVC_ShouldBeAbleToCreateTableViewModelDelegate() {
+        let delegate = sut.buildTableViewModelDelegate()
+        XCTAssertNotNil(delegate)
+    }
+    
+    func test_AfterGettingAViewModelDelegate_ItShouldUpdateTheTableView() {
+        let delegate = sut.buildTableViewModelDelegate()
+        let tableView = firstView() as! UITableView
+        let dataSourceSpy = TableViewDataSourceSpy(numberOfRowsInFirstSection: 2)
+        tableView.dataSource = dataSourceSpy
+        let indexPathToInsert = IndexPath(row: 1, section: 0)
+        
+        //insert row in view model's section
+        var oldRows = viewModel.sectionsDisplayData[indexPathToInsert.section].sectionRowsData
+        let rowDisplayData = FakeCellDisplayData()
+        oldRows.insert(rowDisplayData, at: indexPathToInsert.row)
+        let newSection = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: oldRows)
+        viewModel.sectionsDisplayData[indexPathToInsert.section] = newSection.erased
+        
+        delegate?.didInsert(itemsAt: [indexPathToInsert], in: viewModel.erased)
+        XCTAssertTrue(dataSourceSpy.didTryToConfigureCell)
+    }
+    
+    func test_AfterAddingCellEventsHandler_ItShouldCallHandler() {
+        let cellEventsHandler = CellEventsHandlerSpy()
+        sut.addEventsHandler(handler: cellEventsHandler)
+        let tableView = firstView() as! UITableView
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.delegate?.tableView?(tableView, didSelectRowAt: indexPath)
+        XCTAssertTrue(cellEventsHandler.didSelectCell)
     }
     
     private func addHeadersToTableView() {
@@ -145,4 +168,35 @@ class TableViewControllerBuilderTests: XCTestCase {
     }
     
     private func fakeUse(vc: Any?) {}
+}
+
+extension TableViewControllerBuilderTests {
+    class CellEventsHandlerSpy: CellEventsDelegate {
+        
+        typealias CellDisplayDataType = FakeCellDisplayData
+        
+        var didSelectCell = false
+        
+        func didSelect(cellWith displayData: FakeCellDisplayData) {
+            didSelectCell = true
+        }
+    }
+    
+    class TableViewDataSourceSpy: NSObject, UITableViewDataSource {
+        
+        var didTryToConfigureCell = false
+        private let numberOfRowsInFirstSection: Int
+        init(numberOfRowsInFirstSection: Int) {
+            self.numberOfRowsInFirstSection = numberOfRowsInFirstSection
+        }
+        
+        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return numberOfRowsInFirstSection
+        }
+        
+        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            didTryToConfigureCell = true
+            return UITableViewCell()
+        }
+    }
 }
