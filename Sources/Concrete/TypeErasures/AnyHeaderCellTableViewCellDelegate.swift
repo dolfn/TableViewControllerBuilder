@@ -62,6 +62,12 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
         return CGFloat(rowHeightProvider.height)
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let rowEstimatedHeightProviderInSection = rowHeightProviders[indexPath.section]
+        let rowEstimatedHeightProvider = rowEstimatedHeightProviderInSection[indexPath.row]
+        return CGFloat(rowEstimatedHeightProvider.estimatedHeight)
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rowHeightProviderInSection = rowHeightProviders[indexPath.section]
         let displayData = rowHeightProviderInSection[indexPath.row]

@@ -107,6 +107,19 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(expectedRowHeight, rowHeightToEvaluate)
     }
     
+    func test_LoadingInitialDataWithCorrectRowEstimatedHeight() {
+        let expectedRowEstimatedHeight = CGFloat(50)
+        
+        existingViewModelSection.sectionRowsData[0].estimatedHeight = expectedRowEstimatedHeight
+        viewModel.sectionsDisplayData[0] = existingViewModelSection
+        sut.didLoadInitialData(in: viewModel.erased)
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        let rowEstimatedHeightToEvaluate = tableView.delegate?.tableView?(tableView, estimatedHeightForRowAt: indexPath)
+        
+        XCTAssertEqual(expectedRowEstimatedHeight, rowEstimatedHeightToEvaluate)
+    }
+    
     func test_LoadingInitialDataWithCorrectNumberOfRowsForEachSection() {
         var section = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [])
         viewModel.sectionsDisplayData.append(section.erased)
@@ -328,13 +341,14 @@ class TableViewModelDelegateTests: XCTestCase {
         sut.didInsertSections(at: indexesInserted, in: viewModel.erased, animated: false)
     }
     
-    private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0) -> SectionDataAlias {
+    private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0, estimatedRowHeight: CGFloat = 0) -> SectionDataAlias {
         let newHeader = FakeHeaderDisplayData()
         newHeader.height = headerHeight
         var rows = [FakeCellDisplayData]()
         (0..<numberOfRows).forEach { (_) in
             let row = FakeCellDisplayData()
             row.height = rowHeight
+            row.estimatedHeight = estimatedRowHeight
             rows.append(row)
         }
         let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: rows)

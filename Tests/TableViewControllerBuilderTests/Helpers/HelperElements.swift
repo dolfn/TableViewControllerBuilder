@@ -15,9 +15,11 @@ typealias SectionDataAlias = AnySectionDisplayData<FakeHeaderDisplayData, FakeCe
 
 class FakeHeaderDisplayData: HeightFlexible {
     var height: CGFloat = 0
+    var estimatedHeight: CGFloat = 0
 }
 class FakeCellDisplayData: HeightFlexible {
     var height: CGFloat = 0
+    var estimatedHeight: CGFloat = 0
 }
 
 struct SectionDisplayDataStub: SectionDisplayData {

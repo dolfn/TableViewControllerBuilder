@@ -10,4 +10,5 @@ import UIKit
 
 public protocol HeightFlexible {
     var height: CGFloat { get }
+    var estimatedHeight: CGFloat { get }
 }
