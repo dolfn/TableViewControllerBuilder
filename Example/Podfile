@@ -1,0 +1,9 @@
+source 'https://github.com/dolfn/Specs'
+
+platform :ios, '8.0'
+
+target 'TableViewControllerBuilderExample' do
+    inhibit_all_warnings!
+    use_frameworks!
+    pod 'TableViewControllerBuilder', '~> 0.1'
+end
