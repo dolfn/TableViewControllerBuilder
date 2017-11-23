@@ -9,7 +9,7 @@
 import Foundation
 
 public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
-    
+
     public typealias HeaderDisplayDataType = H
     public typealias CellDisplayDataType = R
     
@@ -22,6 +22,7 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
     private var didUpdateSection: (Int, AnyTableViewModel<H, R>, Bool) -> Void
     private var didUpdateHeights: (AnyTableViewModel<H, R>) -> Void
     private var didInsert: ([IndexPath], AnyTableViewModel<H, R>, Bool) -> Void
+    private var scrollTo: (IndexPath, Bool) -> Void
     
     init<D: TableViewModelDelegate>(delegate: D) where D.HeaderDisplayDataType == H, D.CellDisplayDataType == R {
         didLoadInitialData = delegate.didLoadInitialData
@@ -33,6 +34,7 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
         didRemoveSections = delegate.didRemoveSections
         didUpdateHeights = delegate.didUpdateHeights
         didInsert = delegate.didInsert
+        scrollTo = delegate.scrollTo
     }
     
     public func didLoadInitialData(in tableViewModel: AnyTableViewModel<H, R>) {
@@ -69,6 +71,10 @@ public struct AnyTableViewModelDelegate<H, R>: TableViewModelDelegate {
 
     public func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
         didRemoveSections(indexes, tableViewModel, animated)
+    }
+    
+    public func scrollTo(indexPath: IndexPath, animated: Bool) {
+        scrollTo(indexPath, animated)
     }
     
 }

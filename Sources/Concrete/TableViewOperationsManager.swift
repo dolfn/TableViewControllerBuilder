@@ -94,5 +94,9 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
         self.tableView?.insertRows(at: indexPaths, with: rowAnimation)
     }
+    
+    func scrollTo(indexPath: IndexPath, animated: Bool) {
+        tableView?.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+    }
 
 }
