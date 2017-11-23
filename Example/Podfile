@@ -5,5 +5,5 @@ platform :ios, '8.0'
 target 'TableViewControllerBuilderExample' do
     inhibit_all_warnings!
     use_frameworks!
-    pod 'TableViewControllerBuilder', '~> 0.1'
+    pod 'TableViewControllerBuilder', '~> 0.2'
 end
