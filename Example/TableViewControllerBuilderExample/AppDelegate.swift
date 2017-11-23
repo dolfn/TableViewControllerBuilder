@@ -13,10 +13,12 @@ import TableViewControllerBuilder
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var tableViewModel: ExampleTableViewModel?
     
     func applicationDidFinishLaunching(_ application: UIApplication) {
         
         let tableViewModel = ExampleTableViewModel()
+        self.tableViewModel = tableViewModel
         let cellConfiguratorFactory = ExampleCellsConfiguratorFactory()
         let headerConfiguratorFactory = ExampleHeaderConfiguratorFactory()
         
@@ -24,6 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tableViewControllerBuilder.addHeaders(with: headerConfiguratorFactory, from: tableViewModel)
         
         let tableViewController = tableViewControllerBuilder.buildTableViewController()
+        
+        let tableViewModelDelegate = tableViewControllerBuilder.buildTableViewModelDelegate()
+        tableViewModel.tableViewModelDelegate = tableViewModelDelegate
+        tableViewModel.scrollToExampleRow()
+        
         window?.rootViewController = tableViewController
     }
 }

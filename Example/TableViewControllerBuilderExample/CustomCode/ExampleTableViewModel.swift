@@ -18,6 +18,7 @@ class ExampleTableViewModel: TableViewModel {
     
     var sectionsDisplayData: [SectionDisplayDataAlias]
     var shouldBeScrollable = true
+    var tableViewModelDelegate: AnyTableViewModelDelegate<SectionHeaderType, ExampleCellDisplayDataType>?
     
     init() {
         sectionsDisplayData = (0...4).map { (sectionIndex) -> SectionDisplayDataAlias in
@@ -42,6 +43,13 @@ class ExampleTableViewModel: TableViewModel {
             let sectionDisplayData = ExampleSectionDisplayData(headerDisplayData: headerDisplayData, sectionRowsData: rowsDisplayData)
             let erasedSectionsDisplayData = AnySectionDisplayData(sectionDisplayData: sectionDisplayData)
             return erasedSectionsDisplayData
+        }
+    }
+    
+    func scrollToExampleRow() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {[weak self] in
+            let indexPath = IndexPath(row: 3, section: 3)
+            self?.tableViewModelDelegate?.scrollTo(indexPath: indexPath, animated: true)
         }
     }
 }
