@@ -23,4 +23,6 @@ public protocol TableViewModelDelegate {
     func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModelType, animated: Bool)
     func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModelType, animated: Bool)
     func didUpdateHeights(in tableViewModel: AnyTableViewModelType)
+    func scrollTo(indexPath: IndexPath, animated: Bool)
+    
 }

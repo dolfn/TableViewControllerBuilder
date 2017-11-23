@@ -239,6 +239,19 @@ class TableViewModelDelegateTests: XCTestCase {
         XCTAssertEqual(tableView.numberOfRows(inSection: 1), 4)
     }
     
+    func test_WhenCallScrollTo_ShouldScrollToCell() {
+        let section = getNewSection(headerHeight: 0, numberOfRows: 5, rowHeight: 500)
+        tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 600)
+        insert(newSections: [section])
+        let indexPath = IndexPath(row: 4, section: 1)
+        sut.scrollTo(indexPath: indexPath, animated: false)
+        if let indexPathsForVisibleRows = tableView.indexPathsForVisibleRows {
+            XCTAssertTrue(indexPathsForVisibleRows.contains(indexPath))
+        } else {
+            XCTFail()
+        }
+    }
+    
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
@@ -248,7 +261,7 @@ class TableViewModelDelegateTests: XCTestCase {
         viewModel.sectionsDisplayData[0] = existingViewModelSection
         delegateCall()
         addHeadersToTableView()
-        
+        tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         let headerHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         let rowHeightAfterUpdate = tableView.delegate?.tableView?(tableView, heightForRowAt: indexPath)
@@ -321,6 +334,7 @@ class TableViewModelDelegateTests: XCTestCase {
         var rows = [FakeCellDisplayData]()
         (0..<numberOfRows).forEach { (_) in
             let row = FakeCellDisplayData()
+            row.height = rowHeight
             rows.append(row)
         }
         let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: rows)
