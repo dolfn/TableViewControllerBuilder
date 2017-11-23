@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public class AnyTableViewModel<H, R>: TableViewModel {
     
@@ -24,11 +25,19 @@ public class AnyTableViewModel<H, R>: TableViewModel {
         }
     }
     
+    public var edgeInsets: UIEdgeInsets {
+        get {
+            return _edgeInsets
+        }
+    }
+    
     let _sectionsDisplayData: [AnySectionDisplayData<H, R>]
     let _shouldBeScrollable: Bool
+    let _edgeInsets: UIEdgeInsets
     
     init<TableViewModelType: TableViewModel>(tableViewModel: TableViewModelType) where TableViewModelType.HeaderDisplayDataType == H, TableViewModelType.CellDisplayDataType == R {
         _sectionsDisplayData = tableViewModel.sectionsDisplayData
         _shouldBeScrollable = tableViewModel.shouldBeScrollable
+        _edgeInsets = tableViewModel.edgeInsets
     }
 }

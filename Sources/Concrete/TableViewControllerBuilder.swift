@@ -40,6 +40,7 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         usingTableViewController = tableViewController
         tableViewOperationsManager?.tableView = usingTableViewController?.getTableView()
         tableViewController.isScrollEnabled = viewModel.shouldBeScrollable
+        tableViewOperationsManager?.tableView?.contentInset = viewModel.edgeInsets
         
         if let tableViewOperationsManager = tableViewOperationsManager, let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
             addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)

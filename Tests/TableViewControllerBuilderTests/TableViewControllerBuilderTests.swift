@@ -19,6 +19,8 @@ class TableViewControllerBuilderTests: XCTestCase {
         
         let cellConfiguratorFactory = CellConfiguratorFactoryMock()
         viewModel = TableViewModelStub()
+        let expectedEdgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+        viewModel.edgeInsets = expectedEdgeInsets
         sut = TableViewControllerBuilder(viewModel: viewModel, cellConfiguratorFactory: cellConfiguratorFactory)
     }
     
@@ -124,6 +126,12 @@ class TableViewControllerBuilderTests: XCTestCase {
         let delegate = sut.buildTableViewModelDelegate()
         
         XCTAssertNotNil(delegate, "The table view builder should create a view model delegate, if a table view controller was created")
+    }
+    
+    func test_WhenCreatingVC_ShouldHaveContentInsets() {
+        let _ = sut.buildTableViewModelDelegate()
+        let tableView = firstView() as! UITableView
+        XCTAssertEqual(tableView.contentInset, UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0))
     }
     
     func test_BeforeCreatingVC_ShouldBeAbleToCreateTableViewModelDelegate() {
