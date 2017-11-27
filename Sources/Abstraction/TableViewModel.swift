@@ -17,6 +17,7 @@ public protocol TableViewModel {
     var shouldBeScrollable: Bool { get }
     var sectionsDisplayData: [SectionDisplayDataType] { get }
     var edgeInsets: UIEdgeInsets { get }
+    var backgroundColor: UIColor? { get }
 }
 
 extension TableViewModel {

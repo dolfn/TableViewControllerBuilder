@@ -37,6 +37,11 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
             tryToSetContentInsets()
         }
     }
+    internal var backgroundColor: UIColor? {
+        didSet {
+            view.backgroundColor = backgroundColor
+        }
+    }
     
     private weak var _tableView: UITableView?
     private var temporaryStrongTableView: UITableView?
@@ -59,6 +64,7 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
             return
         }
         tryToSetContentInsets()
+        view.backgroundColor = backgroundColor
         _tableView.separatorStyle = .none
         _tableView.dataSource = tableViewDataSource
         _tableView.delegate = tableViewDelegate

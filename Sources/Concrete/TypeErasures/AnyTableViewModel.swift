@@ -30,14 +30,21 @@ public class AnyTableViewModel<H, R>: TableViewModel {
             return _edgeInsets
         }
     }
+    public var backgroundColor: UIColor? {
+        get {
+            return _backgroundColor
+        }
+    }
     
     let _sectionsDisplayData: [AnySectionDisplayData<H, R>]
     let _shouldBeScrollable: Bool
     let _edgeInsets: UIEdgeInsets
+    let _backgroundColor: UIColor?
     
     init<TableViewModelType: TableViewModel>(tableViewModel: TableViewModelType) where TableViewModelType.HeaderDisplayDataType == H, TableViewModelType.CellDisplayDataType == R {
         _sectionsDisplayData = tableViewModel.sectionsDisplayData
         _shouldBeScrollable = tableViewModel.shouldBeScrollable
         _edgeInsets = tableViewModel.edgeInsets
+        _backgroundColor = tableViewModel.backgroundColor
     }
 }

@@ -163,6 +163,11 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertTrue(cellEventsHandler.didSelectCell)
     }
     
+    func test_ToSetBackgroundColorFromViewModel() {
+        let viewController = sut.buildTableViewController()
+        XCTAssertEqual(viewController.view.backgroundColor, viewModel.backgroundColor)
+    }
+    
     private func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         sut.addHeaders(with: headerConfiguratorFactory, from: viewModel)
