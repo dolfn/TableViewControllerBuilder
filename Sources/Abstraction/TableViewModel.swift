@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public protocol TableViewModel {
     associatedtype HeaderDisplayDataType
@@ -15,6 +16,7 @@ public protocol TableViewModel {
     typealias SectionDisplayDataType = AnySectionDisplayData<HeaderDisplayDataType, CellDisplayDataType>
     var shouldBeScrollable: Bool { get }
     var sectionsDisplayData: [SectionDisplayDataType] { get }
+    var edgeInsets: UIEdgeInsets { get }
 }
 
 extension TableViewModel {

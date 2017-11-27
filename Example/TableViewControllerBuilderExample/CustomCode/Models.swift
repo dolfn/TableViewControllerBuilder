@@ -29,6 +29,11 @@ enum ExampleCellDisplayDataType {
 }
 
 extension ExampleCellDisplayDataType: HeightFlexible {
+    var estimatedHeight: CGFloat {
+        get {
+            return self.height
+        }
+    }
     var height: CGFloat {
         switch self {
         case .Complex: return 60
@@ -55,6 +60,11 @@ enum SectionHeaderType {
 }
 
 extension SectionHeaderType: HeightFlexible {
+    var estimatedHeight: CGFloat {
+        get {
+            return self.height
+        }
+    }
     var height: CGFloat {
         switch self {
         case .ColoredHeader: return 50

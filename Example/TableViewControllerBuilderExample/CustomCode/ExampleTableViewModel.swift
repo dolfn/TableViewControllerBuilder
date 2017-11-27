@@ -19,6 +19,7 @@ class ExampleTableViewModel: TableViewModel {
     var sectionsDisplayData: [SectionDisplayDataAlias]
     var shouldBeScrollable = true
     var tableViewModelDelegate: AnyTableViewModelDelegate<SectionHeaderType, ExampleCellDisplayDataType>?
+    var edgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     
     init() {
         sectionsDisplayData = (0...4).map { (sectionIndex) -> SectionDisplayDataAlias in

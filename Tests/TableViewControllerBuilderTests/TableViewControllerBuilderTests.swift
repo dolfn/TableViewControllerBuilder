@@ -126,6 +126,11 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertNotNil(delegate, "The table view builder should create a view model delegate, if a table view controller was created")
     }
     
+    func test_WhenCreatingVC_ShouldHaveContentInsets() {
+        let tableView = firstView() as! UITableView
+        XCTAssertEqual(tableView.contentInset, viewModel.edgeInsets)
+    }
+    
     func test_BeforeCreatingVC_ShouldBeAbleToCreateTableViewModelDelegate() {
         let delegate = sut.buildTableViewModelDelegate()
         XCTAssertNotNil(delegate)

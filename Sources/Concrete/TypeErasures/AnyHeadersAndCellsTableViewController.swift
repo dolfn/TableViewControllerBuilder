@@ -32,6 +32,11 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
             temporaryStrongTableView?.isScrollEnabled = isScrollEnabled
         }
     }
+    internal var contentInset: UIEdgeInsets? {
+        didSet {
+            tryToSetContentInsets()
+        }
+    }
     
     private weak var _tableView: UITableView?
     private var temporaryStrongTableView: UITableView?
@@ -53,7 +58,7 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
         guard let _tableView = _tableView else {
             return
         }
-        
+        tryToSetContentInsets()
         _tableView.separatorStyle = .none
         _tableView.dataSource = tableViewDataSource
         _tableView.delegate = tableViewDelegate
@@ -77,6 +82,13 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
         }
         else {
             return temporaryStrongTableView!
+        }
+    }
+    
+    private func tryToSetContentInsets() {
+        if let contentInset = contentInset {
+            _tableView?.contentInset = contentInset
+            temporaryStrongTableView?.contentInset = contentInset
         }
     }
 }
