@@ -35,14 +35,13 @@ struct TableViewModelStub: TableViewModel {
     
     var shouldBeScrollable: Bool = false
     var sectionsDisplayData: [SectionDataAlias]
-    var edgeInsets: UIEdgeInsets
+    var edgeInsets: UIEdgeInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     
     init() {
         let headerDisplayData = FakeHeaderDisplayData()
         let rowDisplayData = FakeCellDisplayData()
         let section = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [rowDisplayData])
         sectionsDisplayData = [section.erased]
-        edgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
 
