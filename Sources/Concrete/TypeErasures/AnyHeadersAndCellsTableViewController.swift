@@ -68,9 +68,9 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
         
         view?.translatesAutoresizingMaskIntoConstraints = false
         view?.addSubview(_tableView)
-        let viewsDictionary = ["tableView": _tableView]
+        let viewsDictionary: [String: Any] = ["tableView": _tableView, "topLayoutGuide": topLayoutGuide]
         let hConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
-        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
+        let vConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[topLayoutGuide]-0-[tableView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: viewsDictionary)
         view?.addConstraints(hConstraints)
         view?.addConstraints(vConstraints)
         _tableView.reloadData()
