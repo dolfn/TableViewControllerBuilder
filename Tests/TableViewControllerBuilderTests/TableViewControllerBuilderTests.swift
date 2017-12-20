@@ -1,8 +1,5 @@
 //
 //  TableViewControllerBuilderTests.swift
-//  TableViewControllerBuilderTests
-//
-//  Created by Corneliu on 14/04/2017.
 //  Copyright © 2017 Dolfn. All rights reserved.
 //
 

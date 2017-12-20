@@ -1,8 +1,5 @@
 //
 //  HelperElements.swift
-//  TableViewControllerBuilderTests
-//
-//  Created by Corneliu on 06/11/2017.
 //  Copyright © 2017 Dolfn. All rights reserved.
 //
 
