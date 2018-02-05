@@ -36,16 +36,16 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     }
     
     func didUpdateSection(at index: Int, in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let section = IndexSet(integer: index)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        tableView?.reloadSections(section, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            let section = IndexSet(integer: index)
+            self?.tableView?.reloadSections(section, with: rowAnimation)
+        }
     }
     
     func didRemove(itemsFrom indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        tableView?.deleteRows(at: indexPaths, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            self?.tableView?.deleteRows(at: indexPaths, with: rowAnimation)
+        }
     }
     
     func didUpdate(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>) {
@@ -59,25 +59,26 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     }
     
     func didReplace(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        self.tableView?.reloadRows(at: indexPaths, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            self?.tableView?.reloadRows(at: indexPaths, with: rowAnimation)
+        }
     }
     
     func didInsertSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let indexSet = NSMutableIndexSet()
-        indexes.forEach(indexSet.add)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        self.tableView?.insertSections(indexSet as IndexSet, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            let indexSet = NSMutableIndexSet()
+            indexes.forEach(indexSet.add)
+            self?.tableView?.insertSections(indexSet as IndexSet, with: rowAnimation)
+        }
+        
     }
     
     func didRemoveSections(at indexes: [Int], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let indexSet = NSMutableIndexSet()
-        indexes.forEach(indexSet.add)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        self.tableView?.deleteSections(indexSet as IndexSet, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            let indexSet = NSMutableIndexSet()
+            indexes.forEach(indexSet.add)
+            self?.tableView?.deleteSections(indexSet as IndexSet, with: rowAnimation)
+        }
     }
     
     func didUpdateHeights(in tableViewModel: AnyTableViewModelType) {
@@ -87,13 +88,21 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     }
     
     func didInsert(itemsAt indexPaths: [IndexPath], in tableViewModel: AnyTableViewModel<H, R>, animated: Bool) {
-        updateData(from: tableViewModel)
-        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
-        self.tableView?.insertRows(at: indexPaths, with: rowAnimation)
+        prepareTableView(tableViewModel: tableViewModel, animated: animated) { [weak self] (rowAnimation) in
+            self?.tableView?.insertRows(at: indexPaths, with: rowAnimation)
+        }
     }
     
     func scrollTo(indexPath: IndexPath, animated: Bool) {
         tableView?.scrollToRow(at: indexPath, at: .bottom, animated: animated)
     }
-
+    
+    private func prepareTableView(tableViewModel: AnyTableViewModel<H, R>, animated: Bool, completion: @escaping (_ rowAnimation: UITableViewRowAnimation) -> Void) {
+        updateData(from: tableViewModel)
+        let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
+        UIView.setAnimationsEnabled(false)
+        completion(rowAnimation)
+        UIView.setAnimationsEnabled(true)
+    }
+    
 }
