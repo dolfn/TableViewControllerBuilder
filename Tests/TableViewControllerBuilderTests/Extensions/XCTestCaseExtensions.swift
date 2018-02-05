@@ -1,8 +1,5 @@
 //
-//  XCTestCaseExtensions.swift
-//  TableViewControllerBuilder-iOS
-//
-//  Created by Andrei Nastasiu on 05/02/2018.
+//  TableViewModelDelegateTests.swift
 //  Copyright © 2018 Dolfn. All rights reserved.
 //
 
