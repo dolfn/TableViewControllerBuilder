@@ -101,7 +101,9 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
         updateData(from: tableViewModel)
         let rowAnimation = animated ? UITableViewRowAnimation.automatic : .none
         UIView.setAnimationsEnabled(false)
+        tableView?.beginUpdates()
         completion(rowAnimation)
+        tableView?.endUpdates()
         UIView.setAnimationsEnabled(true)
     }
     
