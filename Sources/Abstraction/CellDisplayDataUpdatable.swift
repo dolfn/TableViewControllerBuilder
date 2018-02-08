@@ -7,5 +7,6 @@ import Foundation
 
 protocol CellDisplayDataUpdatable {
     associatedtype CellDisplayDataToUpdateWith
+    
     func updateData(cellsDisplayData: [[CellDisplayDataToUpdateWith]])
 }

@@ -161,34 +161,3 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     private func fakeUse(vc: Any?) {}
 }
-
-extension TableViewControllerBuilderTests {
-    class CellEventsHandlerSpy: CellEventsDelegate {
-        
-        typealias CellDisplayDataType = FakeCellDisplayData
-        
-        var didSelectCell = false
-        
-        func didSelect(cellWith displayData: FakeCellDisplayData) {
-            didSelectCell = true
-        }
-    }
-    
-    class TableViewDataSourceSpy: NSObject, UITableViewDataSource {
-        
-        var didTryToConfigureCell = false
-        private let numberOfRowsInFirstSection: Int
-        init(numberOfRowsInFirstSection: Int) {
-            self.numberOfRowsInFirstSection = numberOfRowsInFirstSection
-        }
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return numberOfRowsInFirstSection
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            didTryToConfigureCell = true
-            return UITableViewCell()
-        }
-    }
-}

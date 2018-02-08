@@ -11,12 +11,12 @@ class TableViewOperationsManager<H, R: HeightFlexible>: TableViewModelDelegate {
     typealias HeaderDisplayDataType = H
     typealias CellDisplayDataType = R
     
-    weak var tableView: UITableView?
-    private weak var cellReconfigurator: CellReconfigurator?
-    
     var rowDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var rowHeightsDataUpdatable: AnyCellDisplayDataUpdatable<R>?
     var headerDataUpdatable: AnyHeaderDisplayDataUpdatable<H>?
+    
+    weak var tableView: UITableView?
+    private weak var cellReconfigurator: CellReconfigurator?
     
     init(cellReconfigurator: CellReconfigurator) {
         self.cellReconfigurator = cellReconfigurator

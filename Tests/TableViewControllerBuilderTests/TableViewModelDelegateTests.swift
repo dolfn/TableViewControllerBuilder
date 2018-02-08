@@ -357,9 +357,3 @@ class TableViewModelDelegateTests: XCTestCase {
         tableViewBuilder.addHeaders(with: headerConfiguratorFactory, from: viewModel)
     }
 }
-
-extension TableViewModelDelegateTests {
-    enum RowOperationType {
-        case update, replace
-    }
-}

@@ -7,5 +7,6 @@ import Foundation
 
 public protocol CellEventsDelegate {
     associatedtype CellDisplayDataType
+    
     func didSelect(cellWith displayData: CellDisplayDataType)
 }

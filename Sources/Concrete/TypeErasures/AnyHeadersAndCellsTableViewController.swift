@@ -15,6 +15,7 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
             temporaryStrongTableView?.reloadData()
         }
     }
+    
     internal var tableViewDelegate: UITableViewDelegate? {
         didSet {
             _tableView?.delegate = tableViewDelegate
@@ -23,17 +24,20 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
             temporaryStrongTableView?.reloadData()
         }
     }
+    
     internal var isScrollEnabled: Bool = true {
         didSet {
             _tableView?.isScrollEnabled = isScrollEnabled
             temporaryStrongTableView?.isScrollEnabled = isScrollEnabled
         }
     }
+    
     internal var contentInset: UIEdgeInsets? {
         didSet {
             tryToSetContentInsets()
         }
     }
+    
     internal var backgroundColor: UIColor? {
         didSet {
             view.backgroundColor = backgroundColor

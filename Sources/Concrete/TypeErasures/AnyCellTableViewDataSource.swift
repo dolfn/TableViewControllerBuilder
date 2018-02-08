@@ -5,9 +5,7 @@
 
 import UIKit
 
-class AnyTypeOfCellTableViewDataSource<
-    RowDisplayDataType,
-CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable, CellReconfigurator where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
+class AnyTypeOfCellTableViewDataSource< RowDisplayDataType, CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable, CellReconfigurator where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
     
     typealias CellDisplayDataToUpdateWith = RowDisplayDataType
     
@@ -31,12 +29,6 @@ CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDi
         return numberOfRows
     }
     
-    private func displayData(forItemAt indexPath: IndexPath) -> RowDisplayDataType {
-        let sectionDisplayData = sectionsData[indexPath.section]
-        let cellData = sectionDisplayData[indexPath.row]
-        return cellData
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellData = displayData(forItemAt: indexPath)
         let cell = cellConfigurator.configuredCell(in: tableView, at: indexPath, with: cellData)
@@ -46,5 +38,11 @@ CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDi
     func reconfigureCell(in tableView: UITableView, at indexPath: IndexPath) {
         let cellData = displayData(forItemAt: indexPath)
         cellConfigurator.reconfigureCell(in: tableView, at: indexPath, with: cellData)
+    }
+    
+    private func displayData(forItemAt indexPath: IndexPath) -> RowDisplayDataType {
+        let sectionDisplayData = sectionsData[indexPath.section]
+        let cellData = sectionDisplayData[indexPath.row]
+        return cellData
     }
 }

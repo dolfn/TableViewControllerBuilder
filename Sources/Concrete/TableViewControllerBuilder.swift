@@ -12,11 +12,11 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     private var headerConfiguratorSelector: HeaderViewConfiguratorSelector<HeaderDisplayDataType>?
     private var cellConfiguratorSelector: CellConfiguratorSelector<CellDisplayDataType>
     
-    private weak var usingTableViewController:AnyHeadersAndCellsTableViewController?
     private var tableViewOperationsManager: TableViewOperationsManager<HeaderDisplayDataType, CellDisplayDataType>?
     private var anyTypeOfCellTableViewDataSource: AnyTypeOfCellTableViewDataSource<CellDisplayDataType, CellConfiguratorSelector<CellDisplayDataType>>?
     private var anyHeaderCellTableViewCellDelegate: AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType, CellDisplayDataType, HeaderViewConfiguratorSelector<HeaderDisplayDataType>>?
     private var eventsHandler: AnyCellEventsDelegate<CellDisplayDataType>?
+    private weak var usingTableViewController:AnyHeadersAndCellsTableViewController?
     
     public init<TableViewModelType: TableViewModel, RowConfiguratorFactoryType:CellConfiguratorFactory>(viewModel: TableViewModelType, cellConfiguratorFactory: RowConfiguratorFactoryType) where TableViewModelType.HeaderDisplayDataType == HeaderDisplayDataType, TableViewModelType.CellDisplayDataType == CellDisplayDataType, RowConfiguratorFactoryType.CellDisplayData == CellDisplayDataType {
         

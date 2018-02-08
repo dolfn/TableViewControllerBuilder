@@ -6,6 +6,7 @@
 import UIKit
 
 class CellConfiguratorSelector<CellDisplayDataType>: CellConfigurator {
+    
     private let configuratorFactory: AnyClosureCellConfiguratorFactory<CellDisplayDataType>
     private var registered = [String]()
     

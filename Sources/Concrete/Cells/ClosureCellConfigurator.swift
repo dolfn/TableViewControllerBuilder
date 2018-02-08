@@ -28,12 +28,6 @@ public struct ClosureCellConfigurator<CellDisplayDataType, CellViewType: UITable
         }
     }
     
-    private func dequeReusableCell(tableView: UITableView,
-                                   at indexPath: IndexPath) -> CellViewType {
-        return tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
-                                             for: indexPath) as! CellViewType
-    }
-    
     func configuredCell(in tableView: UITableView, at indexPath: IndexPath, with cellDisplayData: CellDisplayDataType) -> CellViewType {
         let cell = dequeReusableCell(tableView: tableView, at: indexPath)
         configure(cell, cellDisplayData)
@@ -45,5 +39,11 @@ public struct ClosureCellConfigurator<CellDisplayDataType, CellViewType: UITable
             return
         }
         configure(cell, cellDisplayData)
+    }
+    
+    private func dequeReusableCell(tableView: UITableView,
+                                   at indexPath: IndexPath) -> CellViewType {
+        return tableView.dequeueReusableCell(withIdentifier: reuseIdentifier,
+                                             for: indexPath) as! CellViewType
     }
 }

@@ -10,10 +10,10 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
     typealias CellDisplayDataToUpdateWith = CellDisplayData
     typealias HeaderDisplayDataToUpdateWith = HeaderDisplayDataType
     
+    var actionsDelegate: AnyCellEventsDelegate<CellDisplayData>?
     private var rowHeightProviders: [[CellDisplayData]]
     private var headerViewsDisplayData: [HeaderDisplayDataType?]
     private var headerViewConfigurator: HeaderViewConfiguratorType?
-    var actionsDelegate: AnyCellEventsDelegate<CellDisplayData>?
     
     init(rowHeightProviders: [[CellDisplayData]],
          headerViewsDisplayData: [HeaderDisplayDataType?]) {

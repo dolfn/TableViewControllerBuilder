@@ -5,7 +5,6 @@
 
 import Foundation
 
-
 struct AnyHeaderConfiguratorFactory<HeaderDisplayDataType>: HeaderConfiguratorFactory {
     
     private let headerConfiguratorFactoryClosure: (HeaderDisplayDataType) -> AnyHeaderViewConfigurator<HeaderDisplayDataType>?

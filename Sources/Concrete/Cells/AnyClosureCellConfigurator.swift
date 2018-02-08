@@ -33,6 +33,16 @@ public struct AnyClosureCellConfigurator<CellDisplayDataType>: CellConfigurator 
         self.reuseIdentifier = reuseIdentifier
     }
     
+    public func with<U>(cellDisplayData: CellDisplayDataType) -> AnyClosureCellConfigurator<U> {
+        return AnyClosureCellConfigurator<U>(register: _register,
+                                             reuseIdentifier: reuseIdentifier,
+                                             configure: { (tableView:UITableView, indexPath:IndexPath, _) -> UITableViewCell in
+                                                self._configure(tableView, indexPath, cellDisplayData)
+        }, reconfigure: { (tableView:UITableView, indexPath:IndexPath, _) -> Void in
+            self._reconfigure(tableView, indexPath, cellDisplayData)
+        })
+    }
+    
     func register(in tableView: UITableView) {
         _register(tableView)
     }
@@ -45,13 +55,4 @@ public struct AnyClosureCellConfigurator<CellDisplayDataType>: CellConfigurator 
         _reconfigure(tableView, indexPath, cellDisplayData)
     }
     
-    public func with<U>(cellDisplayData: CellDisplayDataType) -> AnyClosureCellConfigurator<U> {
-        return AnyClosureCellConfigurator<U>(register: _register,
-                                             reuseIdentifier: reuseIdentifier,
-                                             configure: { (tableView:UITableView, indexPath:IndexPath, _) -> UITableViewCell in
-                                                self._configure(tableView, indexPath, cellDisplayData)
-        }, reconfigure: { (tableView:UITableView, indexPath:IndexPath, _) -> Void in
-            self._reconfigure(tableView, indexPath, cellDisplayData)
-        })
-    }
 }

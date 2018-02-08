@@ -6,6 +6,7 @@
 import Foundation
 
 struct AnyCellDisplayDataUpdatable<C: HeightFlexible>: CellDisplayDataUpdatable {
+    
     typealias CellDisplayDataToUpdateWith = C
     
     private var update: ([[C]]) -> Void
