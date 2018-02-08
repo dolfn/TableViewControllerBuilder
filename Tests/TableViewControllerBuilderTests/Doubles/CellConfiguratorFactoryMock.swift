@@ -15,6 +15,6 @@ class CellConfiguratorFactoryMock: CellConfiguratorFactory {
         let configurator = ClosureCellConfigurator {[weak self] (cell: UITableViewCell, data: FakeCellDisplayData) in
             self?.numberOfTimesCalledToConfigureRow += 1
         }
-        return AnyClosureCellConfigurator(base:configurator)
+        return configurator.erased
     }
 }
