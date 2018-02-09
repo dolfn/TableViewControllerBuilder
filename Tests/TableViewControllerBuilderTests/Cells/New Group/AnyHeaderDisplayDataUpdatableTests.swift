@@ -8,9 +8,22 @@ import XCTest
 
 class AnyHeaderDisplayDataUpdatableTests: XCTestCase {
     
+    var updatable: HeaderDisplayDataUpdatableSpy!
+    var sut: AnyHeaderDisplayDataUpdatable<FakeHeaderDisplayData>!
+    
+    override func setUp() {
+        super.setUp()
+        updatable = HeaderDisplayDataUpdatableSpy()
+        sut = AnyHeaderDisplayDataUpdatable(updatable: updatable)
+    }
+    
+    override func tearDown() {
+        updatable = nil
+        sut = nil
+        super.tearDown()
+    }
+    
     func test_GivenHeaderDisplayDataToUpdate_IsCallingGivenUpdatableFunction() {
-        let updatable = HeaderDisplayDataUpdatableSpy()
-        let sut = AnyHeaderDisplayDataUpdatable(updatable: updatable)
         let data = [FakeHeaderDisplayData(), FakeHeaderDisplayData()]
         sut.update(headerDisplayData: data)
         XCTAssertEqual(updatable.headerDisplayData?.count, 2)
@@ -26,6 +39,11 @@ class AnyHeaderDisplayDataUpdatableTests: XCTestCase {
                 XCTFail()
             }
         }
+    }
+    
+    func test_GivenEmptyArrayToUpdate_IsProvingEmptyArrayToUpdatableFunction() {
+        sut.update(headerDisplayData: [])
+        XCTAssertEqual(updatable.headerDisplayData?.count, 0)
     }
     
 }
