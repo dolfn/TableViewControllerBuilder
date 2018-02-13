@@ -87,3 +87,11 @@ func cellConfigurator(with cellDisplayData: ExampleCellDisplayDataType) -> AnyCl
 
 ## Advance usage
 If you want more advanced examples, please check the Example project included in this repository.
+
+## Authors
+
+Please check the list of [contributors](https://github.com/dolfn/TableViewControllerBuilder/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
