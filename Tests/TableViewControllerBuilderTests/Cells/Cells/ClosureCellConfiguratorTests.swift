@@ -17,4 +17,13 @@ class ClosureCellConfiguratorTests: XCTestCase {
         XCTAssertNotNil(tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: IndexPath(row: 0, section: 0)))
     }
     
+    func test_RegisterTableViewCellWithoutCompletionBlock_ForGivenUUID() {
+        let tableView = UITableView()
+        let sut = ClosureCellConfigurator<FakeCellDisplayData, UITableViewCell> { (_, _) in
+            
+        }
+        sut.register(in: tableView)
+        XCTAssertNotNil(tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: IndexPath(row: 0, section: 0)))
+    }
+    
 }
