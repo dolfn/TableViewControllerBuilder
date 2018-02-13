@@ -10,8 +10,7 @@ class ClosureHeaderConfiguratorExtensionsTests: XCTestCase {
     
     func test_GivenClouseHeaderConfigurator_IsReturnedAsErased() {
         let uuid = UUID().uuidString
-        let tableViewHeaderFooterViewSpy = UITableViewHeaderFooterViewSpy()
-        let configurator = ClosureHeaderConfigurator<Any, UITableViewHeaderFooterViewSpy>(reuseIdentifier: uuid) { (_, tableViewHeaderFooterViewSpy) in
+        let configurator = ClosureHeaderConfigurator<Any, UITableViewHeaderFooterViewSpy>(reuseIdentifier: uuid) { (_, _) in
             
         }
         let erased = configurator.erased
