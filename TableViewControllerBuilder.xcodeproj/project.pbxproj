@@ -11,6 +11,7 @@
 		272EAE7320331A7600862B3A /* AnyHeaderConfiguratorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A33203318E3006C477E /* AnyHeaderConfiguratorFactoryTests.swift */; };
 		272EAE7420331A7B00862B3A /* CellConfiguratorSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */; };
 		272EAE7620331B0700862B3A /* ClosureHeaderConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */; };
+		272EAE7820331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */; };
 		2737C19B202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2737C19A202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift */; };
 		2737C19D202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2737C19C202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift */; };
 		276C97B0202C97C700552367 /* RegisterableClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C97AF202C97C700552367 /* RegisterableClassType.swift */; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorTests.swift; sourceTree = "<group>"; };
+		272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelectorTests.swift; sourceTree = "<group>"; };
 		2737C19A202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensionsTests.swift; sourceTree = "<group>"; };
 		2737C19C202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewSpy.swift; sourceTree = "<group>"; };
 		274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelectorTests.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				274F1A33203318E3006C477E /* AnyHeaderConfiguratorFactoryTests.swift */,
 				274F1A34203318E3006C477E /* AnyHeaderDisplayDataUpdatableTests.swift */,
 				272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */,
+				272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 				272EAE7420331A7B00862B3A /* CellConfiguratorSelectorTests.swift in Sources */,
 				272EAE7320331A7600862B3A /* AnyHeaderConfiguratorFactoryTests.swift in Sources */,
 				272EAE7220331A6D00862B3A /* AnyHeaderDisplayDataUpdatableTests.swift in Sources */,
+				272EAE7820331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift in Sources */,
 				8933C7901EB5B82D000D00A4 /* TableViewControllerBuilderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
