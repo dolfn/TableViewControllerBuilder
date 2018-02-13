@@ -38,4 +38,13 @@ class ClosureCellConfiguratorTests: XCTestCase {
         wait(for: [expect], timeout: 0.1)
     }
     
+    func test_ReconfigureCell_ReturnWithoutCallingConfiguratorIfCellDoesNotExists() {
+        let tableView = UITableView()
+        let sut = ClosureCellConfigurator<FakeCellDisplayData, UITableViewCell> { (_, _) in
+            XCTFail()
+        }
+        sut.register(in: tableView)
+        sut.reconfigureCell(in: tableView, at: IndexPath(row: 0, section: 0), with: FakeCellDisplayData())
+        wait(for: 0.1)
+    }
 }
