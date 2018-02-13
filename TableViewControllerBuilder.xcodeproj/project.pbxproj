@@ -12,6 +12,7 @@
 		272EAE7420331A7B00862B3A /* CellConfiguratorSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */; };
 		272EAE7620331B0700862B3A /* ClosureHeaderConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */; };
 		272EAE7820331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */; };
+		272EAE7A203332E800862B3A /* ClosureCellConfiguratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272EAE79203332E800862B3A /* ClosureCellConfiguratorTests.swift */; };
 		2737C19B202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2737C19A202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift */; };
 		2737C19D202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2737C19C202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift */; };
 		276C97B0202C97C700552367 /* RegisterableClassType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276C97AF202C97C700552367 /* RegisterableClassType.swift */; };
@@ -82,6 +83,7 @@
 /* Begin PBXFileReference section */
 		272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorTests.swift; sourceTree = "<group>"; };
 		272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelectorTests.swift; sourceTree = "<group>"; };
+		272EAE79203332E800862B3A /* ClosureCellConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorTests.swift; sourceTree = "<group>"; };
 		2737C19A202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorExtensionsTests.swift; sourceTree = "<group>"; };
 		2737C19C202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewHeaderFooterViewSpy.swift; sourceTree = "<group>"; };
 		274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellConfiguratorSelectorTests.swift; sourceTree = "<group>"; };
@@ -182,8 +184,8 @@
 			children = (
 				274F1A33203318E3006C477E /* AnyHeaderConfiguratorFactoryTests.swift */,
 				274F1A34203318E3006C477E /* AnyHeaderDisplayDataUpdatableTests.swift */,
-				272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */,
 				272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */,
+				272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */,
+				272EAE79203332E800862B3A /* ClosureCellConfiguratorTests.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -338,8 +341,8 @@
 				A15C34A61FB0F5EB0036C507 /* AnyClosureHeaderConfigurator.swift */,
 				A15C34A71FB0F5EB0036C507 /* AnyHeaderConfiguratorFactory.swift */,
 				A15C34A81FB0F5EB0036C507 /* AnyHeaderDisplayDataUpdatable.swift */,
-				A15C34A91FB0F5EB0036C507 /* ClosureHeaderConfigurator.swift */,
 				A15C34AB1FB0F5EB0036C507 /* HeaderViewConfiguratorSelector.swift */,
+				A15C34A91FB0F5EB0036C507 /* ClosureHeaderConfigurator.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 			files = (
 				A15C34EE1FB0F68F0036C507 /* TableViewModelDelegateTests.swift in Sources */,
 				2737C19B202DD95D00E6B321 /* ClosureHeaderConfiguratorExtensionsTests.swift in Sources */,
+				272EAE7A203332E800862B3A /* ClosureCellConfiguratorTests.swift in Sources */,
 				276C97D0202C9C7C00552367 /* ClosureCellConfiguratorExtensionsTests.swift in Sources */,
 				272EAE7620331B0700862B3A /* ClosureHeaderConfiguratorTests.swift in Sources */,
 				272EAE7420331A7B00862B3A /* CellConfiguratorSelectorTests.swift in Sources */,

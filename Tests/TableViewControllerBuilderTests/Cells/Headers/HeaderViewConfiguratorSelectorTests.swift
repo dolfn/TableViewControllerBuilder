@@ -12,6 +12,7 @@ class HeaderViewConfiguratorSelectorTests: XCTestCase {
     var sut: HeaderViewConfiguratorSelector<FakeHeaderDisplayData>!
     var tableView: UITableView!
     var configurator: ClosureHeaderConfigurator<FakeHeaderDisplayData, UITableViewHeaderFooterView>!
+    
     override func setUp() {
         super.setUp()
         headerConfiguratorFactorySpy = HeaderConfiguratorFactorySpy()
