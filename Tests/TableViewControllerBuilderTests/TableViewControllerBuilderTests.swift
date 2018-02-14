@@ -25,10 +25,10 @@ class TableViewControllerBuilderTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_OnCreate_CanGetTableViewController() {
+    func test_OnCreate_GetViewController() {
         XCTAssertNotNil(sut.buildTableViewController())
     }
-    
+
     func test_OnCreate_DelegateExists() {
         let vc = sut.buildTableViewController()
         fakeUse(vc: vc)
@@ -45,12 +45,12 @@ class TableViewControllerBuilderTests: XCTestCase {
     
     func test_TableView_HasDataSource() {
         let tableView = firstView() as! UITableView
-        XCTAssertNotNil(tableView.dataSource, "table view does not have a data source")
+        XCTAssertNotNil(tableView.dataSource, "Table view does not have a data source")
     }
     
     func test_TableView_HasDelegate() {
         let tableView = firstView() as! UITableView
-        XCTAssertNotNil(tableView.delegate, "Table view should not have delegate")
+        XCTAssertNotNil(tableView.delegate, "Table view does not have delegate")
     }
     
     func test_WhenAddingHeaderConfigurator_ShouldHaveTheSameNumberOfSections() {
