@@ -66,7 +66,7 @@ class TableViewControllerBuilderTests: XCTestCase {
     func test_HeaderViewForFirstSectionExists() {
         let tableView = firstView() as! UITableView
         addHeadersToTableView()
-        XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
+        XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 0))
     }
     
     func test_HeaderViewExistanceConformsToViewModelHeaderExistance() {
@@ -81,9 +81,9 @@ class TableViewControllerBuilderTests: XCTestCase {
         
         addHeadersToTableView()
         
-        XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 0))
-        XCTAssertNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 1))
-        XCTAssertNotNil(tableView.delegate!.tableView!(tableView, viewForHeaderInSection: 2))
+        XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 0))
+        XCTAssertNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 1))
+        XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 2))
     }
     
     func test_AfterCreatedATableViewController_DontCreateAnotherOne() {
