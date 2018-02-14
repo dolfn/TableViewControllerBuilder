@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2727D72720342FF8006FE4B2 /* UITableViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2727D72620342FF8006FE4B2 /* UITableViewSpy.swift */; };
 		272EAE7220331A6D00862B3A /* AnyHeaderDisplayDataUpdatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A34203318E3006C477E /* AnyHeaderDisplayDataUpdatableTests.swift */; };
 		272EAE7320331A7600862B3A /* AnyHeaderConfiguratorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A33203318E3006C477E /* AnyHeaderConfiguratorFactoryTests.swift */; };
 		272EAE7420331A7B00862B3A /* CellConfiguratorSelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274F1A32203318E3006C477E /* CellConfiguratorSelectorTests.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2727D72620342FF8006FE4B2 /* UITableViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewSpy.swift; sourceTree = "<group>"; };
 		272EAE7520331B0700862B3A /* ClosureHeaderConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureHeaderConfiguratorTests.swift; sourceTree = "<group>"; };
 		272EAE7720331ED300862B3A /* HeaderViewConfiguratorSelectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderViewConfiguratorSelectorTests.swift; sourceTree = "<group>"; };
 		272EAE79203332E800862B3A /* ClosureCellConfiguratorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosureCellConfiguratorTests.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				2737C19C202DDAED00E6B321 /* UITableViewHeaderFooterViewSpy.swift */,
 				27C7B8FC202DDC3800D80B84 /* HeaderConfiguratorFactorySpy.swift */,
 				27C7B900202DE04F00D80B84 /* HeaderDisplayDataUpdatableSpy.swift */,
+				2727D72620342FF8006FE4B2 /* UITableViewSpy.swift */,
 			);
 			path = Doubles;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				A15C34D91FB0F5EB0036C507 /* AnySectionDisplayData.swift in Sources */,
 				A15C34CB1FB0F5EB0036C507 /* CellConfiguratorSelector.swift in Sources */,
 				A15C34CD1FB0F5EB0036C507 /* ClosureCellConfiguratorExtensions.swift in Sources */,
+				2727D72720342FF8006FE4B2 /* UITableViewSpy.swift in Sources */,
 				276C97CC202C9A9D00552367 /* RowOperationType.swift in Sources */,
 				276C97BC202C998900552367 /* FakeHeaderDisplayData.swift in Sources */,
 				A15C34CE1FB0F5EB0036C507 /* AnyClosureHeaderConfigurator.swift in Sources */,
