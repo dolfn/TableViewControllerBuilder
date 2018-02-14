@@ -69,7 +69,7 @@ class TableViewModelDelegateTests: XCTestCase {
         addHeadersToTableView()
         XCTAssertNotNil(tableView.delegate?.tableView?(tableView, viewForHeaderInSection: 1))
     }
-    
+        
     func test_WhenAddingModifyingASection_ItShouldHaveTheSameNumberOfSections() {
         let initialNumberOfSections = tableView.dataSource?.numberOfSections?(in: tableView)
         
@@ -130,9 +130,9 @@ class TableViewModelDelegateTests: XCTestCase {
         
         sut.didLoadInitialData(in: viewModel.erased)
         
-        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 1), 0)
-        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 2), 3)
-        XCTAssertEqual(tableView.dataSource!.tableView(tableView, numberOfRowsInSection: 3), 1)
+        XCTAssertEqual(tableView.dataSource?.tableView(tableView, numberOfRowsInSection: 1), 0)
+        XCTAssertEqual(tableView.dataSource?.tableView(tableView, numberOfRowsInSection: 2), 3)
+        XCTAssertEqual(tableView.dataSource?.tableView(tableView, numberOfRowsInSection: 3), 1)
     }
     
     func test_RemovingTheOnlySection() {
@@ -303,7 +303,7 @@ class TableViewModelDelegateTests: XCTestCase {
         sut.didInsert(itemsAt: [indexPathToInsertTo], in: viewModel.erased, animated: false)
         
         let assertMessage = "Didn't insert row correctly"
-        XCTAssertEqual(tableView.delegate!.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForRowAt: indexPathToInsertTo), expectedRowHeight, assertMessage, line: lineNumber)
     }
     
     private func assertRowChange(at indexPath: IndexPath, operationType: RowOperationType, lineNumber: UInt = #line) {
