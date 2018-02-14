@@ -150,6 +150,11 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertEqual(viewController.view.backgroundColor, viewModel.backgroundColor)
     }
     
+    func test_ToSetScrollValueFromViewModel() {
+        let tableView = firstView() as? UITableView
+        XCTAssertEqual(tableView?.isScrollEnabled, viewModel.shouldBeScrollable)
+    }
+    
     private func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         sut.addHeaders(with: headerConfiguratorFactory, from: viewModel)
