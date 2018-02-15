@@ -107,6 +107,16 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(compareEqual(headersDisplayData: [newSection.headerDisplayData], with: headerDataUpdatableSpy.headerDisplayData))
     }
     
+    func test_UpdatingSectionsAnimated() {
+        sut.didUpdateSection(at: 0, in: anyViewModel.erased, animated: true)
+        
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+        XCTAssertEqual(tableView.sections, IndexSet(integer: 0))
+        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowDataUpdatableSpy.cellsDisplayData))
+        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowHeightsDataUpdatableSpy.cellsDisplayData))
+        XCTAssertTrue(compareEqual(headersDisplayData: [newSection.headerDisplayData], with: headerDataUpdatableSpy.headerDisplayData))
+    }
+    
     private func compareEqual(cellsDisplayData: [[FakeCellDisplayData]], with receivedCellsDisplayData: [[FakeCellDisplayData]]) -> Bool {
         if cellsDisplayData.count != receivedCellsDisplayData.count {
             return false
