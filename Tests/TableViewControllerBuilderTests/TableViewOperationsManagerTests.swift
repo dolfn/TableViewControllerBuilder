@@ -168,6 +168,15 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
+    private func endReplaceRowsTest() {
+        let indexPaths = getIndexPaths()
+        XCTAssertEqual(tableView.reloadRowsIndexPaths.count, 3)
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[2]))
+        checkSectionsContent()
+    }
+    
     func test_InsertSectionsAnimatedAndGivenData() {
         let indexes = [3, 4, 5]
         sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: true)
@@ -192,20 +201,28 @@ class TableViewOperationsManagerTests: XCTestCase {
             return
         }
         
+        XCTAssertEqual(sections.count, 3)
         XCTAssertTrue(sections.contains(3))
         XCTAssertTrue(sections.contains(4))
         XCTAssertTrue(sections.contains(5))
     }
     
-    private func endReplaceRowsTest() {
-        XCTAssertEqual(tableView.reloadRowsIndexPaths.count, 3)
-        let indexPaths = getIndexPaths()
-        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[0]))
-        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[1]))
-        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[2]))
+    func test_RemoveSectionsAnimatedAndGivenData() {
+        let indexes = [3, 10, 11]
+        sut.didRemoveSections(at: indexes, in: anyViewModel.erased, animated: true)
+        
         checkSectionsContent()
+        guard let sections = tableView.deletedSections else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertEqual(sections.count, 3)
+        XCTAssertTrue(sections.contains(3))
+        XCTAssertTrue(sections.contains(10))
+        XCTAssertTrue(sections.contains(11))
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
-    
     
     private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
