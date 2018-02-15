@@ -11,11 +11,6 @@ struct FakeHeaderDisplayData: HeightFlexible {
     var estimatedHeight: CGFloat = 0
     var identifier = UUID().uuidString
     
-    init(height: CGFloat = 0, estimatedHeight: CGFloat = 0) {
-        self.height = height
-        self.estimatedHeight = estimatedHeight
-    }
-    
     init(height: CGFloat = 0) {
         self.height = height
     }
