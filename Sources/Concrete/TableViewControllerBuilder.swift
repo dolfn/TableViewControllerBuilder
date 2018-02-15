@@ -39,11 +39,6 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         tableViewController.isScrollEnabled = viewModel.shouldBeScrollable
         tableViewController.contentInset = viewModel.edgeInsets
         tableViewController.backgroundColor = viewModel.backgroundColor
-
-//        if let tableViewOperationsManager = tableViewOperationsManager, let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
-//            addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-//        }
-
         tableViewController.tableViewDataSource = anyTypeOfCellTableViewDataSource
 
         addHeadersInViewControllerIfNecessary()
@@ -57,7 +52,7 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
             tableViewOperationsManager.tableView = usingTableViewController?.getTableView()
             self.tableViewOperationsManager = tableViewOperationsManager
             addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-
+            
             if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
                 addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
 //                addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
