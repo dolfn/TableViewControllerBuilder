@@ -128,6 +128,15 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
+    private func endRemoveRowsTest() {
+        XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
+        let indexPaths = getIndexPaths()
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[2]))
+        checkSectionsContent()
+    }
+    
     func test_UpdateIndexPathsAndGivenDataForGivenTableView() {
         let indexPaths = getIndexPaths()
         sut.didUpdate(itemsAt: indexPaths, in: anyViewModel.erased)
@@ -147,14 +156,21 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(cellReconfiguratorSpy.receivedIndexPaths.count, 0)
     }
     
-    private func endRemoveRowsTest() {
-        XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
+    func test_ReplaceIndexPathsNotAnimatedAndGivenData() {
+        sut.didReplace(itemsAt: getIndexPaths(), in: anyViewModel.erased, animated: false)
+        endReplaceRowsTest()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
+    }
+    
+    private func endReplaceRowsTest() {
+        XCTAssertEqual(tableView.reloadRowsIndexPaths.count, 3)
         let indexPaths = getIndexPaths()
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[0]))
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[1]))
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[2]))
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(tableView.reloadRowsIndexPaths.contains(indexPaths[2]))
         checkSectionsContent()
     }
+    
     
     private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
