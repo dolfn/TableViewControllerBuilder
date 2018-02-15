@@ -9,13 +9,23 @@ import XCTest
 class TableViewOperationsManagerTests: XCTestCase {
 
     var sut: TableViewOperationsManager<FakeHeaderDisplayData, FakeCellDisplayData>!
+    var tableView: UITableViewSpy!
     
-    func test_GivenReconfigurator_IsNotRetainedStrong() {
+    func test_GivenReconfigurator_IsRetainedWeak() {
         var cellReconfiguratorSpy: CellReconfigurator? = CellReconfiguratorSpy()
         sut = TableViewOperationsManager<FakeHeaderDisplayData, FakeCellDisplayData>(cellReconfigurator: cellReconfiguratorSpy!)
-        weak var address: CellReconfigurator? = cellReconfiguratorSpy
+        weak var reference: CellReconfigurator? = cellReconfiguratorSpy
         cellReconfiguratorSpy = nil
-        XCTAssertNil(address)
+        XCTAssertNil(reference)
     }
     
+    func test_GivenTableView_IsRetainedWeak() {
+        let cellReconfiguratorSpy: CellReconfigurator? = CellReconfiguratorSpy()
+        sut = TableViewOperationsManager<FakeHeaderDisplayData, FakeCellDisplayData>(cellReconfigurator: cellReconfiguratorSpy!)
+        tableView = UITableViewSpy()
+        sut.tableView = tableView
+        weak var reference: UITableViewSpy? = sut.tableView as? UITableViewSpy
+        tableView = nil
+        XCTAssertNil(reference)
+    }
 }
