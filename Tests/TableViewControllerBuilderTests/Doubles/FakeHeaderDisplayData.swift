@@ -25,3 +25,7 @@ func ==(left: FakeHeaderDisplayData, right: FakeHeaderDisplayData) -> Bool {
     return left.identifier == right.identifier
 }
 
+func !=(left: FakeHeaderDisplayData, right: FakeHeaderDisplayData) -> Bool {
+    return left.identifier != right.identifier
+}
+

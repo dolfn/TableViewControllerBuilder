@@ -354,21 +354,7 @@ class TableViewModelDelegateTests: XCTestCase {
         }
         sut.didInsertSections(at: indexesInserted, in: viewModel.erased, animated: false)
     }
-    
-    private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0, estimatedRowHeight: CGFloat = 0) -> SectionDataAlias {
-        var newHeader = FakeHeaderDisplayData()
-        newHeader.height = headerHeight
-        var rows = [FakeCellDisplayData]()
-        (0..<numberOfRows).forEach { (_) in
-            var row = FakeCellDisplayData()
-            row.height = rowHeight
-            row.estimatedHeight = estimatedRowHeight
-            rows.append(row)
-        }
-        let section = SectionDisplayDataStub(headerDisplayData: newHeader, sectionRowsData: rows)
-        return section.erased
-    }
-    
+        
     private func addHeadersToTableView() {
         let headerConfiguratorFactory = HeaderConfiguratorFactoryMock()
         tableViewBuilder.addHeaders(with: headerConfiguratorFactory, from: viewModel)

@@ -9,7 +9,9 @@ class CellDisplayDataUpdatableSpy: CellDisplayDataUpdatable {
     
     typealias CellDisplayDataToUpdateWith = FakeCellDisplayData
     
+    var cellsDisplayData = [[FakeCellDisplayData]]()
+    
     func updateData(cellsDisplayData: [[FakeCellDisplayData]]) {
-        
+        self.cellsDisplayData = cellsDisplayData
     }
 }
