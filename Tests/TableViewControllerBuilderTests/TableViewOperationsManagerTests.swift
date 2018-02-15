@@ -138,6 +138,15 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(cellReconfiguratorSpy.receivedIndexPaths.contains(indexPaths[2]))
     }
     
+    func test_UpdateIndexPathsAndGivenDataWithoutTableView() {
+        let indexPaths = getIndexPaths()
+        sut.tableView = nil
+        sut.didUpdate(itemsAt: indexPaths, in: anyViewModel.erased)
+        checkSectionsContent()
+        XCTAssertNil(cellReconfiguratorSpy.tableView)
+        XCTAssertEqual(cellReconfiguratorSpy.receivedIndexPaths.count, 0)
+    }
+    
     private func endRemoveRowsTest() {
         XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
         let indexPaths = getIndexPaths()
