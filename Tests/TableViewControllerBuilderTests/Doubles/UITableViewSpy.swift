@@ -19,6 +19,9 @@ class UITableViewSpy: UITableView {
     var deletedSections: IndexSet?
     var beginUpdatesCalled = false
     var endUpdatesCalled = false
+    var scrollToIndexPath: IndexPath?
+    var scrollPosition: UITableViewScrollPosition?
+    var animated: Bool?
     
     override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         if shouldReturnCell {
@@ -67,5 +70,11 @@ class UITableViewSpy: UITableView {
     
     override func endUpdates() {
         endUpdatesCalled = true
+    }
+    
+    override func scrollToRow(at indexPath: IndexPath, at scrollPosition: UITableViewScrollPosition, animated: Bool) {
+        scrollToIndexPath = indexPath
+        self.scrollPosition = scrollPosition
+        self.animated = animated
     }
 }

@@ -264,6 +264,14 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(tableView.insertedRowsIndexPaths.contains(indexPaths[2]))
     }
     
+    func test_scrollToGivenIndexPathAnimated() {
+        let indexPath = IndexPath(row: 5, section: 5)
+        sut.scrollTo(indexPath: indexPath, animated: true)
+        XCTAssertEqual(tableView.scrollToIndexPath, indexPath)
+        XCTAssertEqual(tableView.animated, true)
+        XCTAssertEqual(tableView.scrollPosition, UITableViewScrollPosition.bottom)
+    }
+    
     private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 2, section: 0)
