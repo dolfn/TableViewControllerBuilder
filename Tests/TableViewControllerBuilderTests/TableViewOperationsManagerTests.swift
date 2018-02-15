@@ -128,6 +128,16 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
+    func test_UpdateIndexPathsAndGivenDataForGivenTableView() {
+        let indexPaths = getIndexPaths()
+        sut.didUpdate(itemsAt: indexPaths, in: anyViewModel.erased)
+        checkSectionsContent()
+        XCTAssertEqual(cellReconfiguratorSpy.tableView, tableView)
+        XCTAssertTrue(cellReconfiguratorSpy.receivedIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(cellReconfiguratorSpy.receivedIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(cellReconfiguratorSpy.receivedIndexPaths.contains(indexPaths[2]))
+    }
+    
     private func endRemoveRowsTest() {
         XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
         let indexPaths = getIndexPaths()
