@@ -28,4 +28,23 @@ class TableViewOperationsManagerTests: XCTestCase {
         tableView = nil
         XCTAssertNil(reference)
     }
+    
+    func test_GivenUpdatables_AreRetainedStrong() {
+        let cellReconfiguratorSpy: CellReconfigurator? = CellReconfiguratorSpy()
+        sut = TableViewOperationsManager<FakeHeaderDisplayData, FakeCellDisplayData>(cellReconfigurator: cellReconfiguratorSpy!)
+
+        let rowDataUpdatable = AnyCellDisplayDataUpdatable(updatable: CellDisplayDataUpdatableSpy())
+        sut.rowDataUpdatable = rowDataUpdatable
+
+        let rowHeightsDataUpdatable = AnyCellDisplayDataUpdatable(updatable: CellDisplayDataUpdatableSpy())
+        sut.rowHeightsDataUpdatable = rowHeightsDataUpdatable
+
+        let headerDataUpdatable = AnyHeaderDisplayDataUpdatable(updatable: HeaderDisplayDataUpdatableSpy())
+        sut.headerDataUpdatable = headerDataUpdatable
+        
+        wait(for: 0.1)
+        XCTAssertNotNil(rowDataUpdatable)
+        XCTAssertNotNil(rowHeightsDataUpdatable)
+        XCTAssertNotNil(headerDataUpdatable)
+    }
 }
