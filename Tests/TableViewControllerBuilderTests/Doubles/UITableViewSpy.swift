@@ -12,6 +12,7 @@ class UITableViewSpy: UITableView {
     var reloadDataCounter: Int = 0
     var sections: IndexSet?
     var animation: UITableViewRowAnimation?
+    var deleteRowsIndexPaths = [IndexPath]()
     
     override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         if shouldReturnCell {
@@ -26,6 +27,11 @@ class UITableViewSpy: UITableView {
     
     override func reloadSections(_ sections: IndexSet, with animation: UITableViewRowAnimation) {
         self.sections = sections
+        self.animation = animation
+    }
+    
+    override func deleteRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {
+        self.deleteRowsIndexPaths = indexPaths
         self.animation = animation
     }
     

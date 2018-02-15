@@ -89,29 +89,47 @@ class TableViewOperationsManagerTests: XCTestCase {
     }
     
     func test_SetupTableView_WithGivenInitialData() {
+        XCTAssertEqual(tableView.reloadDataCounter, 0)
         sut.didLoadInitialData(in: anyViewModel)
         
         XCTAssertEqual(tableView.reloadDataCounter, 1)
-        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowDataUpdatableSpy.cellsDisplayData))
-        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowHeightsDataUpdatableSpy.cellsDisplayData))
-        XCTAssertTrue(compareEqual(headersDisplayData: [newSection.headerDisplayData], with: headerDataUpdatableSpy.headerDisplayData))
+        checkSectionsContent()
     }
     
     func test_UpdatingSectionsNotAnimated() {
+        XCTAssertNil(tableView.animation)
+        XCTAssertNil(tableView.sections)
         sut.didUpdateSection(at: 0, in: anyViewModel.erased, animated: false)
         
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
         XCTAssertEqual(tableView.sections, IndexSet(integer: 0))
-        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowDataUpdatableSpy.cellsDisplayData))
-        XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowHeightsDataUpdatableSpy.cellsDisplayData))
-        XCTAssertTrue(compareEqual(headersDisplayData: [newSection.headerDisplayData], with: headerDataUpdatableSpy.headerDisplayData))
+        checkSectionsContent()
     }
     
     func test_UpdatingSectionsAnimated() {
+        XCTAssertNil(tableView.animation)
+        XCTAssertNil(tableView.sections)
         sut.didUpdateSection(at: 0, in: anyViewModel.erased, animated: true)
         
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
         XCTAssertEqual(tableView.sections, IndexSet(integer: 0))
+        checkSectionsContent()
+    }
+    
+    func test_RemoveRowsNotAnimatedForGivenIndexPaths() {
+        XCTAssertNil(tableView.animation)
+        let indexPath1 = IndexPath(row: 0, section: 0)
+        let indexPath2 = IndexPath(row: 2, section: 0)
+        let indexPath3 = IndexPath(row: 1, section: 2)
+        sut.didRemove(itemsFrom: [indexPath1, indexPath2, indexPath3], in: anyViewModel.erased, animated: false)
+        XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath1))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath2))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath3))
+        checkSectionsContent()
+    }
+    
+    private func checkSectionsContent() {
         XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowDataUpdatableSpy.cellsDisplayData))
         XCTAssertTrue(compareEqual(cellsDisplayData: [newSection.sectionRowsData], with: rowHeightsDataUpdatableSpy.cellsDisplayData))
         XCTAssertTrue(compareEqual(headersDisplayData: [newSection.headerDisplayData], with: headerDataUpdatableSpy.headerDisplayData))
