@@ -233,6 +233,15 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(sections.contains(11))
     }
     
+    func test_updateGivenHeights() {
+        XCTAssertFalse(tableView.beginUpdatesCalled)
+        XCTAssertFalse(tableView.endUpdatesCalled)
+        sut.didUpdateHeights(in: anyViewModel.erased)
+        XCTAssertTrue(tableView.beginUpdatesCalled)
+        XCTAssertTrue(tableView.endUpdatesCalled)
+        checkSectionsContent()
+    }
+    
     private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 2, section: 0)
