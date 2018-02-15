@@ -168,11 +168,25 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
-    func test_InsertSectionAnimatedAndGivenData() {
+    func test_InsertSectionsAnimatedAndGivenData() {
         let indexes = [3, 4, 5]
         sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: true)
-        checkSectionsContent()
         
+        checkSectionsContent()
+        endInsertSections()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+    }
+    
+    func test_InsertSectionsNotAnimatedAndGivenData() {
+        let indexes = [3, 4, 5]
+        sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: false)
+        
+        checkSectionsContent()
+        endInsertSections()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
+    }
+    
+    func endInsertSections() {
         guard let sections = tableView.insertedSections else {
             XCTFail()
             return
@@ -181,7 +195,6 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(sections.contains(3))
         XCTAssertTrue(sections.contains(4))
         XCTAssertTrue(sections.contains(5))
-        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
     private func endReplaceRowsTest() {
