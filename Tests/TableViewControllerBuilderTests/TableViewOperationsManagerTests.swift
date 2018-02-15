@@ -162,6 +162,12 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
     }
     
+    func test_ReplaceIndexPathsAnimatedAndGivenData() {
+        sut.didReplace(itemsAt: getIndexPaths(), in: anyViewModel.erased, animated: true)
+        endReplaceRowsTest()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+    }
+    
     private func endReplaceRowsTest() {
         XCTAssertEqual(tableView.reloadRowsIndexPaths.count, 3)
         let indexPaths = getIndexPaths()
