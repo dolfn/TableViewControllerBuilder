@@ -178,8 +178,7 @@ class TableViewOperationsManagerTests: XCTestCase {
     }
     
     func test_InsertSectionsAnimatedAndGivenData() {
-        let indexes = [3, 4, 5]
-        sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: true)
+        sut.didInsertSections(at: [3, 4, 5], in: anyViewModel.erased, animated: true)
         
         checkSectionsContent()
         endInsertSections()
@@ -187,8 +186,7 @@ class TableViewOperationsManagerTests: XCTestCase {
     }
     
     func test_InsertSectionsNotAnimatedAndGivenData() {
-        let indexes = [3, 4, 5]
-        sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: false)
+        sut.didInsertSections(at: [3, 4, 5], in: anyViewModel.erased, animated: false)
         
         checkSectionsContent()
         endInsertSections()
@@ -208,10 +206,22 @@ class TableViewOperationsManagerTests: XCTestCase {
     }
     
     func test_RemoveSectionsAnimatedAndGivenData() {
-        let indexes = [3, 10, 11]
-        sut.didRemoveSections(at: indexes, in: anyViewModel.erased, animated: true)
+        sut.didRemoveSections(at: [3, 10, 11], in: anyViewModel.erased, animated: true)
         
         checkSectionsContent()
+        endRemoveSections()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+    }
+    
+    func test_RemoveSectionsNotAnimatedAndGivenData() {
+        sut.didRemoveSections(at: [3, 10, 11], in: anyViewModel.erased, animated: false)
+        
+        checkSectionsContent()
+        endRemoveSections()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
+    }
+    
+    func endRemoveSections() {
         guard let sections = tableView.deletedSections else {
             XCTFail()
             return
@@ -221,7 +231,6 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertTrue(sections.contains(3))
         XCTAssertTrue(sections.contains(10))
         XCTAssertTrue(sections.contains(11))
-        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
     private func getIndexPaths() -> [IndexPath] {
