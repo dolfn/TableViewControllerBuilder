@@ -100,7 +100,6 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertNil(tableView.animation)
         XCTAssertNil(tableView.sections)
         sut.didUpdateSection(at: 0, in: anyViewModel.erased, animated: false)
-        
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
         XCTAssertEqual(tableView.sections, IndexSet(integer: 0))
         checkSectionsContent()
@@ -110,7 +109,6 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertNil(tableView.animation)
         XCTAssertNil(tableView.sections)
         sut.didUpdateSection(at: 0, in: anyViewModel.erased, animated: true)
-        
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
         XCTAssertEqual(tableView.sections, IndexSet(integer: 0))
         checkSectionsContent()
@@ -118,15 +116,32 @@ class TableViewOperationsManagerTests: XCTestCase {
     
     func test_RemoveRowsNotAnimatedForGivenIndexPaths() {
         XCTAssertNil(tableView.animation)
+        sut.didRemove(itemsFrom: getIndexPaths(), in: anyViewModel.erased, animated: false)
+        endRemoveRowsTest()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.none)
+    }
+    
+    func test_RemoveRowsAnimatedForGivenIndexPaths() {
+        XCTAssertNil(tableView.animation)
+        sut.didRemove(itemsFrom: getIndexPaths(), in: anyViewModel.erased, animated: true)
+        endRemoveRowsTest()
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+    }
+    
+    private func endRemoveRowsTest() {
+        XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
+        let indexPaths = getIndexPaths()
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPaths[2]))
+        checkSectionsContent()
+    }
+    
+    private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 2, section: 0)
         let indexPath3 = IndexPath(row: 1, section: 2)
-        sut.didRemove(itemsFrom: [indexPath1, indexPath2, indexPath3], in: anyViewModel.erased, animated: false)
-        XCTAssertEqual(tableView.deleteRowsIndexPaths.count, 3)
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath1))
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath2))
-        XCTAssertTrue(tableView.deleteRowsIndexPaths.contains(indexPath3))
-        checkSectionsContent()
+        return [indexPath1, indexPath2, indexPath3]
     }
     
     private func checkSectionsContent() {
