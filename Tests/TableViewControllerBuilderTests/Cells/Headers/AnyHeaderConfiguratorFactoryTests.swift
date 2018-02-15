@@ -13,7 +13,7 @@ class AnyHeaderConfiguratorFactoryTests: XCTestCase {
         let displayDataType = FakeHeaderDisplayData()
         let sut = AnyHeaderConfiguratorFactory(headerConfiguratorFactory: headerConfiguratorFactory)
         let _ = sut.configurator(with: displayDataType)
-        XCTAssertTrue(headerConfiguratorFactory.displayDataType === displayDataType)
+        XCTAssertTrue(headerConfiguratorFactory.displayDataType! == displayDataType)
     }
     
 }

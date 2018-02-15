@@ -64,7 +64,7 @@ class ClosureCellConfiguratorTests: XCTestCase {
         let reconfigureData = FakeCellDisplayData()
         
         let sut = ClosureCellConfigurator<FakeCellDisplayData, UITableViewCell> { (_, dataToConfigureWith) in
-            if dataToConfigureWith === reconfigureData {
+            if dataToConfigureWith == reconfigureData {
                 expect.fulfill()
             }
         }

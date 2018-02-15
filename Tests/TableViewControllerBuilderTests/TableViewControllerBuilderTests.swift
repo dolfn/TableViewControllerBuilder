@@ -134,6 +134,21 @@ class TableViewControllerBuilderTests: XCTestCase {
         
         delegate?.didInsert(itemsAt: [indexPathToInsert], in: viewModel.erased, animated: false)
         XCTAssertTrue(dataSourceSpy.didTryToConfigureCell)
+        
+    }
+
+    func test_UpdatingSectionHeaderHeightValue() {
+        let sectionDisplayData = SectionDisplayDataStub(headerDisplayData: FakeHeaderDisplayData(height: 5), sectionRowsData: [FakeCellDisplayData(height: 0)])
+        viewModel.sectionsDisplayData[0] = sectionDisplayData.erased
+        let delegate = sut.buildTableViewModelDelegate()
+        addHeadersToTableView()
+        let tableView = firstView() as! UITableView
+        
+        let updatedSectionDisplayData = SectionDisplayDataStub(headerDisplayData: FakeHeaderDisplayData(height: 10), sectionRowsData: [FakeCellDisplayData(height: 0)])
+        viewModel.sectionsDisplayData[0] = updatedSectionDisplayData.erased
+        
+        delegate?.didUpdateSection(at: 0, in: viewModel.erased, animated: false)
+        XCTAssertEqual(tableView.delegate?.tableView?(tableView, heightForHeaderInSection: 0), 10)
     }
     
     func test_AfterAddingCellEventsHandler_ItShouldCallHandler() {

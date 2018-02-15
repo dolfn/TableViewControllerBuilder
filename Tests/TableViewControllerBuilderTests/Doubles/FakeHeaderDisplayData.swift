@@ -6,7 +6,22 @@
 import Foundation
 import UIKit
 
-class FakeHeaderDisplayData: HeightFlexible {
+struct FakeHeaderDisplayData: HeightFlexible {
     var height: CGFloat = 0
     var estimatedHeight: CGFloat = 0
+    var identifier = UUID().uuidString
+    
+    init(height: CGFloat = 0, estimatedHeight: CGFloat = 0) {
+        self.height = height
+        self.estimatedHeight = estimatedHeight
+    }
+    
+    init(height: CGFloat = 0) {
+        self.height = height
+    }
 }
+
+func ==(left: FakeHeaderDisplayData, right: FakeHeaderDisplayData) -> Bool {
+    return left.identifier == right.identifier
+}
+

@@ -30,7 +30,7 @@ class AnyHeaderDisplayDataUpdatableTests: XCTestCase {
         for aGivenData in data {
             let found = updatable.headerDisplayData?.contains(where: { (aHeaderDisplayData) -> Bool in
                 if let aHeaderDisplayData = aHeaderDisplayData {
-                    return aHeaderDisplayData === aGivenData
+                    return aHeaderDisplayData == aGivenData
                 }
                 return false
             })

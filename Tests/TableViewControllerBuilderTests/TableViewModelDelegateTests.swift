@@ -93,9 +93,12 @@ class TableViewModelDelegateTests: XCTestCase {
     
     func test_LoadingInitialDataWithCorrectRowHeight() {
         let expectedRowHeight = CGFloat(100)
-        
-        existingViewModelSection.sectionRowsData[0].height = expectedRowHeight
-        viewModel.sectionsDisplayData[0] = existingViewModelSection
+        var rowData = existingViewModelSection.sectionRowsData[0]
+        rowData.height = expectedRowHeight
+    
+        let sectionDisplayDataStub = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: [rowData])
+        let sectionDisplayData = AnySectionDisplayData(sectionDisplayData: sectionDisplayDataStub)
+        viewModel.sectionsDisplayData[0] = sectionDisplayData
         sut.didLoadInitialData(in: viewModel.erased)
         
         let indexPath = IndexPath(row: 0, section: 0)
@@ -107,8 +110,15 @@ class TableViewModelDelegateTests: XCTestCase {
     func test_LoadingInitialDataWithCorrectRowEstimatedHeight() {
         let expectedRowEstimatedHeight = CGFloat(50)
         
-        existingViewModelSection.sectionRowsData[0].estimatedHeight = expectedRowEstimatedHeight
-        viewModel.sectionsDisplayData[0] = existingViewModelSection
+        var rowsData = existingViewModelSection.sectionRowsData
+        var rowData = existingViewModelSection.sectionRowsData[0]
+        rowData.estimatedHeight = expectedRowEstimatedHeight
+        rowsData[0] = rowData
+        
+        let sectionDisplayDataStub = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: rowsData)
+        let sectionDisplayData = AnySectionDisplayData(sectionDisplayData: sectionDisplayDataStub)
+        viewModel.sectionsDisplayData[0] = sectionDisplayData
+        
         sut.didLoadInitialData(in: viewModel.erased)
         
         let indexPath = IndexPath(row: 0, section: 0)
@@ -265,10 +275,11 @@ class TableViewModelDelegateTests: XCTestCase {
     private func assertNewHeaderAndRowHeights(in sectionIndex: Int, with delegateCall: () -> Void, lineNumber: UInt = #line) {
         let updatedRowHeight = CGFloat(10)
         let updatedHeaderHeight = CGFloat(5)
+        let cellDisplayData = FakeCellDisplayData(height: updatedRowHeight)
+        let headerDisplayData = FakeHeaderDisplayData(height: updatedHeaderHeight)
+        let newViewModelSection = SectionDisplayDataStub(headerDisplayData: headerDisplayData, sectionRowsData: [cellDisplayData])
         
-        existingViewModelSection.headerDisplayData?.height = updatedHeaderHeight
-        existingViewModelSection.sectionRowsData[0].height = updatedRowHeight
-        viewModel.sectionsDisplayData[0] = existingViewModelSection
+        viewModel.sectionsDisplayData[0] = newViewModelSection.erased
         delegateCall()
         addHeadersToTableView()
         tableView.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
@@ -294,7 +305,7 @@ class TableViewModelDelegateTests: XCTestCase {
         let indexPathToInsertTo = IndexPath(row: index, section: sectionIndex)
         
         var oldRows = viewModel.sectionsDisplayData[sectionIndex].sectionRowsData
-        let rowDisplayData = FakeCellDisplayData()
+        var rowDisplayData = FakeCellDisplayData()
         rowDisplayData.height = expectedRowHeight
         oldRows.insert(rowDisplayData, at: index)
         let newSection = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: oldRows)
@@ -314,7 +325,13 @@ class TableViewModelDelegateTests: XCTestCase {
         let expectedConfigurationTimes = initialConfigurationTimes + 1
         let expectedRowHeight = CGFloat(199)
         
-        viewModel.sectionsDisplayData[indexPath.section].sectionRowsData[indexPath.row].height = expectedRowHeight
+        let sectionDisplayData = viewModel.sectionsDisplayData[indexPath.section]
+        var rowData = sectionDisplayData.sectionRowsData[indexPath.row]
+        rowData.height = expectedRowHeight
+        var rowsData = sectionDisplayData.sectionRowsData
+        rowsData[indexPath.row] = rowData
+        let newSectionDisplayData = SectionDisplayDataStub(headerDisplayData: nil, sectionRowsData: rowsData)
+        viewModel.sectionsDisplayData[indexPath.section] = newSectionDisplayData.erased
         
         switch operationType {
         case .replace:
@@ -339,11 +356,11 @@ class TableViewModelDelegateTests: XCTestCase {
     }
     
     private func getNewSection(headerHeight: CGFloat = 0, numberOfRows: UInt = 1, rowHeight: CGFloat = 0, estimatedRowHeight: CGFloat = 0) -> SectionDataAlias {
-        let newHeader = FakeHeaderDisplayData()
+        var newHeader = FakeHeaderDisplayData()
         newHeader.height = headerHeight
         var rows = [FakeCellDisplayData]()
         (0..<numberOfRows).forEach { (_) in
-            let row = FakeCellDisplayData()
+            var row = FakeCellDisplayData()
             row.height = rowHeight
             row.estimatedHeight = estimatedRowHeight
             rows.append(row)

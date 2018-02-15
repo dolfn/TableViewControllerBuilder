@@ -5,7 +5,7 @@
 
 import UIKit
 
-class AnyTypeOfCellTableViewDataSource< RowDisplayDataType, CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable, CellReconfigurator where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
+class AnyTypeOfCellTableViewDataSource<RowDisplayDataType, CellConfiguratorType: CellConfigurator>: NSObject, UITableViewDataSource, CellDisplayDataUpdatable, CellReconfigurator where CellConfiguratorType.CellDisplayDataType == RowDisplayDataType {
     
     typealias CellDisplayDataToUpdateWith = RowDisplayDataType
     

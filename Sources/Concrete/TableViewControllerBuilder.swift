@@ -19,7 +19,7 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
     private weak var usingTableViewController:AnyHeadersAndCellsTableViewController?
     
     public init<TableViewModelType: TableViewModel, RowConfiguratorFactoryType:CellConfiguratorFactory>(viewModel: TableViewModelType, cellConfiguratorFactory: RowConfiguratorFactoryType) where TableViewModelType.HeaderDisplayDataType == HeaderDisplayDataType, TableViewModelType.CellDisplayDataType == CellDisplayDataType, RowConfiguratorFactoryType.CellDisplayData == CellDisplayDataType {
-        
+
         self.viewModel = AnyTableViewModel(tableViewModel: viewModel)
         let cellConfiguratorSelector = CellConfiguratorSelector(configuratorFactory: cellConfiguratorFactory)
         self.cellConfiguratorSelector = cellConfiguratorSelector
@@ -32,22 +32,22 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         if let alreadyCreatedTableViewController = usingTableViewController {
             return alreadyCreatedTableViewController
         }
-        
+
         let tableViewController = AnyHeadersAndCellsTableViewController()
         usingTableViewController = tableViewController
         tableViewOperationsManager?.tableView = tableViewController.getTableView()
         tableViewController.isScrollEnabled = viewModel.shouldBeScrollable
         tableViewController.contentInset = viewModel.edgeInsets
         tableViewController.backgroundColor = viewModel.backgroundColor
-        
-        if let tableViewOperationsManager = tableViewOperationsManager, let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
-            addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-        }
-        
+
+//        if let tableViewOperationsManager = tableViewOperationsManager, let anyTypeOfCellTableViewDataSource = anyTypeOfCellTableViewDataSource {
+//            addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
+//        }
+
         tableViewController.tableViewDataSource = anyTypeOfCellTableViewDataSource
-        
+
         addHeadersInViewControllerIfNecessary()
-        
+
         return tableViewController
     }
     
@@ -57,17 +57,16 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
             tableViewOperationsManager.tableView = usingTableViewController?.getTableView()
             self.tableViewOperationsManager = tableViewOperationsManager
             addRowDataUpdatables(for: tableViewOperationsManager, updatable: anyTypeOfCellTableViewDataSource)
-            
+
             if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
                 addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
+//                addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
             }
-            if let anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate {
-                addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
-            }
+
             let erasedTableViewDelegate = AnyTableViewModelDelegate(delegate: tableViewOperationsManager)
             return erasedTableViewDelegate
         }
-        
+    
         return nil
     }
     
@@ -89,11 +88,11 @@ public class TableViewControllerBuilder<HeaderDisplayDataType: HeightFlexible, C
         anyHeaderCellTableViewCellDelegate.actionsDelegate = self.eventsHandler
         self.anyHeaderCellTableViewCellDelegate = anyHeaderCellTableViewCellDelegate
         usingTableViewController?.tableViewDelegate = anyHeaderCellTableViewCellDelegate
-        
+
         if let headerConfiguratorSelector = headerConfiguratorSelector {
             anyHeaderCellTableViewCellDelegate.addHeaderConfigurator(headerViewConfigurator: headerConfiguratorSelector)
         }
-        
+
         if let tableViewOperationsManager = tableViewOperationsManager {
             addRowHeightsUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
             addHeaderDataUpdatables(for: tableViewOperationsManager, updatable: anyHeaderCellTableViewCellDelegate)
