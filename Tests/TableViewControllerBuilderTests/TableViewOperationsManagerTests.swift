@@ -168,6 +168,22 @@ class TableViewOperationsManagerTests: XCTestCase {
         XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
     }
     
+    func test_InsertSectionAnimatedAndGivenData() {
+        let indexes = [3, 4, 5]
+        sut.didInsertSections(at: indexes, in: anyViewModel.erased, animated: true)
+        checkSectionsContent()
+        
+        guard let sections = tableView.insertedSections else {
+            XCTFail()
+            return
+        }
+        
+        XCTAssertTrue(sections.contains(3))
+        XCTAssertTrue(sections.contains(4))
+        XCTAssertTrue(sections.contains(5))
+        XCTAssertEqual(tableView.animation, UITableViewRowAnimation.automatic)
+    }
+    
     private func endReplaceRowsTest() {
         XCTAssertEqual(tableView.reloadRowsIndexPaths.count, 3)
         let indexPaths = getIndexPaths()

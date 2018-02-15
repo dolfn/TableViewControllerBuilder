@@ -14,6 +14,7 @@ class UITableViewSpy: UITableView {
     var animation: UITableViewRowAnimation?
     var deleteRowsIndexPaths = [IndexPath]()
     var reloadRowsIndexPaths = [IndexPath]()
+    var insertedSections: IndexSet?
     
     override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         if shouldReturnCell {
@@ -38,6 +39,11 @@ class UITableViewSpy: UITableView {
     
     override func reloadRows(at indexPaths: [IndexPath], with animation: UITableViewRowAnimation) {
         self.reloadRowsIndexPaths = indexPaths
+        self.animation = animation
+    }
+    
+    override func insertSections(_ sections: IndexSet, with animation: UITableViewRowAnimation) {
+        insertedSections = sections
         self.animation = animation
     }
 }
