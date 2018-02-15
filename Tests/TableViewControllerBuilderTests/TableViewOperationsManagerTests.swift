@@ -242,6 +242,16 @@ class TableViewOperationsManagerTests: XCTestCase {
         checkSectionsContent()
     }
     
+    func test_InsertGivenRowsAndDataAnimated() {
+        sut.didInsert(itemsAt: getIndexPaths(), in: anyViewModel.erased, animated: true)
+        let indexPaths = getIndexPaths()
+        XCTAssertEqual(tableView.insertedRowsIndexPaths.count, 3)
+        XCTAssertTrue(tableView.insertedRowsIndexPaths.contains(indexPaths[0]))
+        XCTAssertTrue(tableView.insertedRowsIndexPaths.contains(indexPaths[1]))
+        XCTAssertTrue(tableView.insertedRowsIndexPaths.contains(indexPaths[2]))
+        checkSectionsContent()
+    }
+    
     private func getIndexPaths() -> [IndexPath] {
         let indexPath1 = IndexPath(row: 0, section: 0)
         let indexPath2 = IndexPath(row: 2, section: 0)
