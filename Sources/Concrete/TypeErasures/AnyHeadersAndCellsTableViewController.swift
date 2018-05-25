@@ -70,7 +70,7 @@ internal class AnyHeadersAndCellsTableViewController: UIViewController {
         _tableView.dataSource = tableViewDataSource
         _tableView.delegate = tableViewDelegate
         _tableView.estimatedRowHeight = 100
-        _tableView.rowHeight = UITableViewAutomaticDimension
+        _tableView.rowHeight = 100
         _tableView.translatesAutoresizingMaskIntoConstraints = false
 
         view?.addSubview(_tableView)
