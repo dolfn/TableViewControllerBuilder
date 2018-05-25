@@ -9,4 +9,5 @@ public protocol CellEventsDelegate {
     associatedtype CellDisplayDataType
     
     func didSelect(cellWith displayData: CellDisplayDataType)
+    func willDisplay(cellWith displayData: CellDisplayDataType)
 }

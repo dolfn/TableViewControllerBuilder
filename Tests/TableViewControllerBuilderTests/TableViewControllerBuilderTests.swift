@@ -170,6 +170,15 @@ class TableViewControllerBuilderTests: XCTestCase {
         XCTAssertTrue(cellEventsHandler.didSelectCell)
     }
     
+    func test_AfterWillDisplayCellEventsHandler_ItShouldCallHandler() {
+        let cellEventsHandler = CellEventsHandlerSpy()
+        sut.addEventsHandler(handler: cellEventsHandler)
+        let tableView = firstView() as! UITableView
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.delegate?.tableView?(tableView, willDisplay: UITableViewCell(), forRowAt: indexPath)
+        XCTAssertTrue(cellEventsHandler.willDisplayCell)
+    }
+    
     func test_ToSetBackgroundColorFromViewModel() {
         let viewController = sut.buildTableViewController()
         XCTAssertEqual(viewController.view.backgroundColor, viewModel.backgroundColor)

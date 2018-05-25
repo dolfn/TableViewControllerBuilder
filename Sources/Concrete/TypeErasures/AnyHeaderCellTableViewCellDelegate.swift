@@ -70,4 +70,12 @@ class AnyHeaderCellTableViewCellDelegate<HeaderDisplayDataType: HeightFlexible, 
         let displayData = rowHeightProviderInSection[indexPath.row]
         actionsDelegate?.didSelect(cellWith: displayData)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rowHeightProviderInSection = rowHeightProviders[indexPath.section]
+        let displayData = rowHeightProviderInSection[indexPath.row]
+        actionsDelegate?.willDisplay(cellWith: displayData)
+    }
+    
+    
 }
