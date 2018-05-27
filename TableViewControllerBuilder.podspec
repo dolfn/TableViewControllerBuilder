@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "TableViewControllerBuilder"
-  s.version      = "0.3.0"
+  s.version      = "0.4.0"
   s.summary      = "A framework that will make you to write only the custom code you need for building a generic table view controller."
   s.homepage     = "https://github.com/dolfn/TableViewControllerBuilder"
   s.license      = { :type => "MIT", :file => "LICENSE" }
